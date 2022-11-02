@@ -1,33 +1,39 @@
 import { defineUserConfig } from 'vuepress'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme } from '@vuepress/theme-default'
+import { containerPlugin } from '@vuepress/plugin-container'
 
+import {
+  ua, navbar, sidebar
+} from './configs/index'
 
 export default defineUserConfig({
   lang: 'zh-CN',
-  title: '你好， VuePress ！',
-  description: '这是我的第一个 VuePress 站点',
-  head: [['link', { rel: 'icon', href: '/images/logo.png' }]], //增加一个自定义的 favicon
+  title: 'Fromidea',
+  description: '技术日志，html5/css3/javascript/vue3/php/mac/os/mysql...',
+  head: [
+    ['link', { rel: 'icon', href: '/images/fromidea.png' }],
+    ['meta', { name: 'baidu-site-verification', content: 'code-xzTgMvorot' }],
+    [...ua]
+  ], //增加一个自定义的 favicon
   plugins: [
     searchPlugin({
-      // 配置项
+      locales: {
+        '/': {
+          placeholder: '搜索文档',
+        },
+      },
+    }),
+    containerPlugin({
+      type: 'center',
     }),
   ],
   theme: defaultTheme({
-    repo: 'https://gitee.com/pintecher/exam-enroll',
-    navbar: [
-      // NavbarItem
-      {
-        text: 'Foo',
-        link: '/foo/',
-      },
-      // NavbarGroup
-      {
-        text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
-      },
-      // 字符串 - 页面文件路径
-      '/bar/README.md',
-    ],
+    logo: null,
+    backToHome: '回到 Fromidea 首页',
+    notFound: ['迷路了？不要紧。'],
+    navbar: navbar,
+    sidebar: sidebar,
+    sidebarDepth: '3'
   }),
 })

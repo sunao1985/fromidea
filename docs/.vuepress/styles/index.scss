@@ -1,0 +1,22 @@
+/** 容器定义 */
+.custom-container{
+    &.center{
+        text-align: center;
+    }
+}
+
+.page-home{
+    .home{
+        .features{text-align: center;margin-top:5rem;}
+    }
+}
+
+@media (max-width: 719px){
+
+    .home .feature {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+
+}
