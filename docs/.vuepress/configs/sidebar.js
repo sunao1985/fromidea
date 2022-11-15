@@ -39,6 +39,11 @@ export const sidebar = {
                         '/tool/soft/vscode/intelephense插件配置说明',
                         '/tool/soft/vscode/vscode如何预览markdown文件',
                     ]
+                }, {
+                    'text': 'git',
+                    children: [
+                        '/tool/soft/git/failed-to-connect',
+                    ]
                 }]
             },
             {

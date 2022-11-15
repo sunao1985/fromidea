@@ -34,6 +34,9 @@ export default defineUserConfig({
     notFound: ['迷路了？不要紧。'],
     navbar: navbar,
     sidebar: sidebar,
-    sidebarDepth: '3'
+    sidebarDepth: '3',
+    lastUpdatedText: '最后更新',
+    contributorsText: '贡献者',
+    contributors: false
   }),
 })
