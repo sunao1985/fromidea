@@ -14,7 +14,7 @@
 
 
 
-### Zlibrary
+### 数字图书馆-Zlibrary
 
 全球最大的数字图书馆，提供电子书免费下载。资源数量超出你的想象。
 
@@ -96,3 +96,24 @@
 
 [https://www.warp.dev/](https://www.warp.dev/)
 
+
+
+### 开发人员备忘清单-速查表
+
+一个为开发人员提供快速参考备忘清单的网站。相当于 Reference 的中国版，由国内开发者搬运、整理、翻译、完善。同时你也可以帮助他一起构建该清单。
+
+![Xnip2022-11-15_09-49-21](./assets/Xnip2022-11-15_09-49-21.png)
+
+[https://wangchujiang.com/reference/](https://wangchujiang.com/reference/)
+
+
+
+
+
+### 异地组网利器-OmniEdge
+
+OmniEdge 的端到端企业 VPN 解决方案，无需公网 IP，无需端口转发，无需反向代理，零配置，不仅适用于初创业团队、个人，也适用于需要弹性扩张，在世界各地拥有成千上万台电脑的大公司。
+
+![image-20221115105734172](./assets/image-20221115105734172.png)
+
+[https://omniedge.io/](https://omniedge.io/)

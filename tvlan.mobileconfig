@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDescription</key>
+			<string>全局 HTTP 代理</string>
+			<key>PayloadDisplayName</key>
+			<string>全局 HTTP 代理</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.proxy.http.global.45B92589-60BE-497E-B46B-6C0E8D2D3C46</string>
+			<key>PayloadType</key>
+			<string>com.apple.proxy.http.global</string>
+			<key>PayloadUUID</key>
+			<string>45B92589-60BE-497E-B46B-6C0E8D2D3C46</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>ProxyCaptiveLoginAllowed</key>
+			<false/>
+			<key>ProxyServer</key>
+			<string>192.168.2.245</string>
+			<key>ProxyServerPort</key>
+			<integer>7890</integer>
+			<key>ProxyType</key>
+			<string>Manual</string>
+		</dict>
+	</array>
+	<key>PayloadDisplayName</key>
+	<string>未命名</string>
+	<key>PayloadIdentifier</key>
+	<string>sunaoair.CBE7FC67-F116-4F3A-91F3-6B6DCA5C274D</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>50248460-74A4-44BC-A2CB-6D77BE6E767D</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

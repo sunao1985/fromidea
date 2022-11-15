@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-00665040","path":"/tool/hardware/macbook/","title":"MacBook Air M1","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"tool/hardware/macbook/index.md"}');export{t as data};
