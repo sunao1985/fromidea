@@ -117,3 +117,16 @@ OmniEdge 的端到端企业 VPN 解决方案，无需公网 IP，无需端口转
 ![image-20221115105734172](./assets/image-20221115105734172.png)
 
 [https://omniedge.io/](https://omniedge.io/)
+
+
+
+### 中国程序员单词发音纠正
+
+在这个网站你可以快速收听开发常用单词的正确发音，包含美式和英式发音。
+
+开源项目地址：https://github.com/shimohq/chinese-programmer-wrong-pronunciation
+
+![image-20221121161135601](./assets/image-20221121161135601.png)
+
+[https://cpwp.netlify.app/](https://cpwp.netlify.app/)
+
