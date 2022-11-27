@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-756518c4","path":"/tool/soft/vscode/","title":"vscode","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667358465000},"filePathRelative":"tool/soft/vscode/index.md"}');export{e as data};

@@ -130,3 +130,14 @@ OmniEdge 的端到端企业 VPN 解决方案，无需公网 IP，无需端口转
 
 [https://cpwp.netlify.app/](https://cpwp.netlify.app/)
 
+
+
+### 端对端加密的私人笔记-Notesnook
+
+Notesnook是一款开源的私人笔记应用。官方称该应用可以让您自由地写笔记，让任何人都无法窥探你的笔记。与Evernote和其他笔记应用程序不同，您的数据是私人的，不是开放给所有人的。
+
+该应用提供web、macos、ios、android、windows等多个平台支持。
+
+![image-20221127160924841](./assets/image-20221127160924841.png)
+
+[https://notesnook.com/](https://notesnook.com/)
