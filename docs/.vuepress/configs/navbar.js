@@ -34,7 +34,7 @@ export const navbar = [
                 children: [
                     { text: 'server', link: '/tool/soft/server' },
                     { text: 'vscode', link: '/tool/soft/vscode' },
-                    { text: 'git', link: '/tool/soft/git' },
+                    { text: 'git', link: '/tool/soft/git/' },
                 ],
             },
             {
