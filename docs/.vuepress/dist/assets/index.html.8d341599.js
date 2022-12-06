@@ -1,0 +1,1 @@
+import{_ as a,o,c,a as e,d as t}from"./app.7e9421f9.js";const r={},n=e("h1",{id:"macbook-air-m1",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#macbook-air-m1","aria-hidden":"true"},"#"),t(" MacBook Air M1")],-1),s=[n];function d(i,_){return o(),c("div",null,s)}const l=a(r,[["render",d],["__file","index.html.vue"]]);export{l as default};

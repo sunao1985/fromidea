@@ -41,9 +41,7 @@ export const sidebar = {
                     ]
                 }, {
                     'text': 'git',
-                    children: [
-                        '/tool/soft/git/failed-to-connect',
-                    ]
+                    link: '/tool/soft/git/'
                 }]
             },
             {

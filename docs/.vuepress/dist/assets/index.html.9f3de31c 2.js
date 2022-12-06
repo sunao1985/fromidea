@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-269844f1","path":"/program/mysql/","title":"MySQL","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667358465000},"filePathRelative":"program/mysql/index.md"}');export{e as data};
