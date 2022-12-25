@@ -18,6 +18,13 @@ export const navbar = [
                 { text: 'MySQL', link: 'https://doc.houdunren.com/%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B/mysql/1%20%E5%AD%A6%E5%89%8D%E5%87%86%E5%A4%87.html' },
             ]
         },
+        {
+            'text': '其它',
+            'children': [{
+                text: '正则表达式', link: '/program/regexp/'
+            }]
+        }
+
         ],
     },
     {
