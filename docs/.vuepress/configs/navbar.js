@@ -30,7 +30,7 @@ export const navbar = [
     {
         text: '设计',
         children: [
-            { text: '设计之路', link: '/design/' }
+            { text: '灵感来源', link: '/design/idea' }
         ],
     },
     {

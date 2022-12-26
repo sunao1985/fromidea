@@ -21,7 +21,10 @@ export const sidebar = {
     '/design/': [
         {
             text: '设计',
-            link: '/design/'
+            children: [{
+                'text': '灵感来源',
+                'link': '/design/idea'
+            }]
         }
     ],
     '/tool/': [
