@@ -20,9 +20,10 @@ export const navbar = [
         },
         {
             'text': '其它',
-            'children': [{
-                text: '正则表达式', link: '/program/regexp/'
-            }]
+            'children': [
+                { text: '正则表达式', link: '/program/regexp/' },
+                { text: 'vue3学习笔记', link: '/program/vue/' }
+            ]
         }
 
         ],

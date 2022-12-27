@@ -37,7 +37,7 @@ export default defineUserConfig({
     sidebarDepth: '3',
     repo: 'https://github.com/sunao1985/fromidea',
     docsDir: 'docs',
-    editLinkText: '编辑',
+    editLinkText: '在 GitHub 上编辑此页',
     lastUpdatedText: '最后更新',
     contributorsText: '贡献者',
     contributors: true
