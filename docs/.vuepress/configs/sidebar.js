@@ -21,10 +21,13 @@ export const sidebar = {
     '/design/': [
         {
             text: '设计',
-            children: [{
-                'text': '灵感来源',
-                'link': '/design/idea'
-            }]
+            children: [
+                { text: '灵感来源', link: '/design/idea.html' },
+                { text: 'icon图标', link: '/design/icon.html' },
+                { text: '免费商用字体', link: '/design/font.html' },
+                { text: 'UI模版', link: '/design/theme.html' }
+
+            ]
         }
     ],
     '/tool/': [

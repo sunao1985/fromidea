@@ -30,7 +30,10 @@ export const navbar = [
     {
         text: '设计',
         children: [
-            { text: '灵感来源', link: '/design/idea' }
+            { text: '灵感来源', link: '/design/idea' },
+            { text: 'icon图标', link: '/design/icon' },
+            { text: '开源商用字体', link: '/design/font' },
+            { text: 'UI模版', link: '/design/theme.html' }
         ],
     },
     {
