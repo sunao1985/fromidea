@@ -35,8 +35,11 @@ export default defineUserConfig({
     navbar: navbar,
     sidebar: sidebar,
     sidebarDepth: '3',
+    repo: 'https://github.com/sunao1985/fromidea',
+    docsDir: 'docs',
+    editLinkText: '编辑',
     lastUpdatedText: '最后更新',
     contributorsText: '贡献者',
-    contributors: false
+    contributors: true
   }),
 })
