@@ -3,10 +3,9 @@ export const sidebar = {
         {
             'text': '手册',
             'children': [
-                { text: 'HTML', link: 'https://wangdoc.com/html/' },
-                { text: 'JavaScript', link: 'https://wangdoc.com/javascript/' },
-                { text: 'ES6', link: 'https://wangdoc.com/es6/' },
-                { text: 'Web API', link: 'https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Client-side_web_APIs' },
+                { text: 'HTML', link: 'https://developer.mozilla.org/zh-CN/docs/Web/HTML' },
+                { text: 'CSS', link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS' },
+                { text: 'JavaScript', link: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript' },
                 { text: 'PHP', link: 'https://doc.houdunren.com/%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B/php/1%20%E5%89%8D%E8%A8%80.html' },
                 { text: 'MySQL', link: 'https://doc.houdunren.com/%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B/mysql/1%20%E5%AD%A6%E5%89%8D%E5%87%86%E5%A4%87.html' },
             ]
@@ -15,6 +14,7 @@ export const sidebar = {
             'text': '其它',
             'children': [
                 { text: '正则表达式', link: '/program/regexp/' },
+                { text: 'JavaScript学习笔记', link: '/program/javascript/' },
                 { text: 'vue3学习笔记', link: '/program/vue/' }
             ]
         }
