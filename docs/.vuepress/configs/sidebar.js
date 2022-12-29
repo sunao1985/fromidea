@@ -53,7 +53,14 @@ export const sidebar = {
                 }, {
                     'text': 'git',
                     link: '/tool/soft/git/'
-                }]
+
+                }, {
+                    'text': 'chrome',
+                    children: [
+                        '/tool/soft/chrome/chrome内置强大网页截图工具',
+                    ]
+                }
+                ]
             },
             {
                 'text': '硬件',
