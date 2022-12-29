@@ -576,9 +576,7 @@ $ git commit
 
 
 
-
-
-# Git 查看提交历史记录
+## Git 查看提交历史记录
 
 -   **git log** - 查看历史提交记录。
 -   **git blame** - 以列表形式查看指定文件的历史修改记录。
@@ -606,8 +604,6 @@ git log --oneline
 ```shell
 git blame <file>
 ```
-
-
 
 
 
