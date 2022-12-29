@@ -38,13 +38,13 @@ export const sidebar = {
             children: [{
                 'text': '软件',
                 'children': [{
-                    'text': 'server',
+                    'text': 'server', link: '/tool/soft/server/',
                     children: [
                         '/tool/soft/server/宝塔面板www目录从系统盘切换到数据盘',
                         '/tool/soft/server/阿里云跨账号内网组建',
                     ]
                 }, {
-                    'text': 'vscode',
+                    'text': 'vscode', link: '/tool/soft/vscode/',
                     children: [
                         '/tool/soft/vscode/vscode如何自定义配置“代码格式化”',
                         '/tool/soft/vscode/intelephense插件配置说明',
@@ -55,7 +55,7 @@ export const sidebar = {
                     link: '/tool/soft/git/'
 
                 }, {
-                    'text': 'chrome',
+                    'text': 'chrome', link: '/tool/soft/chrome/',
                     children: [
                         '/tool/soft/chrome/chrome内置强大网页截图工具',
                     ]
@@ -77,7 +77,13 @@ export const sidebar = {
             text: '系统',
             children: [{
                 'text': 'MacOS',
-                'link': '/system/macos/'
+                'link': '/system/macos/',
+                children: [
+                    '/system/macos/env:node:No_such_file_or_directory.md',
+                    '/system/macos/App启动时提示文件已损坏.md',
+                    '/system/macos/macos外接移动硬盘无法装载.md',
+                    '/system/macos/macos如何开启或关闭系统SIP.md',
+                ]
             }]
         }
     ],

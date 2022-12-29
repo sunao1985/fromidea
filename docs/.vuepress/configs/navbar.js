@@ -47,18 +47,13 @@ export const navbar = [
                     { text: 'server', link: '/tool/soft/server' },
                     { text: 'vscode', link: '/tool/soft/vscode' },
                     { text: 'git', link: '/tool/soft/git/' },
-                    { text: 'chrome', link: '/tool/soft/chrome/chrome内置强大网页截图工具.md' },
+                    { text: 'chrome', link: '/tool/soft/chrome/' },
                 ],
             },
             {
                 'text': '硬件',
                 children: [
                     { text: 'MacBook Air M1', link: '/tool/hardware/macbook' }
-                ]
-            }, {
-                'text': 'chrome',
-                children: [
-                    '/tool/soft/chrome/chrome内置强大网页截图工具',
                 ]
             }
         ],
