@@ -29,7 +29,7 @@ description:chrome内置的网页截图工具,chrome内置强大网页截图工�
 
 **如图所示**
 
-![www.pinge360.com_](./assets/www.pinge360.com_.png)
+![www.pinge360.com_](./assets/www.pinge360.com0.png)
 
 
 
@@ -39,7 +39,7 @@ description:chrome内置的网页截图工具,chrome内置强大网页截图工�
 
 **如图所示**
 
-![www.pinge360.com_ (1)](./assets/www.pinge360.com_%20(1).png)
+![www.pinge360.com_ (1)](./assets/www.pinge360.com1.png)
 
 
 
@@ -51,7 +51,7 @@ description:chrome内置的网页截图工具,chrome内置强大网页截图工�
 
 ![image-20221229123221765](./assets/image-20221229123221765.png)
 
-![www.pinge360.com_ (2)](./assets/www.pinge360.com_%20(2).png)
+![www.pinge360.com_ (2)](./assets/www.pinge360.com2.png)
 
 
 
@@ -75,4 +75,4 @@ description:chrome内置的网页截图工具,chrome内置强大网页截图工�
 
 ![image-20221229123742510](./assets/image-20221229123742510.png)
 
-![www.pinge360.com_ (3)](./assets/www.pinge360.com_%20(3).png)
+![www.pinge360.com_ (3)](./assets/www.pinge360.com3.png)
