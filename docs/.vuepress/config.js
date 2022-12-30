@@ -7,6 +7,7 @@ import {
   ua, navbar, sidebar
 } from './configs/index'
 
+
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'Fromidea',
@@ -26,15 +27,20 @@ export default defineUserConfig({
     }),
     containerPlugin({
       type: 'center',
-    }),
+    })
   ],
+  markdown: {
+    headers: {
+      level: [2, 3, 4],
+    },
+  },
   theme: defaultTheme({
     logo: null,
     backToHome: '回到 Fromidea 首页',
     notFound: ['迷路了？不要紧。'],
     navbar: navbar,
     sidebar: sidebar,
-    sidebarDepth: '3',
+    sidebarDepth: 4,
     repo: 'https://github.com/sunao1985/fromidea',
     docsDir: 'docs',
     editLinkText: '在 GitHub 上编辑此页',

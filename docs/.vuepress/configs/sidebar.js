@@ -14,7 +14,7 @@ export const sidebar = {
             'text': '其它',
             'children': [
                 { text: '正则表达式', link: '/program/regexp/' },
-                { text: 'JavaScript学习笔记', link: '/program/javascript/javascript学习笔记.html' },
+                { text: 'JavaScript学习笔记', link: '/program/javascript/' },
                 { text: 'vue3学习笔记', link: '/program/vue/' }
             ]
         }

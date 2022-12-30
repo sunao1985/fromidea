@@ -154,3 +154,17 @@ freenom是一家位于荷兰的免费域名提供商。可以免费申请tk、ml
 
 [https://www.freenom.com/](https://www.freenom.com/)
 
+
+
+
+
+### 零基础学英语课程
+
+据说这套英文课程学起来比较轻松，这位老师的教学方式能让你逐步建立学习兴趣和有效建立自信心。
+
+来自油管up主：[星容英语笔记](https://www.youtube.com/@xingrong-english)。同时，up主的B站账号也会同步更新。
+
+![image-20221230112951011](./assets/image-20221230112951011.png)
+
+[B站版：星荣英语笔记](https://space.bilibili.com/160507280/channel/collectiondetail?sid=48449&ctype=0)
+
