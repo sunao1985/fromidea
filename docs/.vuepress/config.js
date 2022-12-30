@@ -31,7 +31,7 @@ export default defineUserConfig({
   ],
   markdown: {
     headers: {
-      level: [2, 3, 4],
+      level: [2, 3, 4, 5],
     },
   },
   theme: defaultTheme({
@@ -40,7 +40,7 @@ export default defineUserConfig({
     notFound: ['迷路了？不要紧。'],
     navbar: navbar,
     sidebar: sidebar,
-    sidebarDepth: 4,
+    sidebarDepth: 5,
     repo: 'https://github.com/sunao1985/fromidea',
     docsDir: 'docs',
     editLinkText: '在 GitHub 上编辑此页',
