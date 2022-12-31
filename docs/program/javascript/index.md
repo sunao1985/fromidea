@@ -652,3 +652,507 @@ isNaN(1 + undefined) // true
 
 
 
+## 运算符与流程控制
+
+### 赋值运算符
+
+赋值元素符会将右边的操作数的值分配给左边的操作数，并将其值修改为右边操作数相等的值。
+
+| 运算符                                                       | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment) | 赋值运算符。                                                 |
+| [`*=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Multiplication_assignment) | 赋值乘积。                                                   |
+| [`**=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation_assignment) | 求幂赋值。                                                   |
+| [`/=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Division_assignment) | 赋值商。                                                     |
+| [`%=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Remainder_assignment) | 赋值求余。                                                   |
+| [`+=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition_assignment) | 赋值求和。                                                   |
+| [`-=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Subtraction_assignment) | 赋值求差。                                                   |
+| [`<<=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Left_shift_assignment) | 左位移。                                                     |
+| [`>>=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Right_shift_assignment) | 右位移。                                                     |
+| [`>>>=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift_assignment) | 无符号右位移。                                               |
+| [`&=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_AND_assignment) | 赋值与。                                                     |
+| [`^=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR_assignment) | 赋值按位异或。                                               |
+| [`\|=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_OR_assignment) | 赋值或。                                                     |
+| [`&&=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND_assignment) | 逻辑和赋值运算符。                                           |
+| [`\|\|=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment) | 逻辑或赋值运算符。                                           |
+| [`??=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment) | 逻辑空赋值运算符。                                           |
+| [`[a, b] = arr`, `{ a, b } = obj`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) | 解构赋值允许您使用类似于数组或对象字面量的语法将数组或对象的属性赋值给变量。 |
+
+
+
+### 算术运算符
+
+算术运算符以二个数值（字面量或变量）作为操作数，并返回单个数值。
+
+| 运算符                                                       | 说明         |
+| ------------------------------------------------------------ | ------------ |
+| [`+`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition) | 加法运算符。 |
+| [`-`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Subtraction) | 减法运算符。 |
+| [`/`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Division) | 除法运算符。 |
+| [`*`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Multiplication) | 乘法运算符。 |
+| [`%`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Remainder) | 取余运算符。 |
+| [`**`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation) | 求幂运算符。 |
+
+
+
+### 自增和自减
+
+前置/后置自增运算符和前置/后置自减运算符。
+
+| 运算符                                                       | 说明             |
+| ------------------------------------------------------------ | ---------------- |
+| [`A++`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Increment) | 后置自增运算符。 |
+| [`A--`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Decrement) | 后置自减运算符。 |
+| [`++A`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Increment) | 前置自增运算符。 |
+| [`--A`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Decrement) | 前置自减运算符。 |
+
+示例代码：
+
+```js
+<script>
+    let a = 1;
+    a = a + 1;
+    console.log(a); //2
+    ++a;
+    console.log(a); //3
+    a++;
+    console.log(a); //4
+
+    let b = 5;
+    let c = 1;
+    let d = b + ++c;
+    console.log(d); //7
+
+    b = 5;
+    c = 1;
+    d = b + c++;
+    console.log(d); //6
+</script>
+```
+
+
+
+### 一元运算符
+
+一元运算符只有一个操作数。
+
+| 运算符                                                       | 说明                                         |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| [`+`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_plus) | 一元加运算符将操作转换为 Number 类型。       |
+| [`-`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_negation) | 一元减运算符将操作转换为 Number 类型并取反。 |
+| [`~`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT) | 按位非运算符。                               |
+| [`!`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT) | 逻辑非运算符。                               |
+| [`delete`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete) | `delete` 运算符用来删除对象的属性。          |
+| [`void`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void) | `void` 运算符表示表达式放弃返回值。          |
+| [`typeof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof) | `typeof` 运算符用来判断给定对象的类型。      |
+
+示例代码：
+
+```js
+<script>
+    let a = '1';
+    a=+a
+    console.log(a); //1
+    console.log(typeof a); //number
+
+    a = 1;
+    console.log(-a); //-1
+
+    a = 1;
+    console.log(~a); //-2
+
+    a = undefined;
+    console.log(!a);//true
+
+    a = {name : 'fromidea'};
+    delete a.name;
+    console.log(a); // {}
+
+    a = 1;
+    console.log(void a); //undefined
+</script>
+```
+
+
+
+
+
+### 比较运算符
+
+比较运算符比较两个操作数并返回基于比较结果的布尔值。	
+
+| 运算符                                                       | 说明             |
+| ------------------------------------------------------------ | ---------------- |
+| [`<`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than) | 小于运算符。     |
+| [`>`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Greater_than) | 大于运算符。     |
+| [`<=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than_or_equal) | 小于等于运算符。 |
+| [`>=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Greater_than_or_equal) | 大于等于运算符。 |
+| [`==`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality) | 相等运算符。     |
+| [`!=`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Inequality) | 不等运算符。     |
+| [`===`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality) | 全等运算符。     |
+| [`!==`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_inequality) | 非全等运算符。   |
+
+示例代码：
+
+```js
+<script>
+    let a = 1;
+    let b = 2;
+
+    console.log(a < b); // true
+    console.log(a > b); // false
+    console.log(a <= b); // true
+    console.log(a >= b); // false
+    console.log(a == b); // false
+    console.log(a != b); // true
+    console.log(a === b); //false
+    console.log(a !== b); //true
+</script>
+```
+
+
+
+### 逻辑运算符
+
+逻辑运算符典型的用法是用于布尔（逻辑）值运算，它们返回布尔值。
+
+| 运算符                                                       | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`&&`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND) | 逻辑与。                                                     |
+| [`\|\|`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR) | 逻辑或。                                                     |
+| [`??`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) | 空值合并运算符，如果 ?? 前面是 null 或 undefined，取后面的默认值。 |
+
+示例代码：
+
+```js
+<script>
+    let a = 1;
+    let b = 2;
+    let c = 3;
+
+    if(a > b && b > c){
+        console.log('yes');
+    }else{
+        console.log('err');
+    }
+
+    // err
+
+    if(a > b || b < c){
+        console.log('yes');
+    }else{
+        console.log('err');
+    }
+
+    // yes
+
+    let d;
+    d = d ?? 'fromidea.com';
+    console.log(d);
+
+    // fromidea.com
+
+</script>
+```
+
+
+
+### if...else判断语句
+
+当指定条件为真，if 语句会执行一段语句。如果条件为假，则执行另一段语句。
+
+```js
+<script>
+    function validate(str){
+        if(str.length >= 12){
+            return '密码非常安全';
+        }else if(str.length >= 6){
+            return '密码比较安全';
+        }else{
+            return '密码不太安全';
+        }
+    }
+    let valid = validate('123123');
+    console.log(valid); //密码比较安全
+</script>
+```
+
+
+
+
+
+### 三元表达式
+
+一个条件后跟一个问号（?），如果条件为真值，则执行冒号（:）前的表达式；若条件为假值，则执行最后的表达式。该运算符经常当作 if...else 语句的简捷形式来使用。
+
+```js
+<script>
+    let a = 0;
+    let b = 1;
+
+    let c = a ? a : b;
+    console.log(c); // 1
+</script>
+```
+
+
+
+### switch
+
+将表达式的值与case子句匹配，并执行与该情况相关联的语句。
+
+示例代码：
+
+```js
+<script>
+    function age(num){
+
+        let msg = '';
+
+        switch(true){
+            case num >= 60:
+                msg = '老年';
+                break;
+            
+            case num >= 40:
+                msg = '中年';
+                break;
+
+            case num >= 20:
+                msg = '青年';
+                break;
+
+            case num >= 10:
+                msg = '少年';
+                break;
+
+            case num >= 0:
+            default:
+                msg = '婴幼儿';
+            break;
+        }
+
+        return msg;
+    }
+    console.log(age()); //婴幼儿
+</script>
+```
+
+
+
+### while
+
+某个条件表达式为真的前提下，循环执行指定的一段代码，直到那个表达式不为真时结束循环。
+
+示例代码：
+
+```js
+<script>
+    function table(options = {tr:5,td:10}){
+        document.write(`<table border='1' style="width:100%">`);
+        while (options.tr -- != 0){
+            document.write(`<tr>`);
+            let td = options.td;
+            while (td-- != 0){
+                document.write(`<td>${options.tr}:${td}</td>`);
+            }       
+            document.write('</tr>');
+        }
+        document.write(`</table>`);
+    }
+
+    table({tr:10,td:10});
+</script>
+```
+
+浏览器效果：
+
+<table border="1" style="width:100%"><tbody><tr><td>9:9</td><td>9:8</td><td>9:7</td><td>9:6</td><td>9:5</td><td>9:4</td><td>9:3</td><td>9:2</td><td>9:1</td><td>9:0</td></tr><tr><td>8:9</td><td>8:8</td><td>8:7</td><td>8:6</td><td>8:5</td><td>8:4</td><td>8:3</td><td>8:2</td><td>8:1</td><td>8:0</td></tr><tr><td>7:9</td><td>7:8</td><td>7:7</td><td>7:6</td><td>7:5</td><td>7:4</td><td>7:3</td><td>7:2</td><td>7:1</td><td>7:0</td></tr><tr><td>6:9</td><td>6:8</td><td>6:7</td><td>6:6</td><td>6:5</td><td>6:4</td><td>6:3</td><td>6:2</td><td>6:1</td><td>6:0</td></tr><tr><td>5:9</td><td>5:8</td><td>5:7</td><td>5:6</td><td>5:5</td><td>5:4</td><td>5:3</td><td>5:2</td><td>5:1</td><td>5:0</td></tr><tr><td>4:9</td><td>4:8</td><td>4:7</td><td>4:6</td><td>4:5</td><td>4:4</td><td>4:3</td><td>4:2</td><td>4:1</td><td>4:0</td></tr><tr><td>3:9</td><td>3:8</td><td>3:7</td><td>3:6</td><td>3:5</td><td>3:4</td><td>3:3</td><td>3:2</td><td>3:1</td><td>3:0</td></tr><tr><td>2:9</td><td>2:8</td><td>2:7</td><td>2:6</td><td>2:5</td><td>2:4</td><td>2:3</td><td>2:2</td><td>2:1</td><td>2:0</td></tr><tr><td>1:9</td><td>1:8</td><td>1:7</td><td>1:6</td><td>1:5</td><td>1:4</td><td>1:3</td><td>1:2</td><td>1:1</td><td>1:0</td></tr><tr><td>0:9</td><td>0:8</td><td>0:7</td><td>0:6</td><td>0:5</td><td>0:4</td><td>0:3</td><td>0:2</td><td>0:1</td><td>0:0</td></tr></tbody></table>
+
+
+
+### do...while
+
+创建一个执行指定语句的循环，直到条件为 false。在执行do语句后检测条件，所以do会至少执行一次。
+
+示例代码：
+
+```js
+<script>
+    function star(row = 5){
+        let start = 0;
+        do{
+            let n = 0;
+            do{
+                document.write('*');
+            }while(++n <= start);
+            document.write('<br>');
+        }while(start++ <= row);
+    }
+    star(10);
+</script>
+```
+
+浏览器效果：
+
+![image-20221231143322971](./assets/image-20221231143322971.png)
+
+
+
+### for
+
+用于创建一个循环，它包含了三个可选的表达式，这三个表达式被包围在圆括号之中，使用分号分隔，后跟一个用于在循环中执行的语句（通常是一个块语句）。
+
+示例代码：
+
+绘制一个“圣诞树”
+
+```js
+<script>
+    let row = 10;
+    let last = 0;
+    for(let i = 1;i<=row;i++){
+        for(let j = row - i;j > 0;j--){
+            document.write('<i style="color:white">*</i>');
+        }
+        for(let n = 0;n < i * 2 - 1;n++){
+            document.write('*');
+            last = n;
+        }
+        document.write('<br>')
+    }
+    console.log(last);//最后一行*的数量
+    for(let i = 1; i <= 3; i++){
+        for(let j = last / 2 - 1; j > 0;j--){
+            document.write('<i style="color:white">*</i>');
+        }
+        document.write('***');
+        document.write('<br>');
+    }
+</script>
+```
+
+浏览器效果：
+
+![image-20221231145846849](./assets/image-20221231145846849.png)
+
+
+
+### continue
+
+跳过本次循环，继续执行下次循环。
+
+示例代码：
+
+```js
+<script>
+    for(let i = 1; i <= 10; i++){
+        if( i % 2 ) continue; 
+        console.log(i);
+    }
+</script>
+```
+
+控制台输出：
+
+<div class="demo">
+  2<br>
+  4<br>
+  6<br>
+  8<br>
+  10<br>
+</div>
+
+
+
+### break
+
+终止或跳出当前循环体。
+
+#### 延伸：label标记
+
+标记语句可以和 break 或 continue 语句一起使用。标记就是在一条语句前面加个可以引用的标识符（identifier）。
+
+```js
+<script>
+    list1 : for(let i = 1; i <= 10; i++){
+        list2: for(let n = 1; n <= 10; n++){
+            if( n % 2 ) continue list2; 
+            if( i + n >= 12 ) break list1;
+            console.log(i,n);
+        }
+    }
+</script>
+```
+
+控制器输出：
+
+<div class="demo">
+  1 2<br>
+	1 4<br>
+	1 6<br>
+	1 8<br>
+	1 10<br>
+	2 2<br>
+	2 4<br>
+	2 6<br> 
+</div>
+
+
+
+### for...in
+
+是为遍历对象属性而构建的。以任意顺序迭代一个对象的除Symbol以外的可枚举属性，包括继承的可枚举属性。
+
+示例代码：
+
+```js
+<script>
+    let obj = [
+        {name:'fromidea',url:'fromidea.com'},
+        {name:'pintecher',url:'pintecher.com'}
+		];
+
+    for (const key in obj){
+        console.log(obj[key].name , obj[key].url);
+    }
+</script>
+```
+
+控制台输出：
+
+<div class="demo">
+  fromidea fromidea.com<br>
+  pintecher pintecher.com
+</div>
+
+
+
+
+
+### for...of
+
+在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
+
+示例代码：
+
+```js
+<script>
+    let obj = [
+        {name:'fromidea',url:'fromidea.com'},
+        {name:'pintecher',url:'pintecher.com'}
+		];
+
+    for (const item of obj){
+        console.log(item.name , item.url);
+    }
+</script>
+```
+
+控制台输出：
+
+<div class="demo">
+  fromidea fromidea.com<br>
+  pintecher pintecher.com
+</div>
+
