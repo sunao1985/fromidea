@@ -48,6 +48,7 @@ export const sidebar = {
                         '/tool/soft/vscode/vscode如何自定义配置“代码格式化”',
                         '/tool/soft/vscode/intelephense插件配置说明',
                         '/tool/soft/vscode/vscode如何预览markdown文件',
+                        '/tool/soft/vscode/解决vscode-live-server无法热更新的问题',
                     ]
                 }, {
                     'text': 'git',
