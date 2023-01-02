@@ -173,13 +173,17 @@ var a = 'fromidea';
 
 ##### 数据类型
 
-*   Number，数字
-*   String，字符串
-*   Boolean，true/false
-*   Array，数组
-*   Object，对象
-
-
+| 类型                                                         | 结果                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [Undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/undefined) | `"undefined"`                                                |
+| [Null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null) | `"object"`（[原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)） |
+| [Boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean) | `"boolean"`                                                  |
+| [Number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number) | `"number"`                                                   |
+| [BigInt](https://developer.mozilla.org/zh-CN/docs/Glossary/BigInt) | `"bigint"`                                                   |
+| [String](https://developer.mozilla.org/zh-CN/docs/Glossary/String) | `"string"`                                                   |
+| [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol) | `"symbol"`                                                   |
+| [Function](https://developer.mozilla.org/zh-CN/docs/Glossary/Function)（在 ECMA-262 中实现 [[Call]]；[classes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/class)也是函数) | `"function"`                                                 |
+| 其他任何对象                                                 | `"object"`                                                   |
 
 ##### typeof
 
@@ -1156,3 +1160,477 @@ isNaN(1 + undefined) // true
   pintecher pintecher.com
 </div>
 
+
+## 数据类型
+
+
+
+### 类型判断
+
+通常，我们使用以下2种方式来进行类型判断：
+
+*   [typeof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)，返回一个字符串，表示[操作数的类型](#数据类型)。
+*   [instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)，用于检测构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上。
+
+示例代码：
+
+```js
+<script>
+  let a = {};
+  let b = [];
+
+  console.log(typeof a); //object
+  console.log(typeof b); //object
+
+  console.log(a instanceof Object); //true
+  console.log(b instanceof Array);  //true
+</script>
+```
+
+
+
+### 模版字面量及嵌套
+
+模板字面量是允许嵌入表达式的字符串字面量。可以使用多行字符串和字符串插值功能。
+
+>   它们在 ES2015 规范的先前版本中被称为“模板字符串”。
+
+模板字符串使用反引号 (\`\`) 来代替普通字符串中的用双引号和单引号。
+
+```js
+<script>
+    let list = [
+        {name: 'fromidea',url:'fromidea.com'},
+        {name: 'pintecher',url:'pintecher.com'},
+    ];
+
+    function ul(){
+        return `
+            <ul>
+                ${list.map(item=>`
+                    <li><a href="http://${item.url}">${item.name}</a></li>
+                `).join("")}
+            </ul>
+        `;
+    }
+
+    document.body.innerHTML = ul();
+</script>
+```
+
+浏览器输出：
+
+<div class="demo">
+<ul>          
+  <li><a href="http://fromidea.com">fromidea</a></li>
+  <li><a href="http://pintecher.com">pintecher</a></li>
+</ul>
+</div>
+
+
+
+
+
+### 标签模版
+
+标签使得可以用函数解析模板字符串。
+
+标签函数的第一个参数包含一个字符串值的数组。其余的参数与表达式相关。最后，你的函数可以返回处理好的的字符串（或者它可以返回完全不同的东西 , 如下个例子所述）。用于该标签的函数的名称可以被命名为任何名字。
+
+示例代码：
+
+```js
+<script>
+    let list = [
+        {title: 'fromidea',content:'站在科技与人文的交叉口，记录、共享、传播。'},
+        {title: 'pintecher',content:'安徽品格网络科技有限公司'},
+    ];
+
+    function template(){
+        return `
+            <ul>
+                ${list.map(item=> links `
+                    <li>标题：${item.title}，内容：${item.content}</li>
+                `).join("")}
+            </ul>
+        `;
+    }
+
+    function links(string, ...vars){
+        return `
+            ${string.map((str,key)=>{
+                    return str + (vars[key] ? 
+                        vars[key].replace('fromidea',`<a href="http://www.fromidea.com">fromidea</a>`)
+                    : '');
+                }                
+            ).join("")}
+        `;
+    }
+
+    document.body.innerHTML = template();
+</script>
+```
+
+浏览器输出：
+
+<div class="demo">
+  <ul>
+  <li>标题：<a href="http://www.fromidea.com">fromidea</a>，内容：站在科技与人文的交叉口，记录、共享、传播。</li>
+	<li>标题：pintecher，内容：安徽品格网络科技有限公司</li>
+	</ul>
+</div>
+
+​    
+
+### 字符串属性与方法 
+
+#### 属性                
+
+| 属性                                                         | 说明                        |
+| ------------------------------------------------------------ | --------------------------- |
+| [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/length) | 反映字符串的 length。只读。 |
+
+#### 方法
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`at()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/at) | 返回指定索引处的字符（正好是一个 UTF-16 码元）。接受负整数，从最后一个字符串字符开始倒数。 |
+| [`charAt()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) | 返回指定 index 处的字符（正好是一个 UTF-16 码元）。          |
+| [`charCodeAt()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) | 返回一个数字，它是给定 index 处的 UTF-16 码元值。            |
+| [`codePointAt()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt) | 返回一个非负整数值，它是从指定位置（pos）开始的 UTF-16 编码码位的码位值。 |
+| [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat) | 合并两个（或更多）字符串的文本并返回一个新字符串。           |
+| [`includes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/includes) | 确定调用字符串是否包含 searchString。                        |
+| [`endsWith()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith) | 确定字符串是否以字符串 searchString 的字符结尾。             |
+| [`indexOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) | 返回在调用 String 对象中第一次出现的 searchValue 的索引，如果未找到则返回 -1。 |
+| [`lastIndexOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf) | 返回在调用 String 对象中最后一次出现的 searchValue 的索引，如果未找到则返回 -1。 |
+| [`localeCompare()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare) | 返回一个数字，用于指示一个参考字符串 compareString 是否在排序顺序前面或之后或与给定字符串相同。 |
+| [`match()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match) | 用于将正则表达式 regexp 与字符串匹配。                       |
+| [`matchAll()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll) | 返回所有 regexp 的匹配项的迭代器。                           |
+| [`normalize()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) | 返回调用字符串值的 Unicode 规范化形式。                      |
+| [`padEnd()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd) | 用给定字符串从末尾填充当前字符串并返回长度为 targetLength 的新字符串。 |
+| [`padStart()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padStart) | 用给定字符串从开头填充当前字符串并返回长度为 targetLength 的新字符串。 |
+| [`repeat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/repeat) | 返回由对象的元素重复 count 次组成的字符串。                  |
+| [`replace()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace) | 用于使用 replaceWith 替换出现的 searchFor。searchFor 可以是字符串或正则表达式，replaceWith 可以是字符串或函数。 |
+| [`replaceAll()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll) | 用于使用 replaceWith 替换所有出现的 searchFor。searchFor 可以是字符串或正则表达式，replaceWith 可以是字符串或函数。 |
+| [`search()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search) | 搜索正则表达式 regexp 和调用字符串之间的匹配项。             |
+| [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/slice) | 提取字符串的一部分并返回一个新字符串。                       |
+| [`split()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split) | 返回一个由在出现子字符串 sep 时拆分调用的字符串然后填充的字符串数组。 |
+| [`startsWith()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith) | 确定调用字符串是否以字符串 searchString 的字符开头。         |
+| [`substring()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substring) | 返回一个新字符串，其中包含来自（或之间）指定索引（或多个索引）的调用字符串的字符。 |
+| [`toLocaleLowerCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleLowerCase) | 字符串中的字符将转换为小写，同时尊重当前语言环境。<br/>对于大多数语言，这将返回与 toLowerCase() 相同的结果。 |
+| [`toLocaleUpperCase( [locale, ...locales\])`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleUpperCase) | 字符串中的字符将转换为大写，同时尊重当前语言环境。<br/>对于大多数语言，这将返回与 toUpperCase() 相同的结果。 |
+| [`toLowerCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) | 返回转换为小写的调用字符串值。                               |
+| [`toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toString) | 返回表示指定对象的字符串。覆盖 Object.prototype.toString() 方法。 |
+| [`toUpperCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) | 返回转换为大写的调用字符串值。                               |
+| [`trim()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/Trim) | 修剪字符串开头和结尾的空格。                                 |
+| [`trimStart()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart) | 修剪字符串开头的空格。                                       |
+| [`trimEnd()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd) | 修剪字符串结尾的空格。                                       |
+| [`valueOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/valueOf) | 返回指定对象的原始值。覆盖 Object.prototype.valueOf() 方法。 |
+| [`[@@iterator]()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/@@iterator) | 返回一个新的迭代器对象，该对象迭代 String 值的码位，将每个码位作为 String 值返回。 |
+
+#### 示例
+
+##### includes
+
+执行区分大小写的搜索，以确定是否可以在另一个字符串中找到一个字符串，并根据情况返回 true 或 false
+
+```js
+<script>
+  let keys = ['知识','共享','传播'];
+
+  let text1 = 'fromidea网站是一个专注于知识共享与传播的平台';
+  let text2 = 'fromdiea的定位是，站在科技与人文的交叉口';
+
+  function search(text){
+    let status = keys.some(word => {
+      return text.includes(word);
+    })
+    return status;
+  }
+
+  let msg = '';
+
+  if(search(text1)){
+    msg += "第1行句子找到关键词；";
+  }else{
+    msg += "第1行句子没有找到关键词；";
+  }
+  if(search(text2)){
+    msg += "第2行句子找到关键词；";
+  }else{
+    msg += "第2行句子没有找到关键词；";
+  }
+
+  document.body.innerHTML = msg;
+</script>
+```
+
+浏览器输出：
+
+<div class="demo">
+  <text>第1行句子找到关键词；第2行句子没有找到关键词；</text>
+</div>
+
+
+
+##### slice，repeat
+
+slice() 方法提取字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
+
+repeat() 构造并返回一个新字符串，按指定数量克隆字符串。
+
+```js
+<script>
+  function phone(number,start = 5,len = 4){
+    number = String(number);
+    return number.slice(0,start-1) + '*'.repeat(len) + number.slice(start+len-1);
+  }
+	console.log(phone(13812345678,5,4));
+</script>
+```
+
+控制台输出：
+
+<div class="demo">
+  1381****678
+</div>
+
+
+
+### boolean类型
+
+Boolean 类型表示一个逻辑实体并且包括两个值：true 和 false。
+
+布尔值通常用于条件运算，包括三元运算符、if...else、while 等。
+
+示例代码：
+
+```js
+<script>
+  while( true ){
+    const url = prompt('fromidea的网址是？').trim();
+    if(!url) continue;
+    let msg = url == 'fromidea.com' ? '回答正确' : '填写错误';
+    document.write(msg);
+    break;
+  }
+</script>
+```
+
+浏览器效果：
+
+![image-20230102095231859](./assets/image-20230102095231859.png)
+
+代码中判断是否填写内容，如果提交的内容为空，将会反复弹窗。直至填写内容。
+
+
+
+
+
+### NaN
+
+是一个表示非数字的值。
+
+NaN 的初始值不是数字——与 Number.NaN 的值相同。在现代浏览器中，NaN 是一个不可配置、不可写的属性。即使不是这样，也要避免重写它。在程序中很少使用 NaN。
+
+```js
+<script>
+  let arr = [1,2,3];
+  console.log(Number(arr));
+</script>
+```
+
+控制台输出：
+
+NaN
+
+
+
+### Math数学计算
+
+Math 是一个内置对象，它拥有一些数学常数属性和数学函数方法。Math 不是一个函数对象。
+
+Math 用于 Number 类型。
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`Math.abs(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/abs) | 返回一个数的绝对值。                                         |
+| [`Math.acos(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/acos) | 返回一个数的反余弦值。                                       |
+| [`Math.acosh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/acosh) | 返回一个数的反双曲余弦值。                                   |
+| [`Math.asin(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/asin) | 返回一个数的反正弦值。                                       |
+| [`Math.asinh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh) | 返回一个数的反双曲正弦值。                                   |
+| [`Math.atan(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/atan) | 返回一个数的反正切值。                                       |
+| [`Math.atanh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh) | 返回一个数的反双曲正切值。                                   |
+| [`Math.atan2(y, x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2) | 返回 `y/x` 的反正切值。                                      |
+| [`Math.cbrt(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/cbrt) | 返回一个数的立方根。                                         |
+| [`Math.ceil(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil) | 返回大于一个数的最小整数，即一个数向上取整后的值。           |
+| [`Math.clz32(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/clz32) | 返回一个 32 位整数的前导零的数量。                           |
+| [`Math.cos(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/cos) | 返回一个数的余弦值。                                         |
+| [`Math.cosh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh) | 返回一个数的双曲余弦值。                                     |
+| [`Math.exp(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/exp) | 返回欧拉常数的参数次方，`E^x`，其中 `x` 为参数，`E` 是欧拉常数（2.718...，自然对数的底数）。 |
+| [`Math.expm1(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/expm1) | 返回 `exp(x) - 1` 的值。                                     |
+| [`Math.floor(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/floor) | 返回小于一个数的最大整数，即一个数向下取整后的值。           |
+| [`Math.fround(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/fround) | 返回最接近一个数的单精度浮点型表示。                         |
+| [`Math.hypot([x[, y[, …\]]])`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot) | 返回其所有参数平方和的平方根。                               |
+| [`Math.imul(x, y)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/imul) | 返回 32 位整数乘法的结果。                                   |
+| [`Math.log(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/log) | 返回一个数的自然对数（㏒e，即 ㏑）。                         |
+| [`Math.log1p(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/log1p) | 返回一个数加 1 的和的自然对数（㏒e，即 ㏑）。                |
+| [`Math.log10(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/log10) | 返回一个数以 10 为底数的对数。                               |
+| [`Math.log2(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/log2) | 返回一个数以 2 为底数的对数。                                |
+| [`Math.max([x[, y[, …\]]])`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/max) | 返回零到多个数值中最大值。                                   |
+| [`Math.min([x[, y[, …\]]])`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/min) | 返回零到多个数值中最小值。                                   |
+| [`Math.pow(x, y)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) | 返回一个数的 y 次幂。                                        |
+| [`Math.random()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | 返回一个 0 到 1 之间的伪随机数。                             |
+| [`Math.round(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round) | 返回四舍五入后的整数。                                       |
+| [`Math.sign(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/sign) | 返回一个数的符号，得知一个数是正数、负数还是 0。             |
+| [`Math.sin(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/sin) | 返回一个数的正弦值。                                         |
+| [`Math.sinh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/sinh) | 返回一个数的双曲正弦值。                                     |
+| [`Math.sqrt(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) | 返回一个数的平方根。                                         |
+| [`Math.tan(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/tan) | 返回一个数的正切值。                                         |
+| [`Math.tanh(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/tanh) | 返回一个数的双曲正切值。                                     |
+| Math.toSource()                                              | 返回字符串 `"Math"`。                                        |
+| [`Math.trunc(x)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc) | 返回一个数的整数部分，直接去除其小数点及之后的部分。         |
+
+#### 示例
+
+##### ceil，floor，round
+
+```js
+<script>
+  console.log(Math.ceil(1.01)); //向上取整 2
+	console.log(Math.floor(1.6)); //向下取整 1
+	console.log(Math.round(1.5)); //四舍五入 2
+</script>
+```
+
+
+
+##### max，random
+
+```js
+<script>
+  console.log(Math.max(50,55,33,85)); //取最大数 85
+
+  const scores = [50,55,99,33,85,20,75];
+  console.log(Math.max.apply(null,scores)); //从数组中取最大数 99
+
+  console.log(Math.random()); //生成一个从0～1的随机数
+
+  //随机从数组中选择一个名称
+  const names = ['章三','里斯','旺起','粥吧'];
+
+  function random(array,start=1,end){
+    end = end ? end : array.length;
+    start --;
+    let index = start + Math.floor(Math.random() * (end - start));
+    return array[index];
+  }
+
+  console.log(random(names,1,3));
+</script>
+```
+
+
+
+### Date
+
+javascript中处理时间的对象。
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`Date.now()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/now) | 返回自 1970-1-1 00:00:00 UTC（世界标准时间）至今所经过的毫秒数。 |
+| [`Date.parse()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) | 解析一个表示日期的字符串，并返回从 1970-1-1 00:00:00 所经过的毫秒数。 |
+| [`Date.UTC()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC) | 接受和构造函数最长形式的参数相同的参数（从 2 到 7），并返回从 1970-01-01 00:00:00 UTC 开始所经过的毫秒数。 |
+
+#### Date 实例
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`getDate()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getDate) | 根据本地时间，返回一个指定的 Date 对象为一个月中的哪一日（1-31）。 |
+| [`getDay()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay) | 根据本地时间，返回一个指定的 Date 对象是在一周中的第几天（0-6），0 表示星期天。 |
+| [`getFullYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的完整年份（四位数年份）。 |
+| [`getHours()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getHours) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的小时（`0`–`23`）。 |
+| [`getMilliseconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getMilliseconds) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的毫秒数（`0`–`999`）。 |
+| [`getMinutes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getMinutes) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的分钟数（`0`–`59`）。 |
+| [`getMonth()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的月份（`0`–`11`），0 表示一年中的第一月。 |
+| [`getSeconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getSeconds) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的秒数（`0`–`59`）。 |
+| [`getTime()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime) | 返回一个数值，表示从 1970 年 1 月 1 日 0 时 0 分 0 秒（UTC，即协调世界时）距离该 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象所代表时间的毫秒数。（更早的时间会用负数表示） |
+| [`getTimezoneOffset()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset) | 返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟。  |
+| [`getUTCDate()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCDate) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象为一个月中的哪一日（`1`-`31`）。 |
+| [`getUTCDay()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCDay) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象是在一周中的第几天（`0`-`6`），0 表示星期天。 |
+| [`getUTCFullYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCFullYear) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的完整年份（四位数年份）。 |
+| [`getUTCHours()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCHours) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的小时（`0`–`23`）。 |
+| [`getUTCMilliseconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCMilliseconds) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的毫秒数（`0`–`999`）。 |
+| [`getUTCMinutes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCMinutes) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的分钟数（`0`–`59`）。 |
+| [`getUTCMonth()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCMonth) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的月份（`0`–`11`），0 表示一年中的第一月。 |
+| [`getUTCSeconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCSeconds) | 以协调世界时为标准，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的秒数（`0`–`59`）。 |
+| [`getYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getYear) | 根据本地时间，返回一个指定的 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的相对年份（相对 1900 年，通常是 2 到 3 位数字）。请改用 [`getFullYear`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear) 。 |
+| [`setDate()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象在所属月份中的天数。 |
+| [`setFullYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setFullYear) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的完整年份（四位数年份）。 |
+| [`setHours()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setHours) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的小时数。 |
+| [`setMilliseconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setMilliseconds) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的豪秒数。 |
+| [`setMinutes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setMinutes) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的分钟数。 |
+| [`setMonth()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的月份。 |
+| [`setSeconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setSeconds) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的秒数。 |
+| [`setTime()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setTime) | 用一个从 1970-1-1 00:00:00 UTC 计时的毫秒数来为一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象设置时间。用负数来设置更早的时间。 |
+| [`setUTCDate()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCDate) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象在所属月份中的天数。 |
+| [`setUTCFullYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCFullYear) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的完整年份（四位数年份）。 |
+| [`setUTCHours()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCHours) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的小时数。 |
+| [`setUTCMilliseconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCMilliseconds) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的豪秒数。 |
+| [`setUTCMinutes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCMinutes) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的分钟数。 |
+| [`setUTCMonth()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCMonth) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的月份。 |
+| [`setUTCSeconds()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCSeconds) | 以协调世界时为标准，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的秒数。 |
+| [`setYear()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setYear) | 根据本地时间，设置一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的相对年份（相对 1900 年，通常是 2 到 3 位数字）。请改用 [`setFullYear`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/setFullYear) 。 |
+| [`toDateString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString) | 以美式英语和人类易读的表述形式返回一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象日期部分的字符串。 |
+| [`toISOString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) | 将指定 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象转换成 ISO 格式表述的字符串并返回。 |
+| [`toJSON()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON) | 返回指定 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象调用 [`toISOString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) 方法的返回值。在 [`JSON.stringify()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 中使用。 |
+| [`toLocaleDateString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) | 返回一个表述指定 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的日期部分字符串。该字符串格式因不同语言而不同。 |
+| [`toLocaleString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString) | 返回一个表述指定 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的字符串。该字符串格式因不同语言而不同。 |
+| [`toLocaleTimeString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString) | 返回一个表述指定 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象时间部分的的字符串。该字符串格式因不同语言而不同。 |
+| [`toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toString) | 返回一个字符串，表示该 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象。覆盖了 [`Object.prototype.toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) 方法。 |
+| [`toTimeString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toTimeString) | 以人类易读形式返回一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象时间部分的字符串，该字符串以美式英语格式化。 |
+| [`toUTCString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) | 使用 UTC 时区，把一个 [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象转换为一个字符串。 |
+| [`valueOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/valueOf) | 返回一个 Date 对象的原始值。覆盖了 Object.prototype.valueOf() 方法。 |
+
+示例代码：
+
+```js
+<script>
+  const date = new Date();
+  console.log(date.getFullYear()); //年
+  console.log(date.getMonth()+1);  //月
+  console.log(date.getDate()); //日
+  console.log(date.getHours()); //时
+  console.log(date.getMinutes()); //分
+  console.log(date.getSeconds()); //秒
+
+  //格式化时间函数
+  function formatDate(date,format = 'YYYY年MM月DD日 HH点ii分ss秒'){
+    const config = {
+      YYYY : date.getFullYear(),
+      MM : date.getMonth()+1,
+      DD : date.getDate(),
+      HH : date.getHours(),
+      ii : date.getMinutes(),
+      ss : date.getSeconds(),
+    }
+    for (const key in config) {
+      format = format.replace(key,config[key]);
+    }
+    return format;
+  }
+
+  let newDate = formatDate(new Date());
+  console.log(newDate); //2023年1月2日 11点28分1秒
+</script>
+```
+
+
+
+#### MomentJS日期处理类库
+
+```shell
+npm install moment --save   # npm
+```
+
+[http://momentjs.cn/](http://momentjs.cn/)
