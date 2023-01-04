@@ -64,6 +64,12 @@ export const navbar = [
         ],
     },
     {
+        text: '地理',
+        children: [
+            { 'text': '城市', 'link': '/geo/city/', }
+        ]
+    },
+    {
         text: '博客',
         link: '/blog/'
     },

@@ -1634,3 +1634,260 @@ npm install moment --save   # npm
 ```
 
 [http://momentjs.cn/](http://momentjs.cn/)
+
+
+
+
+
+## 数组
+
+Array 对象支持在单个变量名下存储多个元素。
+
+
+
+### 特征
+
+*   JavaScript 数组是可调整大小的，并且可以包含不同的数据类型。（当不需要这些特征时，可以使用类型化数组。）
+*   JavaScript 数组不是关联数组，因此，不能使用任意字符串作为索引访问数组元素，但必须使用非负整数（或它们各自的字符串形式）作为索引访问。
+*   JavaScript 数组的索引从 0 开始：数组的第一个元素在索引 0 处，第二个在索引 1 处，以此类推，最后一个元素是数组的 length 属性减去 1 的值。
+*   JavaScript 数组复制操作创建浅拷贝。（所有 JavaScript 对象的标准内置复制操作都会创建浅拷贝，而不是深拷贝）。
+
+
+
+### 静态方法
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`Array.from()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from) | 从数组类对象或可迭代对象创建一个新的 `Array` 实例。          |
+| [`Array.isArray()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray) | 如果参数是数组则返回 `true` ，否则返回 `false` 。            |
+| [`Array.of()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/of) | 创建一个新的 Array 实例，具有可变数量的参数，而不管参数的数量或类型。 |
+
+示例代码：
+
+```html
+<body>
+    <div>fromidea.com</div>
+    <div>pintecher.com</div>
+    <script>
+        //Array.isArray
+        let arr = [1,2,3,4];
+        let str = '1,2,3,4';
+        console.log(Array.isArray(arr)); //true 
+        console.log(Array.isArray(str)); //false
+
+        //Array.of
+        console.table(Array.of(3,5)); // [3,5]
+
+        //Array.from
+        let divs = document.querySelectorAll('div');
+        Array.from(divs,item=>{
+            item.style.backgroundColor = 'blue';
+            item.style.color = '#fff';
+        })
+    </script>
+</body>
+```
+
+浏览器效果：
+
+<div class="demo">
+  <div style="background-color: blue; color: rgb(255, 255, 255);">fromidea.com</div>
+  <div style="background-color: blue; color: rgb(255, 255, 255);">pintecher.com</div>
+</div>
+
+
+
+### 实例方法
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`at()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/at) | 返回给定索引处的数组元素。接受从最后一项往回计算的负整数。   |
+| [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) | 返回一个新数组，该数组由被调用的数组与其它数组或值连接形成。 |
+| [`copyWithin()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin) | 在数组内复制数组元素序列。                                   |
+| [`entries()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/entries) | 返回一个新的[*数组迭代器*](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators)对象，其中包含数组中每个索引的键/值对。 |
+| [`every()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every) | 如果调用数组中的每个元素都满足测试函数，则返回 `true`。      |
+| [`fill()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) | 用静态值填充数组中从开始索引到结束索引的所有元素。           |
+| [`filter()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) | 返回一个新数组，其中包含调用所提供的筛选函数返回为 `true` 的所有数组元素。 |
+| [`find()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find) | 返回数组中满足提供的测试函数的第一个元素的值，如果没有找到合适的元素，则返回 `undefined`。 |
+| [`findIndex()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) | 返回数组中满足提供的测试函数的第一个元素的索引，如果没有找到合适的元素，则返回 `-1`。 |
+| [`findLast()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast) | 返回数组中满足提供的测试函数的最后一个元素的值，如果没有找到合适的元素，则返回 `undefined`。 |
+| [`findLastIndex()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex) | 返回数组中满足所提供测试函数的最后一个元素的索引，如果没有找到合适的元素，则返回 `-1`。 |
+| [`flat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) | 返回一个新数组，所有子数组元素递归地连接到其中，直到指定的深度。 |
+| [`flatMap()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) | 对调用数组的每个元素调用给定的回调函数，然后将结果平展一层，返回一个新数组。 |
+| [`forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) | 对调用数组中的每个元素调用函数。                             |
+| [`group()` ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/group) | 根据测试函数返回的字符串，将数组的元素分组到一个对象中。     |
+| [`groupToMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/groupToMap) | 根据测试函数返回的值，将数组的元素分组到 [`Map`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map) 中。 |
+| [`includes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) | 确定调用数组是否包含一个值，根据情况返回 `true` 或 `false`。 |
+| [`indexOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) | 返回在调用数组中可以找到给定元素的第一个（最小）索引。       |
+| [`join()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/join) | 将数组的所有元素连接为字符串。                               |
+| [`keys()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/keys) | 返回一个新的[*数组迭代器*](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators)，其中包含调用数组中每个索引的键。 |
+| [`lastIndexOf()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf) | 返回在调用数组中可以找到给定元素的最后一个（最大）索引，如果找不到则返回 `-1`。 |
+| [`map()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) | 返回一个新数组，其中包含对调用数组中的每个元素调用函数的结果。 |
+| [`pop()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) | 从数组中移除最后一个元素并返回该元素。                       |
+| [`push()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/push) | 在数组末尾添加一个或多个元素，并返回数组新的 `length`。      |
+| [`reduce()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) | 对数组的每个元素（从左到右）执行用户提供的 “reducer” 回调函数，将其简化为单个值。 |
+| [`reduceRight()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/ReduceRight) | 对数组的每个元素（从右到左）执行用户提供的 “reducer” 回调函数，将其简化为单个值。 |
+| [`reverse()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) | 反转数组中元素的顺序。（前面变成后面，后面变成前面。）       |
+| [`shift()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) | 从数组中移除第一个元素并返回该元素。                         |
+| [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) | 提取调用数组的一部分并返回一个新数组。                       |
+| [`some()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some) | 如果调用数组中至少有一个元素满足提供的测试函数，则返回 `true`。 |
+| [`sort()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) | 对数组的元素进行排序并返回该数组。                           |
+| [`splice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) | 从数组中添加和/或删除元素。                                  |
+| [`toLocaleString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString) | 返回一个表示调用数组及其元素的本地化字符串。重写 [`Object.prototype.toLocaleString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toLocaleString) 方法。 |
+| [`toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toString) | 返回一个表示调用数组及其元素的字符串。重写 [`Object.prototype.toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) 方法。 |
+| [`unshift()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) | 在数组的前面添加一个或多个元素，并返回数组新的 `length`。    |
+| [`values()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/values) | 返回一个新的[*数组迭代器*](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Iterators_and_Generators)对象，该对象包含数组中每个索引的值。 |
+| [`[@@iterator]()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/@@iterator) | 默认情况下，该方法为 values() 方法的别名。                   |
+
+#### 示例代码
+
+```js
+<script>
+  let ret;
+
+  let array = [1,2,3,4,5];
+  ret = array.unshift(0); // 在数组的前面添加一个或多个元素，并返回数组新的 `length`。
+  console.log(ret); // 6
+  console.log(array); // [0, 1, 2, 3, 4, 5]
+
+  ret = array.shift(); // 从数组中移除第一个元素并返回该元素。
+  console.log(ret); // 0
+  console.log(array); // [1, 2, 3, 4, 5] 
+
+  ret = array.push(6); // 在数组末尾添加一个或多个元素，并返回数组新的 `length`。
+  console.log(ret); // 6
+  console.log(array); // [1, 2, 3, 4, 5, 6]
+
+  ret = array.pop(); // 从数组中移除最后一个元素并返回该元素。
+  console.log(ret); // 6
+  console.log(array); // [1, 2, 3, 4, 5]
+
+  ret = array.slice(1,3); // 提取调用数组的一部分并返回一个新数组。原数组不变。
+  console.log(ret); // [2, 3]
+  console.log(array); // [1, 2, 3, 4, 5]
+
+  ret = array.splice(1,3); // 从数组中添加和/或删除元素。
+  console.log(ret); //  [2, 3, 4]
+  console.log(array); //  [1, 5]
+
+  ret = array.splice(1,0,...ret); // 第二个参数为0，表示不删除。第三个参数是向数组追加元素
+  console.log(ret); // []
+  console.log(array); // [1, 2, 3, 4, 5]
+</script>
+```
+
+
+
+
+
+### 浅拷贝
+
+示例代码：
+
+```js
+<script>
+  let array = [1,2,3,4];
+  let hd = array;
+  hd[1] = 'fromidea.com';
+  console.log(hd); // array (4) [1, 'fromidea.com', 3, 4]
+  console.log('array',array); // array (4) [1, 'fromidea.com', 3, 4]
+</script>
+```
+
+观察发现，虽然 `array` 赋值给了 `hd`，但是 `hd` 的值被修改，`array` 的值同样发生了变化。
+
+这主要原因是，对象的浅拷贝是其属性与拷贝源对象的属性共享相同引用（指向相同的底层值）的副本。因此，当你更改源或副本时，也可能导致其他对象也发生更改——也就是说，你可能会无意中对源或副本造成意料之外的更改。这种行为与深拷贝的行为形成对比，在深拷贝中，源和副本是完全独立的。
+
+
+
+### 展开语法
+
+可以在函数调用/数组构造时，将数组表达式或者 string 在语法层面展开；还可以在构造字面量对象时，将对象表达式按 key-value 的方式展开。
+
+示例代码：
+
+```js
+<script>
+  let arr = ['fromidea','pintecher'];
+  let hd = ['html','css','php','mysql','javascript'];
+
+  //循环方式实现数组追加值
+  for (const value of hd) {
+    arr.push(value);
+  }
+  console.log(arr);
+
+  //使用展开语法的实现，更为简便
+  arr = ['fromidea','pintecher'];
+  hd = ['html','css','php','mysql','javascript'];
+  arr = [...arr,...hd];
+
+  console.log(arr);
+</script>
+```
+
+#### 数组拷贝
+
+展开语法和 Object.assign() 行为一致，执行的都是浅拷贝 (只遍历一层)。如果想对多维数组进行深拷贝，下面的示例就有些问题了。
+
+示例代码：
+
+对获取到的dom元素进行批量绑定click事件。
+
+```js
+<body>
+    <div>fromidea</div>
+    <div>pintecher</div>
+
+    <script>
+        const divs = document.querySelectorAll('div');
+
+        [...divs].map(item=>{
+            item.addEventListener('click',function(){
+                this.style.display = 'none';
+            })
+            console.log(item);
+        })
+    </script>
+</body>
+```
+
+
+
+#### 解构赋值
+
+解构赋值语法是一种 Javascript 表达式。可以将数组中的值或对象的属性取出，赋值给其他变量。
+
+示例代码：
+
+```js
+<script>
+  let [name,...url] = ['fromidea','fromidea.com','pintecher.com'];
+  console.log(name); // fromidea
+  console.log(url);  // ['fromidea.com', 'pintecher.com']
+
+  function show(){
+    return ['1','2','3','4','5'];
+  }
+
+  let [a,b,...c] = show();
+  console.log(c); // ['3', '4', '5']
+</script>
+```
+
+#### 添加元素
+
+可以使用展开语法向数组添加元素。
+
+示例代码：
+
+```js
+ <script>
+  let array = ['fromidea','pintecher'];
+  let names = ['neosun','neil'];
+
+  array.push(...names);
+  console.log(array); // ['fromidea', 'pintecher', 'neosun', 'neil']
+</script>
+```
+

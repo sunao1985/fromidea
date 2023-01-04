@@ -41,6 +41,7 @@ export const sidebar = {
                     children: [
                         '/tool/soft/server/宝塔面板www目录从系统盘切换到数据盘',
                         '/tool/soft/server/阿里云跨账号内网组建',
+                        '/tool/soft/server/阿里云ECS服务器如何跨账号迁移',
                     ]
                 }, {
                     'text': 'vscode', link: '/tool/soft/vscode/',
@@ -79,10 +80,23 @@ export const sidebar = {
                 'text': 'MacOS',
                 'link': '/system/macos/',
                 children: [
-                    '/system/macos/env:node:No_such_file_or_directory.md',
-                    '/system/macos/App启动时提示文件已损坏.md',
-                    '/system/macos/macos外接移动硬盘无法装载.md',
-                    '/system/macos/macos如何开启或关闭系统SIP.md',
+                    '/system/macos/env:node:No_such_file_or_directory',
+                    '/system/macos/App启动时提示文件已损坏',
+                    '/system/macos/macos外接移动硬盘无法装载',
+                    '/system/macos/macos如何开启或关闭系统SIP',
+                    '/system/macos/macos清除本地DNS缓存',
+                ]
+            }]
+        }
+    ],
+    '/geo/': [
+        {
+            text: '地理',
+            children: [{
+                'text': '城市',
+                'link': '/geo/city/',
+                children: [
+                    '/geo/city/calgary',
                 ]
             }]
         }

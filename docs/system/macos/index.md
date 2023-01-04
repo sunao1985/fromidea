@@ -14,4 +14,4 @@
 
  [macos如何开启或关闭系统SIP](macos如何开启或关闭系统SIP.md) 
 
-
+ [macos清除本地DNS缓存](macos清除本地DNS缓存.md) 
