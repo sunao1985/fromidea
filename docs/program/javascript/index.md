@@ -1882,12 +1882,146 @@ Array 对象支持在单个变量名下存储多个元素。
 示例代码：
 
 ```js
- <script>
+<script>
   let array = ['fromidea','pintecher'];
   let names = ['neosun','neil'];
 
   array.push(...names);
   console.log(array); // ['fromidea', 'pintecher', 'neosun', 'neil']
+</script>
+```
+
+
+
+### 清空数组
+
+在js中，清空数组有多种方法。
+
+示例代码：
+
+```js
+<script>
+  let arr = [1,2,3,4,5];
+  arr = []; // 方法1
+  console.log(arr);
+
+  arr = [1,2,3,4,5];
+  arr.length = 0; // 方法2
+  console.log(arr);
+
+  arr = [1,2,3,4,5];
+  arr.splice(0); // 方法3
+  console.log(arr);
+
+  arr = [1,2,3,4,5];
+  while(arr.pop()){} // 方法4
+  console.log(arr);
+</script>
+```
+
+
+
+### 数组拆分与合并
+
+```js
+<script>
+  let str = 'fromidea,pintecher';
+
+  let arr = str.split(','); // 拆分为数组
+  console.log(arr); // ['fromidea', 'pintecher']
+
+  str = arr.join(','); // 合并为字符串
+  console.log(str); // fromidea,pintecher
+
+  let arr1 = ['fromidea','pintecher'];
+  let arr2 = ['fromidea.com','pintecher.com'];
+  let arr3 = ['neosun','neil'];
+
+  //合并数组
+  arr = arr1.concat(arr2,arr3); // ['fromidea', 'pintecher', 'fromidea.com', 'pintecher.com', 'neosun', 'neil']
+  console.log(arr);
+
+  //使用展开语法合并数组
+  let arr4 = [...arr1,...arr2,...arr3];
+  console.log(arr4); // ['fromidea', 'pintecher', 'fromidea.com', 'pintecher.com', 'neosun', 'neil']
+
+  //复制元素
+  console.log(arr4.copyWithin(2,0,2)); // ['fromidea', 'pintecher', 'fromidea', 'pintecher', 'neosun', 'neil']
+</script>
+```
+
+
+
+### 查找元素
+
+```js
+<script>
+  let arr = ['fromidea','pintecher','neil','neosun','pintecher'];
+
+  //从左向右查找，找到返回key，找不到返回-1
+  console.log(arr.indexOf('pintecher')); // 1
+
+  //从右向左查找
+  console.log(arr.lastIndexOf('pintecher')); // 4
+
+  //查找元素，返回true 或 false
+  console.log(arr.includes('neil')); //true
+
+  //遍历数组元素，返回元素
+  let persons = [{name:'neosin',com:'fromidea'},{name:'neil',com:"pintecher"}];
+  let res = persons.find((item)=>{
+    return item.name == 'neil'
+  })
+  console.log(res); // {name: 'neil', com: 'pintecher'}
+
+  //遍历数组元素，返回元素key
+  res = persons.findIndex((item)=>{
+    return item.name == 'neil'
+  })
+  console.log(res); // 1
+</script>
+```
+
+
+
+### 数组排序
+
+```js
+<script>
+  let pros = [
+    {name:'iphone',price:9999},
+    {name:'ipad',price:6500},
+    {name:'macbook',price:12000},
+    {name:'macmini',price:4800}
+  ];
+
+  let order = pros.sort(function(a,b){
+    return a.price - b.price; //从小到大排序
+    // return b.price - a.price; //从大到小排序
+  })
+
+  console.table(order);
+</script>
+```
+
+控制台输出：
+
+![image-20230104202901703](./assets/image-20230104202901703.png)
+
+
+
+### 循环数组
+
+```js
+<script>
+  let arr = ['fromdiea','pintecher','neo','neil'];
+
+  //循环数组
+  arr.forEach(function(item,index,arr){
+    console.log(index); //元素key
+    console.log(item); //元素value
+    console.log(arr); //数组本身
+  })
 </script>
 ```
 
