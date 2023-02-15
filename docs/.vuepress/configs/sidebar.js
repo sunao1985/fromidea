@@ -105,8 +105,8 @@ export const sidebar = {
         text: '博客',
         children: [
             { text: '引言', link: '/blog/' },
-            '/blog/2022',
             '/blog/2023',
+            '/blog/2022',
         ],
     }],
     '/resource/': [{
