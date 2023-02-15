@@ -79,3 +79,27 @@ Adobe旗下，面向全球的创意设计聚合平台
 一个提供大量免费插画素材的网站，还可自定义动画并导出svg
 
 ![image-20230215084339841](./assets/image-20230215084339841.png)
+
+
+
+### [reshot](https://www.reshot.com/)
+
+一个免费的图标，矢量插画，图片下载的网站。可以直接下载矢量源文件，SVG等。
+
+![image-20230215085106688](./assets/image-20230215085106688.png)
+
+
+
+### [macosicons](https://macosicons.com/)
+
+提供macos平台上众多应用图标文件，质量很高哦
+
+![image-20230215085400570](./assets/image-20230215085400570.png)
+
+
+
+### [undraw](https://undraw.co/illustrations)
+
+一个开源的矢量插画网站
+
+![image-20230215085523891](./assets/image-20230215085523891.png)
