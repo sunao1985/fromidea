@@ -119,7 +119,7 @@ let a = "fromidea";
 console.log(a);
 ```
 
-控制台输出**：**
+控制台输出：
 
 ![image-20221228205336154](./assets/image-20221228205336154.png)
 
@@ -129,7 +129,7 @@ console.log(a);
 
 **`var` 语句** 用于声明一个函数范围或全局范围的变量，并可将其初始化为一个值（可选）。
 
-同时，JavaScript 是一种“动态类型语言”，这意味着无需指定变量将包含什么数据类型。
+同时，JavaScript 是一种“**动态类型语言**”，这意味着无需指定变量将包含什么数据类型。
 
 示例代码：
 
@@ -201,7 +201,7 @@ typeof myFloat; //number
 
 #### let
 
-**`let`** 允许声明一个“块”作用域中的变量、语句或者表达式。与 `var` 关键字不同的是，`var` 声明的变量作用域是全局或者整个函数块的。 
+**`let`** 允许声明一个“**块**”作用域中的变量、语句或者表达式。与 `var` 关键字不同的是，`var` 声明的变量作用域是全局或者整个函数块的。 
 
 示例代码：
 
@@ -370,7 +370,7 @@ console.log(URL);
 
 3.   严格模式禁用了在 ECMAScript 的未来版本中可能会定义的一些语法。
 
-     
+
 
 ### window全局变量
 
@@ -883,8 +883,6 @@ isNaN(1 + undefined) // true
 
 
 
-
-
 ### 三元表达式
 
 一个条件后跟一个问号（?），如果条件为真值，则执行冒号（:）前的表达式；若条件为假值，则执行最后的表达式。该运算符经常当作 if...else 语句的简捷形式来使用。
@@ -984,14 +982,14 @@ isNaN(1 + undefined) // true
 ```js
 <script>
     function star(row = 5){
-        let start = 0;
+        let start = 1;
         do{
-            let n = 0;
+            let n = 1;
             do{
                 document.write('*');
             }while(++n <= start);
             document.write('<br>');
-        }while(start++ <= row);
+        }while(++start <= row);
     }
     star(10);
 </script>
@@ -999,8 +997,7 @@ isNaN(1 + undefined) // true
 
 浏览器效果：
 
-![image-20221231143322971](./assets/image-20221231143322971.png)
-
+![image-20230303113405831](./assets/image-20230303113405831.png)
 
 
 ### for
@@ -1075,7 +1072,7 @@ isNaN(1 + undefined) // true
 
 #### 延伸：label标记
 
-标记语句可以和 break 或 continue 语句一起使用。标记就是在一条语句前面加个可以引用的标识符（identifier）。
+标记语句可以和 ```break``` 或 ```continue``` 语句一起使用。标记就是在一条语句前面加个可以引用的标识符（identifier）。
 
 ```js
 <script>
@@ -1778,8 +1775,6 @@ Array 对象支持在单个变量名下存储多个元素。
 
 
 
-
-
 ### 浅拷贝
 
 示例代码：
@@ -1825,6 +1820,8 @@ Array 对象支持在单个变量名下存储多个元素。
   console.log(arr);
 </script>
 ```
+
+
 
 #### 数组拷贝
 
@@ -1875,6 +1872,8 @@ Array 对象支持在单个变量名下存储多个元素。
 </script>
 ```
 
+
+
 #### 添加元素
 
 可以使用展开语法向数组添加元素。
@@ -1888,6 +1887,33 @@ Array 对象支持在单个变量名下存储多个元素。
 
   array.push(...names);
   console.log(array); // ['fromidea', 'pintecher', 'neosun', 'neil']
+</script>
+```
+
+
+
+### 数据出栈和入栈
+
+pop,unshift,fill的用法。
+
+示例代码：
+
+```js
+<script>
+  let array = ["fromidea","pintecher"];
+  let vars = array.pop(); //移出最后一个元素
+  console.log(vars); //pintecher
+  console.log(array); //['fromidea']
+
+  let length = array.unshift('pintecher'); //在数组前面增加一个或多个元素，返回值是新的长度
+  console.log(length); //2
+  console.log(array); // ['pintecher', 'fromidea']
+
+  //向数组填充所有元素
+  console.log(Array(5).fill('fromidea')); //['fromidea', 'fromidea', 'fromidea', 'fromidea', 'fromidea']
+
+  //填充到具体位置，参数：起始位置、结束位置
+  console.log([1,2,3,4,5].fill('fromidea',1,3)); //[1, 'fromidea', 'fromidea', 4, 5]
 </script>
 ```
 
@@ -1923,6 +1949,10 @@ Array 对象支持在单个变量名下存储多个元素。
 
 ### 数组拆分与合并
 
+split, join, concat, copyWithin的用法。
+
+示例代码：
+
 ```js
 <script>
   let str = 'fromidea,pintecher';
@@ -1953,6 +1983,10 @@ Array 对象支持在单个变量名下存储多个元素。
 
 
 ### 查找元素
+
+indexOf, lastIndexOf, includes, find, findIndex的用法。
+
+示例代码：
 
 ```js
 <script>
@@ -1986,6 +2020,10 @@ Array 对象支持在单个变量名下存储多个元素。
 
 ### 数组排序
 
+sort的用法。
+
+示例代码：
+
 ```js
 <script>
   let pros = [
@@ -2012,6 +2050,10 @@ Array 对象支持在单个变量名下存储多个元素。
 
 ### 循环数组
 
+forEach的用法。
+
+示例代码：
+
 ```js
 <script>
   let arr = ['fromdiea','pintecher','neo','neil'];
@@ -2025,3 +2067,424 @@ Array 对象支持在单个变量名下存储多个元素。
 </script>
 ```
 
+
+
+### 迭代器
+
+iterator迭代器的使用。keys、values、entries的用法。
+
+```js
+<script>
+    let array = ["fromidea","pintecher"];
+
+    //调用数组中每个索引，生成一个迭代器
+    let keys = array.keys();
+    console.log(keys.next()); //{value: 0, done: false}
+
+    //调用数组中每个数值，生成一个迭代器
+    let values = array.values();
+    console.log(values.next()); //{value: 'fromidea', done: false}
+
+    //调用数组中键/值对，生成一个迭代器
+    let entries = array.entries();
+    console.log(entries.next());
+    /*
+    done:false,
+    value: (2) [0, 'fromidea']
+    */
+</script>
+```
+
+
+
+### 测试函数
+
+some、every的用法。
+
+示例代码：
+
+```js
+<script>
+  let content = document.getElementById('content');
+  let keywords = ["js","vue","php"];
+
+  //判断输入的内容是否包含keywords全部关键词
+  content.addEventListener('keyup',function(){
+  let content = this.value;
+  let res = keywords.every(function(value,index,arr){
+  return content.indexOf(value) !== -1;
+  })
+  document.querySelector('span').innerHTML = res ? '全部包含关健词' : '未完全包含关键词';
+  })
+
+  //判断输入的内容是否包含了keywords其中某个关健词
+  content.addEventListener('keyup',function(){
+  let content = this.value;
+  let res = keywords.some(function(value,index,arr){
+  return content.indexOf(value) !== -1;
+  })
+  document.querySelector('span').innerHTML = res ? '已包含关健词' : '未包含关键词';
+  })
+
+</script>
+```
+
+浏览器预览：
+
+![image-20230304134857352](./assets/image-20230304134857352.png)
+
+![image-20230304134911135](./assets/image-20230304134911135.png)
+
+
+
+### 过滤操作
+
+filter的用法。
+
+示例代码：
+
+```js
+<script>
+  let list = [
+    {name:'fromidea',link:'fromidea.com',type:'company'},
+    {name:'ikaowu',link:'ikaowu.com',type:'product'},
+    {name:'pintecher',link:'pintehcer.com',type:'company'},
+  ]; 
+
+  //将数组中type为company的数据筛选出来
+  let newList = list.filter(function(line){
+  	return line['type'] == 'company';
+  })
+
+  console.log(newList);
+  /*
+  0: {name: 'fromidea', link: 'fromidea.com', type: 'company'}
+  1: {name: 'pintecher', link: 'pintehcer.com', type: 'company'}
+	*/
+</script>
+```
+
+
+
+### 映射数组
+
+map的用法。
+
+示例代码：
+
+```js
+<script>
+  let list = [
+    {name:'fromidea',link:'fromidea.com',type:'company'},
+    {name:'ikaowu',link:'ikaowu.com',type:'product'},
+    {name:'pintecher',link:'pintehcer.com',type:'company'},
+  ]; 
+
+  //将list数据中每个link值前面都加上http://
+  list.map(function(line){
+  	line.link = 'http://'+line.link;
+  })
+
+  console.log(list);
+  /*
+  0: {name: 'fromidea', link: 'http://fromidea.com', type: 'company'}
+  1: {name: 'ikaowu', link: 'http://ikaowu.com', type: 'product'}
+  2: {name: 'pintecher', link: 'http://pintehcer.com', type: 'company'}
+  */	
+</script>
+```
+
+
+
+### reduce
+
+示例代码：
+
+```js
+<script>
+  let scores = [58,64,76,98,23,78,99];
+
+  //得到scores中最大的数
+  let max = scores.reduce(function(pre,cur){
+  return pre > cur ? pre : cur;
+  })
+
+  console.log(max); //99
+</script>
+```
+
+
+
+### 示例：制作文字特效动画
+
+代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            width:100vh;
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        div{
+            font-size: 3em;
+            color:#fff;
+            font-weight: blod;
+            text-transform: uppercase;
+        }
+        div>span{
+            display: inline-block;
+            position: relative;
+        }
+        .color{
+            animation-name: color;
+            animation-duration: 1s; /* 动画时间 */
+            animation-iteration-count: 2; /* 重复次数 */
+            animation-timing-function: linear; /* 动画类型 线性*/
+            animation-direction: alternate; /* 来回切换 */
+        }
+        @keyframes color {
+            50%{
+                color:#f1c40f;
+                transform: scale(2);
+            }
+            to{
+                color:#e74c4c;
+                transform: scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>fromidea.com</div>
+    <script>
+        let div = document.querySelector('div');
+
+        [...div.textContent].reduce(function(pre,cur,index){
+            pre == index && (div.innerHTML = '');
+            let span = document.createElement('span');
+            span.innerHTML = cur;
+            div.appendChild(span);
+            span.addEventListener('mouseover',function(){
+                this.classList.add('color');
+            })
+            span.addEventListener('animationend',function(){
+                this.classList.remove('color');
+            })
+        },0)
+
+    </script>
+</body>
+</html>
+```
+
+预览效果：
+
+![2023-03-04 14.45.24](./assets/2023-03-04%2014.45.24.gif)
+
+
+
+## 唯一标识符 Symbol
+
+`Symbol` 是 JavaScript 中一种基本数据类型，用于创建独一无二的标识符。
+
+`Symbol` 创建的每个值都是唯一且不可变的，因此可以用作对象属性的键，以确保不会与其他属性键冲突。例如：
+
+```js
+const obj = {};
+const symbol1 = Symbol("key");
+const symbol2 = Symbol("key");
+obj[symbol1] = "value1";
+obj[symbol2] = "value2";
+console.log(obj[symbol1]); // 输出 "value1"
+console.log(obj[symbol2]); // 输出 "value2"
+```
+
+在这个例子中，`symbol1` 和 `symbol2` 是两个不同的 `Symbol` 值，尽管它们都是使用相同的字符串参数创建的。因此，它们可以用作对象属性的键，而不必担心冲突。
+
+`Symbol` 还可以用于创建一些 JavaScript 内置对象中的特殊属性，例如迭代器（`Symbol.iterator`）、异步迭代器（`Symbol.asyncIterator`）和原型（`Symbol.prototype`）等。这些属性可以让您自定义对象的行为并实现更复杂的功能。
+
+总的来说，`Symbol` 是一种非常有用的 JavaScript 数据类型，可以用于创建独一无二的标识符，以及实现一些更高级的编程功能。
+
+
+
+### 属性
+
+| 属性                        | 描述                                                      |
+| --------------------------- | --------------------------------------------------------- |
+| `Symbol.asyncIterator`      | 一个表示默认异步迭代器的 `Symbol`。                       |
+| `Symbol.hasInstance`        | 一个表示对象是否为构造函数的实例的 `Symbol`。             |
+| `Symbol.isConcatSpreadable` | 一个表示对象是否可展开为数组的 `Symbol`。                 |
+| `Symbol.iterator`           | 一个表示默认迭代器的 `Symbol`。                           |
+| `Symbol.match`              | 一个表示用于字符串匹配的 `Symbol`。                       |
+| `Symbol.matchAll`           | 一个表示用于返回所有匹配结果的 `Symbol`。                 |
+| `Symbol.replace`            | 一个表示用于字符串替换的 `Symbol`。                       |
+| `Symbol.search`             | 一个表示用于字符串搜索的 `Symbol`。                       |
+| `Symbol.species`            | 一个表示对象构造函数的 `Symbol`。                         |
+| `Symbol.split`              | 一个表示用于字符串拆分的 `Symbol`。                       |
+| `Symbol.toPrimitive`        | 一个表示对象被转换为原始值时的 `Symbol`。                 |
+| `Symbol.toStringTag`        | 一个表示对象默认的字符串标识的 `Symbol`。                 |
+| `Symbol.unscopables`        | 一个表示对象中不应被包含在 with 语句中的属性的 `Symbol`。 |
+
+
+
+### 方法
+
+| 方法                 | 描述                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| `Symbol.for(key)`    | 如果存在带有给定 key 的 `Symbol`，则返回该 `Symbol`，否则创建一个新的 `Symbol`。 |
+| `Symbol.keyFor(sym)` | 返回与给定 `Symbol` 关联的 key。                             |
+
+
+
+## Set类型
+
+`Set` 是 JavaScript 中一种基本数据类型，用于存储唯一的、不重复的值。它类似于数组，但与数组不同的是，`Set` 中的值不能重复，且没有顺序概念。
+
+创建 `Set` 对象时，可以将一个可迭代对象作为参数传递给构造函数，该对象中的每个值都将添加到新的 `Set` 对象中。例如：
+
+```js
+const set1 = new Set([1, 2, 3, 4]);
+console.log(set1); // 输出 Set(4) {1, 2, 3, 4}
+```
+
+在这个例子中，我们使用数组 `[1, 2, 3, 4]` 来创建一个新的 `Set` 对象 `set1`，该对象包含数组中的所有不同的值。
+
+`Set` 对象有多个实用方法，包括 `add()`、`delete()`、`has()` 和 `clear()` 等。例如：
+
+```js
+const set2 = new Set();
+set2.add(1);
+set2.add(2);
+set2.add(3);
+set2.delete(2);
+console.log(set2.has(1)); // 输出 true
+console.log(set2.has(2)); // 输出 false
+console.log(set2); // 输出 Set(2) {1, 3}
+```
+
+在这个例子中，我们创建一个空的 `Set` 对象 `set2`，然后使用 `add()` 方法向其中添加三个值 `1`、`2` 和 `3`。接下来，我们使用 `delete()` 方法删除值 `2`，使用 `has()` 方法检查值 `1` 和 `2` 是否存在于 `Set` 对象中，并使用 `console.log()` 输出最终的 `Set` 对象。
+
+总的来说，`Set` 对象是一种非常有用的数据结构，可以用于存储唯一的、不重复的值，并提供了多种实用方法来操作 `Set` 对象中的值。如果您需要处理大量的不同的值，并且需要确保它们不重复，那么 `Set` 对象可能是一个很好的选择。
+
+### 属性
+
+| 属性   | 描述                      |
+| ------ | ------------------------- |
+| `size` | 返回 `Set` 中的元素个数。 |
+
+### 方法
+
+| 方法                                         | 描述                                                         |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| `Set.prototype.add(value)`                   | 向 `Set` 中添加一个新元素。                                  |
+| `Set.prototype.clear()`                      | 移除 `Set` 中的所有元素。                                    |
+| `Set.prototype.delete(value)`                | 移除 `Set` 中指定的元素。                                    |
+| `Set.prototype.entries()`                    | 返回一个包含 `Set` 中所有元素的键值对的迭代器对象。          |
+| `Set.prototype.forEach(callback[, thisArg])` | 遍历 `Set` 中的每个元素，并执行指定的回调函数。              |
+| `Set.prototype.has(value)`                   | 判断 `Set` 中是否存在指定元素，返回布尔值。                  |
+| `Set.prototype.keys()`                     | 返回一个包含 `Set` 中所有元素索引的迭代器对象。                |
+| `Set.prototype.values()`                     | 返回一个包含 `Set` 中所有元素值的迭代器对象。                |
+| `Set.prototype[@@iterator]()`                | 返回一个包含 `Set` 中所有元素值的迭代器对象。                |
+
+
+
+## WeakSet类型
+
+`WeakSet` 是 `Set` 的一种特殊形式，其中只能存储对象。`WeakSet` 中存储的对象是弱引用，意味着在没有任何对该对象的引用时，它们将被自动垃圾回收。
+
+与 `Set` 相比，`WeakSet` 具有以下几个区别：
+
+-   `WeakSet` 中只能存储对象，而不能存储原始值。
+-   `WeakSet` 中存储的对象是弱引用，这意味着当对象没有被其他引用时，会被垃圾回收掉。
+-   `WeakSet` 没有迭代器（iterator）和 `size` 属性，因为无法获取 `WeakSet` 的大小和内容。
+
+`WeakSet` 主要用于存储一组对象，且这些对象的生命周期受到其他代码的控制。例如，当一个对象被销毁时，如果它还存在于 `WeakSet` 中，那么它将自动从 `WeakSet` 中删除，避免了内存泄漏问题。因此，`WeakSet` 对于需要缓存对象，但不想阻止它们被垃圾回收的情况非常有用。
+
+
+
+### 方法
+
+| 方法                              | 描述                                          |
+| --------------------------------- | --------------------------------------------- |
+| `WeakSet.prototype.add(value)`    | 在 `WeakSet` 中添加一个对象 `value`。         |
+| `WeakSet.prototype.delete(value)` | 从 `WeakSet` 中删除一个对象 `value`。         |
+| `WeakSet.prototype.has(value)`    | 检查 `WeakSet` 中是否存在指定的对象 `value`。 |
+
+
+
+### 示例代码
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.remove,li.remove a{
+            color:#eee;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>fromidea.com <a href="javascript:;">×</a></li>
+        <li>pintecher.com <a href="javascript:;">×</a></li>
+        <li>ikaowu.com <a href="javascript:;">×</a></li>
+    </ul>
+    <script>
+        class Todo{
+            constructor(){
+                this.li = document.querySelectorAll('ul>li');
+                this.list = new WeakSet();
+                this.li.forEach(item=>this.list.add(item));
+                console.log(this.list);
+            }
+            run(){
+                this.addEvent();
+            }
+            addEvent(){
+                this.li.forEach(item=>{
+                    let a = item.querySelector('a');
+                    a.addEventListener('click',event=>{
+                        const parent = event.target.parentElement;
+                        if(this.list.has(parent)){
+                            parent.classList.add('remove');
+                            this.list.delete(parent);
+                        }else{
+                            parent.classList.remove('remove');
+                            this.list.add(parent);
+                        }
+                        console.log(this.list);
+                    })
+                })
+                
+            }
+        }
+
+        new Todo().run();
+    </script>
+</body>
+</html>
+```
+
+效果预览：
+
+![2023-03-05 10.59.54](./assets/2023-03-05%2010.59.54.gif)

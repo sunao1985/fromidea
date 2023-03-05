@@ -1,0 +1,7 @@
+{
+  "attachmentFolderPath": "./assets",
+  "newLinkFormat": "relative",
+  "strictLineBreaks": false,
+  "showLineNumber": false,
+  "useMarkdownLinks": true
+}

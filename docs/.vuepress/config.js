@@ -7,7 +7,6 @@ import {
   ua, navbar, sidebar
 } from './configs/index'
 
-
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'Fromidea',
