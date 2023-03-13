@@ -2294,7 +2294,7 @@ map的用法。
 
 预览效果：
 
-![2023-03-04 14.45.24](./assets/2023-03-04%2014.45.24.gif)
+![2023-03-04 14.45.24](./assets/2023-03-04_14.45.24.gif)
 
 
 
@@ -2487,4 +2487,1766 @@ console.log(set2); // 输出 Set(2) {1, 3}
 
 效果预览：
 
-![2023-03-05 10.59.54](./assets/2023-03-05%2010.59.54.gif)
+![2023-03-05 10.59.54](./assets/2023-03-05_10.59.54.gif)
+
+​                          
+
+`
+
+## 函数
+
+JavaScript中的函数是一种可重复使用的代码块，可以通过函数名调用它们并传递参数。JavaScript函数可以定义在函数表达式中，函数声明中，或者作为方法定义在对象上。
+
+### 函数定义
+
+1.  函数声明：
+
+    使用 `function` 关键字来声明函数，例如：
+
+    ```js
+    function add(a, b) {
+      return a + b;
+    }
+    ```
+
+2.  函数表达式：
+
+    使用 `var` 或 `let` 关键字定义函数表达式，例如：
+
+    ```js
+    var add = function(a, b) {
+      return a + b;
+    } 
+    ```
+
+     或者
+
+    ```js
+    let add = function(a, b) {
+      return a + b;
+    }
+    ```
+
+
+
+### 函数调用
+
+可以通过函数名和参数列表来调用函数，例如：
+
+```js
+add(2, 3);
+```
+
+函数参数：
+
+函数可以接受任意数量的参数，可以使用默认参数来指定默认值。例如：
+
+```js
+function greet(name = 'world') {
+  console.log('Hello, ' + name + '!');
+}
+
+greet(); // 输出：Hello, world!
+greet('John'); // 输出：Hello, John!
+```
+
+函数返回值：
+
+函数可以使用 `return` 语句来返回值，例如：
+
+```js
+function add(a, b) {
+  return a + b;
+}
+
+var sum = add(2, 3);
+console.log(sum); // 输出：5
+```
+
+函数作用域：
+
+在 JavaScript 中，函数可以访问它们所定义的作用域以及它们外部的作用域。这被称为词法作用域或静态作用域。例如：
+
+```js
+var x = 10;
+
+function foo() {
+  var y = 20;
+  console.log(x); // 输出：10
+  console.log(y); // 输出：20
+}
+
+foo();
+```
+
+在函数内部可以访问全局变量 x，以及函数内部定义的变量 y。
+
+
+
+### this关键字
+
+在JavaScript中，this是一个关键字，它的值根据函数的调用方式不同而不同。它通常用于引用当前执行上下文中的对象。在全局执行上下文中，this通常指向window对象（在浏览器中），而在函数执行上下文中，this的值取决于函数的调用方式。
+
+在函数中，this的值可以通过三种方式来确定：
+
+1.  默认绑定：如果函数作为独立函数调用，则this指向全局对象，或者undefined（在严格模式下）。
+2.  隐式绑定：如果函数作为一个对象的方法调用，则this指向这个对象。
+3.  显式绑定：使用call()和apply()方法，或者使用bind()方法绑定this的值。
+
+除了以上三种绑定方式外，this还可以在事件处理程序中被设置为事件的目标元素，也可以在构造函数中使用new关键字创建新的实例时被设置为新实例的引用。
+
+使用this时，需要注意一些潜在的陷阱。在嵌套函数中，this可能会指向错误的对象，需要使用bind()方法来显式地绑定正确的this值。此外，在回调函数中，this可能会指向不同的对象，需要使用箭头函数或者使用bind()方法来保持this的值不变。
+
+
+
+### 函数方法
+
+JavaScript 函数是对象，因此它们也有方法。其中一些常用的方法包括：
+
+1.  `call()` 和 `apply()`：用于将函数作为对象的方法来调用，并将对象作为第一个参数传递。
+2.  `bind()`：返回一个新的函数，其中 `this` 关键字被绑定到指定对象。
+3.  `toString()`：将函数转换为字符串表示形式。
+
+例如：
+
+```js
+var person = {
+  firstName: 'John',
+  lastName: 'Doe'
+};
+
+function greet() {
+  console.log('Hello, ' + this.firstName + ' ' + this.lastName + '!');
+}
+
+greet.call(person); // 输出：Hello, John Doe!
+greet.apply(person); // 输出：Hello, John Doe!
+
+var sayHello = greet.bind(person);
+sayHello(); // 输出：Hello, John Doe!
+
+console.log(greet.toString()); // 输出函数定义的字符串表示形式
+```
+
+
+
+apply、call和bind都是 JavaScript 函数的方法，它们的作用都是改变函数执行时的上下文（即this的指向）。
+
+call 和 apply 的作用基本相同，只是传参方式不同。call() 方法接受参数列表，apply() 方法接受一个参数数组。
+
+bind() 方法不会立即执行函数，而是返回一个新的函数，并且可以将传递给 bind() 方法的参数绑定到新函数中的参数。
+
+下面详细讲解这三个方法的用法和区别。
+
+
+
+#### call()
+
+call() 方法调用一个函数，其具有一个指定的 this 值和一个参数列表。
+
+语法：function.call(thisArg, arg1, arg2, ...)
+
+参数：
+
+-   thisArg：函数体内 this 对象的值。如果使用 call() 来调用函数，那么 this 就指向第一个参数。如果第一个参数为 null 或 undefined，则 this 指向全局对象（浏览器环境下为 window 对象）。
+-   arg1, arg2, ...：被传递到函数中的参数列表。
+
+返回值：函数的返回值。
+
+示例：
+
+```js
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+greet.call(null, "Tom"); // 输出 "Hello, Tom!"
+```
+
+
+
+#### apply()
+
+apply() 方法调用一个函数，其具有一个指定的 this 值和一个参数数组。
+
+语法：function.apply(thisArg, [argsArray])
+
+参数：
+
+-   thisArg：函数体内 this 对象的值。如果使用 apply() 来调用函数，那么 this 就指向第一个参数。如果第一个参数为 null 或 undefined，则 this 指向全局对象（浏览器环境下为 window 对象）。
+-   argsArray：一个数组或类数组对象，其中包含着被传递到函数中的参数。
+
+返回值：函数的返回值。
+
+示例：
+
+```js
+function greet(name, age) {
+  console.log("Hello, " + name + "! You are " + age + " years old.");
+}
+
+greet.apply(null, ["Tom", 18]); // 输出 "Hello, Tom! You are 18 years old."
+```
+
+
+
+#### bind()
+
+bind() 方法创建一个新的函数，当这个新函数被调用时，它的 this 值被指定为第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+
+语法：function.bind(thisArg, arg1, arg2, ...)
+
+参数：
+
+-   thisArg：函数体内 this 对象的值。如果使用 bind() 来调用函数，那么 this 就指向第一个参数。如果第一个参数为 null 或 undefined，则 this 指向全局对象（浏览器环境下为 window 对象）。
+-   arg1, arg2, ...：新函数的参数。
+
+返回值：一个新函数。
+
+示例：
+
+```js
+function greet(name, age) {
+  console.log("Hello, " + name + "! You are " + age + " years old.");
+}
+
+var greetTom = greet.bind(null, "Tom");
+greetTom(18); // 输出 "Hello, Tom! You are 18 years old."
+```
+
+
+
+总的来说，apply、call、bind 这三个方法都可以用来改变函数的 this 指向。它们的区别在于传参的方式和返回值。
+
+apply 和 call 都可以立即调用函数，区别在于传参的方式不同：apply 的第二个参数是一个数组，而 call 的第二个及后续参数是单个的参数。如果不传入第一个参数，那么 apply 和 call 都会将函数的 this 指向全局对象。
+
+bind 方法会返回一个新的函数，它的 this 指向参数中传入的对象，且原函数的参数列表中的 this 被永久绑定到了这个对象，无法更改。新函数可以传入参数，这些参数会被原函数的参数列表所接收。
+
+在实际开发中，我们通常会使用箭头函数来替代 apply、call、bind 方法，因为箭头函数内部的 this 指向是继承外部作用域的，无需通过特殊的方法改变 this 指向。
+
+### 箭头函数
+
+箭头函数是一种新的函数定义方式，它可以使用更简洁的语法来定义函数。箭头函数有以下特点：
+
+-   箭头函数没有自己的this值，this值来自于父级作用域的this值。
+-   箭头函数不能使用arguments对象，可以使用Rest参数代替。
+-   箭头函数不能使用new操作符创建实例对象。
+-   箭头函数没有原型对象，因此不能作为构造函数使用。
+
+箭头函数的语法如下：
+
+```js
+// 常规函数
+function add(a, b) {
+  return a + b;
+}
+
+// 箭头函数
+let add = (a, b) => a + b;
+```
+
+#### 箭头函数的 this
+
+箭头函数不会创建新的 this 绑定，而是从外层作用域继承。
+
+```js
+const person = {
+  name: 'Alice',
+  greet: function() {
+    setTimeout(() => {
+      console.log(`Hello, my name is ${this.name}.`);
+    }, 1000);
+  }
+};
+
+person.greet(); // Hello, my name is Alice.
+```
+
+
+
+### 默认参数
+
+现在可以在函数声明中为参数提供默认值。
+
+```js
+function greet(name = 'World') {
+  console.log(`Hello, ${name}!`);
+}
+
+greet(); // Hello, World!
+greet('Alice'); // Hello, Alice!
+```
+
+
+
+### 展开运算符
+
+展开运算符可以将一个可迭代对象（如数组或字符串）展开为单个值或其他数据结构中的多个值。
+
+```js
+// 数组展开
+const numbers = [1, 2, 3];
+console.log(...numbers); // 1 2 3
+
+// 对象展开
+const person = { name: 'Alice', age: 30 };
+const { name, ...rest } = person;
+console.log(name); // Alice
+console.log(rest); // { age: 30 }
+```
+
+
+
+### Rest参数
+
+Rest参数是一种用于定义可变数量参数的语法，它用于将不定数量的参数表示为一个数组。Rest参数在函数参数列表中以三个点（...）开头，它可以接收任意数量的参数，将它们转换为一个数组。
+
+```js
+function sum(...numbers) {
+  return numbers.reduce((total, n) => total + n, 0);
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(4, 5)); // 9
+```
+
+
+
+## 闭包
+
+闭包（closure）是指一个函数可以访问并使用它的外部作用域中的变量，即使这些变量在函数执行时已经不在该作用域中。
+
+一个闭包通常由一个函数和在该函数中创建的一个内部函数组成。内部函数可以访问外部函数的变量和参数，即使在外部函数已经返回并且执行上下文已经被销毁时仍然可以访问这些变量和参数。
+
+闭包常常用于封装私有状态，即将变量隐藏在函数作用域内，防止外部代码访问和修改。例如，可以使用闭包实现 JavaScript 中的模块模式。
+
+以下是一个示例代码，展示了如何使用闭包实现一个简单的计数器：
+
+```js
+function createCounter() {
+  let count = 0;
+
+  function counter() {
+    count++;
+    console.log(count);
+  }
+
+  return counter;
+}
+
+const counter = createCounter();
+counter(); // 输出 1
+counter(); // 输出 2
+counter(); // 输出 3
+```
+
+在上面的代码中，`createCounter` 函数返回了一个内部函数 `counter`。由于 `counter` 函数可以访问外部作用域中的 `count` 变量，所以每次调用 `counter` 函数都会将 `count` 的值增加 1，并输出当前计数器的值。
+
+闭包可以有效地帮助我们管理代码中的状态，并避免全局变量的滥用。但是，如果闭包被滥用，可能会导致内存泄漏等问题，因为闭包会持有外部函数中的变量和对象，这些变量和对象不会被垃圾回收器回收，直到闭包被释放为止。
+
+### 闭包的内存泄漏问题
+
+闭包内存泄漏通常是因为函数中的变量被引用而导致的，因为闭包会持有外部函数的变量引用，当外部函数执行完毕后，闭包仍然存在，导致变量无法被释放，造成内存泄漏。解决闭包内存泄漏有以下几种方法：
+
+1.  在函数结束时手动释放被闭包引用的变量，可以将变量赋值为 null。
+2.  将需要被释放的变量定义在局部作用域中，而不是在函数外部定义，这样当函数执行完毕时，这些变量会自动被释放。
+3.  使用 IIFE (Immediately Invoked Function Expression) 函数，可以将闭包包裹在一个立即执行的函数中，使得闭包内的变量在函数执行完毕后立即被释放。
+4.  使用 WeakMap 数据结构来保存被闭包引用的变量，WeakMap 对象中保存的键值对是弱引用，当键值对中的键没有被引用时，会自动被垃圾回收。这种方法需要注意，需要保证被引用的变量不被其他地方引用，否则仍然会出现内存泄漏。
+
+需要注意的是，内存泄漏的出现不一定都是因为闭包引起的，可能还有其他原因，比如未释放的 DOM 引用等。因此，在编写 JavaScript 代码时，需要注意避免出现内存泄漏的情况。
+
+例如，以下代码演示了如何使用匿名函数解决闭包内存泄漏问题：
+
+```js
+function outer() {
+  var x = 'Hello';
+
+  return function() {
+    console.log(x);
+  };
+}
+
+var inner = outer();
+
+// 使用匿名函数解决闭包内存泄漏问题
+(function() {
+  var x = 'World';
+
+  inner();
+})();
+```
+
+
+
+### 闭包中的this
+
+在闭包中使用`this`需要注意以下几点：
+
+1.  闭包中的`this`和普通函数中的`this`一样，指向的是调用该函数的对象。如果该闭包被全局作用域调用，则`this`指向全局对象（在浏览器中通常是`window`对象）；如果该闭包被某个对象方法调用，则`this`指向该对象。
+2.  由于闭包会保留对其所在函数的作用域链的引用，因此在闭包内部访问`this`时，有可能访问到的是外层函数中的`this`，而不是当前作用域的`this`。
+3.  为了避免在闭包中出现`this`的指向问题，可以将外层函数的`this`存储在一个变量中，然后在闭包内部使用该变量。
+
+以下是一个示例，用来演示闭包中`this`的问题：
+
+```js
+var person = {
+  name: "John",
+  age: 30,
+  sayName: function() {
+    setTimeout(function() {
+      console.log(this.name);
+    }, 1000);
+  }
+};
+
+person.sayName(); // 输出 undefined
+```
+
+在这个示例中，当调用`person.sayName()`时，实际上是在全局作用域中调用了`setTimeout`函数。因此，在闭包中访问`this.name`时，`this`指向的是全局对象，而不是`person`对象。为了解决这个问题，我们可以使用箭头函数，箭头函数会继承外部函数的`this`：
+
+```js
+var person = {
+  name: "John",
+  age: 30,
+  sayName: function() {
+    setTimeout(() => {
+      console.log(this.name);
+    }, 1000);
+  }
+};
+
+person.sayName(); // 输出 John
+```
+
+在这个示例中，我们将闭包改为箭头函数，这样在箭头函数内部访问`this.name`时，`this`仍然指向`person`对象。
+
+
+
+## 对象
+
+Object 是一种基本数据类型，是一组无序的键值对（key-value pairs）的集合。在 Object 中，每个键（key）都是字符串类型，而值（value）则可以是任意类型的数据，包括基本类型和引用类型。
+
+Object 对象是 JavaScript 中最常用的对象之一，所有的对象都可以通过 Object 构造函数来创建。Object 对象有一些内置的方法，例如：Object.keys()、Object.values()、Object.entries() 等等。
+
+以下是一些常用的 Object 对象方法：
+
+-   Object.keys(obj)：返回对象 obj 中所有可枚举属性的名称，以数组形式返回；
+-   Object.values(obj)：返回对象 obj 中所有可枚举属性的值，以数组形式返回；
+-   Object.entries(obj)：返回对象 obj 中所有可枚举属性的名称和值，以数组形式返回；
+-   Object.create(proto[, propertiesObject])：创建一个新对象，并以第一个参数 proto 的原型作为新对象的原型；
+-   Object.freeze(obj)：冻结对象 obj，防止对其进行修改，包括添加、删除和修改属性；
+-   Object.seal(obj)：封闭对象 obj，防止添加和删除属性，但可以修改属性值；
+-   Object.defineProperty(obj, prop, descriptor)：定义对象 obj 中的属性 prop，descriptor 是属性的描述符。
+
+除了内置的 Object 对象方法，我们还可以使用对象字面量（Object Literal）来创建对象。例如：
+
+```js
+const person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+    zip: "12345"
+  }
+};
+```
+
+在对象字面量中，我们可以使用对象属性的简写方式，例如：`name: name` 可以简写为 `name`，`age: age` 可以简写为 `age`。
+
+我们也可以使用 Object.keys()、Object.values() 和 Object.entries() 等方法来获取对象中的属性名和属性值。例如：
+
+```js
+const person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+    zip: "12345"
+  }
+};
+
+const keys = Object.keys(person); // ["name", "age", "address"]
+const values = Object.values(person); // ["John", 30, {street: "123 Main St", city: "Anytown", state: "CA", zip: "12345"}]
+const entries = Object.entries(person); // [["name", "John"], ["age", 30], ["address", {street: "123 Main St", city: "Anytown", state: "CA", zip: "12345"}]]
+```
+
+总之，Object 对象是 JavaScript 中非常重要的一个对象，它提供了很多有用的方法，可以帮助我们更方便地操作对象。
+
+### **浅拷贝**
+
+浅拷贝是指将一个对象复制到另一个对象中，复制后的两个对象的基本数据类型字段的值相同，但引用类型字段的值仍然是指向同一个内存地址的引用。也就是说，当源对象的引用类型字段的值发生变化时，目标对象对应的字段值也会发生变化。
+
+实现浅拷贝的方法有：
+
+-   Object.assign()
+-   扩展运算符（...）
+
+示例代码：
+
+```js
+// 浅拷贝示例
+let sourceObj = {name: 'Tom', age: 20, hobby: ['reading', 'running']};
+
+// 使用Object.assign()进行浅拷贝
+let targetObj1 = Object.assign({}, sourceObj);
+
+// 使用扩展运算符进行浅拷贝
+let targetObj2 = {...sourceObj};
+
+console.log(targetObj1);
+console.log(targetObj2);
+
+sourceObj.hobby.push('swimming');
+
+console.log(targetObj1);
+console.log(targetObj2);
+```
+
+上述代码中，我们使用了 `Object.assign()` 和扩展运算符来进行浅拷贝。拷贝后，我们在源对象的 `hobby` 属性上添加了一个新的元素，发现两个目标对象的 `hobby` 属性也都发生了变化。
+
+### **深拷贝**
+
+深拷贝是指将一个对象复制到另一个对象中，复制后的两个对象完全独立，它们的基本数据类型和引用类型的值都不相互影响。也就是说，当源对象的引用类型字段的值发生变化时，目标对象对应的字段值不会发生变化。
+
+实现深拷贝的方法有：
+
+-   JSON.parse(JSON.stringify())
+-   递归遍历对象，逐个复制每个属性
+
+示例代码：
+
+```js
+// 深拷贝示例
+let sourceObj = {name: 'Tom', age: 20, hobby: ['reading', 'running']};
+
+// 使用JSON.parse(JSON.stringify())进行深拷贝
+let targetObj1 = JSON.parse(JSON.stringify(sourceObj));
+
+// 使用递归遍历对象进行深拷贝
+function deepCopy(sourceObj) {
+  let targetObj = Array.isArray(sourceObj) ? [] : {};
+  for (let key in sourceObj) {
+    if (Object.prototype.hasOwnProperty.call(sourceObj, key)) {
+      if (typeof sourceObj[key] === 'object' && sourceObj[key] !== null) {
+        targetObj[key] = deepCopy(sourceObj[key]);
+      } else {
+        targetObj[key] = sourceObj[key];
+      }
+    }
+  }
+  return targetObj;
+}
+
+let targetObj2 = deepCopy(sourceObj);
+
+console.log(targetObj1);
+console.log(targetObj2);
+
+sourceObj.hobby.push('swimming');
+
+console.log(targetObj1);
+console.log(targetObj2);
+```
+
+### 工厂函数创建对象
+
+在JavaScript中，有多种方式可以创建对象，其中一种是使用工厂函数（factory function）。
+
+工厂函数是一个函数，它返回一个新的对象。通常情况下，工厂函数会封装对象的创建过程，使其更加简洁和可读。
+
+下面是一个示例，展示如何使用工厂函数创建对象：
+
+```js
+function createPerson(name, age) {
+  return {
+    name: name,
+    age: age,
+    sayHello: function() {
+      console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+  };
+}
+
+// 使用工厂函数创建对象
+const person1 = createPerson('Alice', 30);
+const person2 = createPerson('Bob', 25);
+
+// 调用对象的方法
+person1.sayHello(); // 输出 "Hello, my name is Alice and I am 30 years old."
+person2.sayHello(); // 输出 "Hello, my name is Bob and I am 25 years old."
+```
+
+在上面的代码中，`createPerson` 是一个工厂函数，它接收两个参数 `name` 和 `age`，并返回一个对象。这个对象有两个属性 `name` 和 `age`，以及一个方法 `sayHello`，该方法可以输出对象的属性。
+
+通过调用 `createPerson` 函数，我们可以创建多个具有相同属性和方法的对象。这种方式可以大大简化对象的创建过程，尤其是在需要创建大量对象的情况下。
+
+
+
+## 面向对象
+
+面向对象编程（Object-Oriented Programming，简称 OOP）是一种编程范式，它将现实世界中的概念和对象映射到计算机程序中，将程序看做由若干个对象组成的。在面向对象编程中，对象是程序的基本单元，它拥有属性和方法，并且可以被其他对象所调用。
+
+面向对象编程的核心思想是封装、继承和多态：
+
+-   封装（Encapsulation）：封装是将数据和方法组合成一个类，并对外部隐藏具体的实现细节，仅对外部提供必要的接口。
+-   继承（Inheritance）：继承是一种对象间的关系，它允许在一个类的基础上定义出新的类，并且可以继承父类的属性和方法。
+-   多态（Polymorphism）：多态是指同一种行为或方法具有不同的表现形式或实现方式，实现了同一接口或继承了同一父类的对象可以具有不同的状态和行为。
+
+在面向对象编程中，类是一种模板或蓝图，它描述了对象具有的属性和方法。对象是类的实例，它拥有类定义的属性和方法。在 JavaScript 中，类的实现是通过构造函数和原型对象来实现的。
+
+JavaScript 中通过使用 `class` 关键字定义类，使用 `new` 关键字实例化对象。一个简单的类的定义和使用示例如下：
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  sayHello() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+const john = new Person('John', 25);
+john.sayHello(); // 输出：Hello, my name is John.
+```
+
+在上面的示例中，我们定义了一个 `Person` 类，它拥有 `name` 和 `age` 两个属性，以及 `sayHello` 方法。我们通过 `new` 关键字实例化了一个 `john` 对象，并且调用了它的 `sayHello` 方法。
+
+总的来说，面向对象编程是一种将现实世界的问题映射到计算机程序中的编程思想，它提供了封装、继承和多态等核心特性，可以更好地组织和管理程序代码。
+
+
+
+## proxy代理
+
+`Proxy` 是 ES6 引入的新特性，它可以用来拦截并定制 JavaScript 中的基本操作，包括对象属性的读写、函数调用等等。可以用来增强对象的操作行为、实现数据绑定、拦截错误、实现远程方法调用等。
+
+下面是 `Proxy` 的一些具体用法：
+
+1.  **拦截对象属性的读写**
+
+```js
+const target = { name: 'Tom', age: 18 };
+const proxy = new Proxy(target, {
+  get(target, prop) {
+    console.log(`getting ${prop}`);
+    return target[prop];
+  },
+  set(target, prop, value) {
+    console.log(`setting ${prop} to ${value}`);
+    target[prop] = value;
+  },
+});
+console.log(proxy.name); // getting name, Tom
+proxy.age = 20; // setting age to 20
+```
+
+上面代码中，使用 `new Proxy()` 创建了一个代理对象 `proxy`，并使用 `get` 和 `set` 拦截了属性的读取和设置操作，当属性被读取或设置时，会触发对应的拦截器函数。
+
+2.   **拦截对象的函数调用**
+
+```js
+const target = {
+  sum(a, b) {
+    return a + b;
+  },
+};
+const proxy = new Proxy(target, {
+  apply(target, thisArg, args) {
+    console.log(`calling sum with args: ${args}`);
+    return target.sum.apply(thisArg, args);
+  },
+});
+console.log(proxy.sum(1, 2)); // calling sum with args: 1,2, 3
+```
+
+上面代码中，使用 `apply` 拦截了 `sum` 函数的调用，当调用 `sum` 函数时，会触发 `apply` 拦截器函数。
+
+3.   **拦截对象的构造函数调用**
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+const ProxyPerson = new Proxy(Person, {
+  construct(target, args) {
+    console.log(`creating a new instance with name: ${args[0]}`);
+    return new target(...args);
+  },
+});
+const person = new ProxyPerson('Tom'); // creating a new instance with name: Tom
+```
+
+上面代码中，使用 `construct` 拦截了 `Person` 的构造函数调用，当使用 `new` 关键字创建 `Person` 实例时，会触发 `construct` 拦截器函数。
+
+4.   **实现数据双向绑定**
+
+```js
+const data = { name: 'Tom', age: 18 };
+const proxyData = new Proxy(data, {
+  get(target, prop) {
+    console.log(`getting ${prop}`);
+    return target[prop];
+  },
+  set(target, prop, value) {
+    console.log(`setting ${prop} to ${value}`);
+    target[prop] = value;
+    // 更新视图
+    updateView();
+  },
+});
+// 视图更新函数
+function updateView() {
+  console.log('视图已更新');
+}
+// 修改数据
+proxyData.name = 'Jerry'; // setting name to Jerry, 视图已更新
+```
+
+上面代码中，使用 `get` 和 `set` 拦截了对象属性的读取和设置操作。
+
+当Proxy对象作为函数调用时，可以通过重载 `apply` 方法拦截函数的调用。
+
+示例代码：
+
+```js
+const target = function (message) {
+  console.log(message);
+};
+
+const handler = {
+  apply(target, thisArg, args) {
+    console.log("Function called with arguments:", args);
+    return target.apply(thisArg, args);
+  },
+};
+
+const proxy = new Proxy(target, handler);
+
+proxy("Hello, world!");
+```
+
+输出结果为：
+
+```js
+Function called with arguments: [ 'Hello, world!' ]
+Hello, world!
+```
+
+在这个例子中，`apply` 方法被重载，拦截了对 `proxy` 的调用，并打印了调用时传入的参数。接着，`apply` 方法调用了 `target.apply(thisArg, args)`，实际上是调用了 `target` 函数本身，并返回其执行结果。
+
+除了 `apply` 方法，Proxy 对象还可以重载其他方法，例如 `get`、`set`、`has`、`construct` 等等，可以满足各种不同的需求。
+
+
+
+## JSON
+
+JSON (JavaScript Object Notation) 是一种轻量级的数据交换格式，常用于前后端数据传输。在 JavaScript 中，可以使用 JSON 来表示复杂的数据结构，例如对象、数组等。
+
+JSON 数据格式基于 JavaScript 中的字面量语法，用于描述键值对集合。以下是一个简单的 JSON 对象示例：
+
+```js
+{
+  "name": "John",
+  "age": 30,
+  "isMarried": true,
+  "hobbies": ["reading", "coding", "traveling"],
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001"
+  }
+}
+```
+
+该 JSON 对象包含了一个人的基本信息，包括姓名、年龄、婚姻状况、爱好和地址。其中，键名和字符串必须用双引号括起来，键值可以是字符串、数字、布尔值、数组、对象等数据类型。
+
+JavaScript 提供了两个方法来实现 JSON 的解析和序列化：
+
+-   JSON.parse()：用于将 JSON 字符串解析为 JavaScript 对象。
+-   JSON.stringify()：用于将 JavaScript 对象序列化为 JSON 字符串。
+
+`JSON.parse()` 和 `JSON.stringify()` 是 JavaScript 中用于解析和序列化 JSON 数据的两个核心方法。
+
+
+
+### JSON.parse()
+
+`JSON.parse()` 方法用于将一个符合 JSON 语法规范的字符串解析为一个 JavaScript 对象。语法如下：
+
+```js
+JSON.parse(text[, reviver])
+```
+
+其中，`text` 参数为要解析的 JSON 字符串，`reviver` 参数是一个可选的回调函数，用于在解析过程中对解析出来的结果进行修改。
+
+举个例子，假设有一个符合 JSON 规范的字符串：
+
+```js
+const jsonString = '{"name":"John","age":30,"isMarried":true}';
+```
+
+我们可以使用 `JSON.parse()` 将其解析为一个 JavaScript 对象：
+
+```js
+const obj = JSON.parse(jsonString);
+console.log(obj.name); // 输出 "John"
+console.log(obj.age); // 输出 30
+console.log(obj.isMarried); // 输出 true
+```
+
+注意，如果要解析的字符串不符合 JSON 语法规范，或者字符串中包含了 JavaScript 无法解析的特殊字符，`JSON.parse()` 方法将会抛出一个异常。
+
+以下是一个使用 `reviver` 参数的示例：
+
+```js
+const json = '{"name": "John", "age": 30}';
+const obj = JSON.parse(json, (key, value) => {
+  if (key === 'age') {
+    return value * 2;
+  }
+  return value;
+});
+console.log(obj); // 输出：{name: "John", age: 60}
+```
+
+在这个例子中，我们使用了 `reviver` 参数，将 `age` 属性的值乘以了 2。因此，输出的对象中，`age` 属性的值为 60，而不是原来的 30。
+
+
+
+### JSON.stringify()
+
+`JSON.stringify()` 方法用于将一个 JavaScript 对象序列化为一个符合 JSON 语法规范的字符串。语法如下：
+
+```js
+JSON.stringify(value[, replacer[, space]])
+```
+
+其中，`value` 参数是要序列化的 JavaScript 对象，`replacer` 参数是一个可选的转换函数或数组，用于控制序列化过程中哪些属性应该被包含在结果中，`space` 参数是一个可选的空格字符串或数字，用于控制输出结果的缩进和格式化。
+
+举个例子，假设有一个 JavaScript 对象：
+
+```js
+const person = {
+  name: 'John',
+  age: 30,
+  isMarried: true,
+  hobbies: ['reading', 'coding', 'traveling'],
+  address: {
+    street: '123 Main St',
+    city: 'New York',
+    state: 'NY',
+    zip: '10001'
+  }
+};
+```
+
+我们可以使用 `JSON.stringify()` 将其序列化为一个符合 JSON 规范的字符串：
+
+```js
+const jsonString = JSON.stringify(person);
+console.log(jsonString);
+```
+
+输出结果为：
+
+```json
+{"name":"John","age":30,"isMarried":true,"hobbies":["reading","coding","traveling"],"address":{"street":"123 Main St","city":"New York","state":"NY","zip":"10001"}}
+```
+
+注意，如果对象中包含了函数、undefined 和 symbol 类型的值，这些属性会在序列化过程中被忽略掉。如果需要自定义序列化过程，可以使用 `replacer` 参数来进行控制。
+
+以下是一些例子来说明 `replacer` 和 `space` 参数的用法：
+
+```js
+// 使用 replacer 参数将所有值为 undefined 的属性转换为 null
+const obj = { a: 1, b: undefined, c: "hello" };
+const replacer = (key, value) => (value === undefined ? null : value);
+console.log(JSON.stringify(obj, replacer)); // {"a":1,"b":null,"c":"hello"}
+
+// 使用 space 参数使生成的 JSON 字符串有缩进
+const obj2 = { a: 1, b: { c: 2 } };
+console.log(JSON.stringify(obj2, null, 2)); // 输出：{"a":1,"b":{"c":2}}
+console.log(JSON.stringify(obj2, null, "--")); // 输出：{"a":1,"b":{"c":2}}
+```
+
+在实际开发中，`JSON.stringify()` 方法通常用于将 JavaScript 对象转换为 JSON 字符串，然后通过网络传输或存储到本地文件中。使用 `replacer` 和 `space` 参数可以更灵活地控制生成的 JSON 字符串的格式和内容。
+
+
+
+
+
+## 原型
+
+JavaScript的原型是一种机制，用于实现继承和属性共享。每个JavaScript对象都有一个原型对象，它包含可以被继承的属性和方法。
+
+当你创建一个对象时，JavaScript会在对象和其原型之间创建一个链接。这个链接是通过一个名为`__proto__`的隐藏属性实现的。这个属性指向对象的原型对象。
+
+可以通过`Object.create()`方法来显式地设置一个对象的原型，例如：
+
+```js
+var parent = {
+  foo: function() {
+    console.log('foo');
+  }
+};
+
+var child = Object.create(parent);
+```
+
+在这个例子中，`child`对象的原型被设置为`parent`对象，因此它继承了`foo`方法。
+
+你还可以使用构造函数来创建对象，并且在构造函数中定义原型。例如：
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+  console.log('Hello, my name is ' + this.name);
+};
+
+var john = new Person('John');
+john.sayHello(); // 输出 "Hello, my name is John"
+```
+
+在这个例子中，`Person`函数定义了一个原型对象，并将其添加到`Person.prototype`中。当你使用`new`关键字来创建一个`Person`对象时，它会自动关联到`Person.prototype`，因此可以访问`sayHello`方法。
+
+总的来说，原型是JavaScript中实现继承和属性共享的基础机制之一。它允许你创建具有相似属性和方法的对象，从而减少了代码的重复和冗余。
+
+
+
+### 原型链
+
+原型链是一种机制，用于实现JavaScript中对象之间的继承。它是基于JavaScript中每个对象都有一个原型对象的概念。每个对象的原型对象又有自己的原型对象，依此类推，最终形成一个链式结构，被称为原型链。
+
+当你试图访问一个对象的属性或方法时，JavaScript引擎会首先查找对象本身是否具有该属性或方法。如果对象本身没有该属性或方法，则会继续查找对象的原型对象是否有该属性或方法，如果还是没有，则继续查找原型对象的原型对象，直到找到该属性或方法为止，或者原型链的顶端（即Object.prototype）被查找完毕。
+
+举个例子，假设你有以下代码：
+
+```js
+function Animal() {}
+Animal.prototype.eat = function() {
+  console.log('eating...');
+}
+
+function Dog() {}
+Dog.prototype = Object.create(Animal.prototype);
+
+var dog = new Dog();
+dog.eat();
+```
+
+在这个例子中，`Animal`函数定义了一个原型对象，其中包含`eat`方法。`Dog`函数的原型对象被设置为`Animal`的原型对象。然后，我们创建一个`dog`对象，它继承了`Animal`原型对象中的`eat`方法。当你调用`dog.eat()`时，JavaScript引擎会首先查找`dog`对象本身是否具有`eat`方法。由于`dog`对象没有`eat`方法，它会继续查找`Dog`的原型对象，即`Animal`的原型对象，发现了`eat`方法，因此输出`"eating..."`。
+
+这就是原型链的工作原理。它允许你在JavaScript中实现继承和属性共享，同时避免代码冗余和重复。
+
+
+
+### 属性和方法
+
+| 方法/属性               | 描述                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| constructor             | 每个原型对象都有一个 `constructor` 属性，它指向创建该对象的函数。 |
+| hasOwnProperty()        | 该方法用于检查一个对象是否拥有指定的属性，而不是从原型链中继承来的属性。 |
+| isPrototypeOf()         | 该方法用于检查一个对象是否是另一个对象的原型。               |
+| Object.getPrototypeOf() | 该方法返回指定对象的原型对象。                               |
+| Object.setPrototypeOf() | 该方法用于设置一个对象的原型对象。                           |
+| Object.create()         | 该方法创建一个新对象，使用指定的原型对象和属性值来初始化该对象。 |
+| Object.prototype        | 所有 JavaScript 对象都继承自 `Object.prototype` 对象，它包含一些通用的方法和属性，如 `toString()` 方法、`valueOf()` 方法等。 |
+
+
+
+### 继承
+
+JavaScript中的继承是通过原型链来实现的。每个JavaScript对象都有一个原型对象，通过原型链可以访问到父级对象的属性和方法。
+
+JavaScript中的原型继承主要有以下几种方式：
+
+#### 原型链继承
+
+原型链继承是最基本的继承方式，其实现方式是将父类的实例作为子类的原型。通过这种方式，子类就可以访问到父类的属性和方法。
+
+```js
+function Parent() {
+  this.name = 'parent';
+}
+
+Parent.prototype.sayHello = function() {
+  console.log('Hello');
+}
+
+function Child() {
+  this.name = 'child';
+}
+
+Child.prototype = new Parent();
+
+var child = new Child();
+
+child.sayHello(); // 输出 "Hello"
+```
+
+
+
+#### 构造函数继承
+
+构造函数继承是通过在子类构造函数中调用父类构造函数来实现的。通过这种方式，子类可以继承父类的属性。
+
+```js
+function Parent() {
+  this.name = 'parent';
+}
+
+function Child() {
+  Parent.call(this);
+  this.name = 'child';
+}
+
+var child = new Child();
+
+console.log(child.name); // 输出 "child"
+```
+
+
+
+#### 组合继承
+
+组合继承是原型链继承和构造函数继承的结合。它通过在子类构造函数中调用父类构造函数来继承父类的属性，并通过将父类实例作为子类原型来继承父类的方法。
+
+```js
+function Parent() {
+  this.name = 'parent';
+}
+
+Parent.prototype.sayHello = function() {
+  console.log('Hello');
+}
+
+function Child() {
+  Parent.call(this);
+  this.name = 'child';
+}
+
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
+
+var child = new Child();
+
+child.sayHello(); // 输出 "Hello"
+console.log(child.name); // 输出 "child"
+```
+
+
+
+#### 原型式继承
+
+原型式继承是通过创建一个临时构造函数，然后将一个对象作为这个构造函数的原型来实现继承。
+
+```js
+function createObject(obj) {
+  function F() {}
+  F.prototype = obj;
+  return new F();
+}
+
+var parent = {
+  name: 'parent',
+  sayHello: function() {
+    console.log('Hello');
+  }
+};
+
+var child = createObject(parent);
+
+child.sayHello(); // 输出 "Hello"
+console.log(child.name); // 输出 "parent"
+```
+
+
+
+#### 寄生式继承
+
+寄生式继承是在原型式继承的基础上增加了一个包装函数，该函数用来封装继承过程中需要新增的属性和方法。
+
+```js
+function createObject(obj) {
+  function F() {}
+  F.prototype = obj;
+  return new F();
+}
+
+function createChild(parent) {
+  var child = createObject(parent);
+  child.sayHello = function() {
+    console.log('Hello');
+  };
+  return child;
+}
+
+var parent = {
+  name: 'parent'
+};
+
+var child = createChild(parent);
+
+console.log(child.name); // 输出 "parent"
+```
+
+
+
+
+
+## 类
+
+JavaScript的类（Class）是一种语法糖，它提供了更加简洁的方式来定义对象和构造函数。类可以包含属性和方法，并且可以通过`new`关键字创建实例。
+
+下面是一个简单的类定义的示例：
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  greet() {
+    console.log(`Hi, my name is ${this.name} and I'm ${this.age} years old.`);
+  }
+}
+```
+
+在这个例子中，我们定义了一个名为`Person`的类，它有一个构造函数（`constructor`），该函数接收`name`和`age`两个参数，并使用它们来设置实例的属性。此外，我们还定义了一个名为`greet`的方法，它用于打印一条问候信息。
+
+要创建`Person`类的实例，可以使用以下代码：
+
+```js
+const person = new Person("John Doe", 30);
+person.greet(); // Hi, my name is John Doe and I'm 30 years old.
+```
+
+在类定义中，我们使用`constructor`方法来定义类的构造函数。除此之外，我们还可以定义其他的方法和属性。
+
+在JavaScript中，静态属性和静态方法是定义在类上而不是类的实例上的属性和方法。这意味着它们只能通过类本身来访问，而不是通过类的实例。
+
+### 静态属性
+
+静态属性是定义在类上的属性，通常用于存储类级别的数据。它们可以通过类名来访问，而不需要创建类的实例。静态属性可以通过`static`关键字来定义。
+
+下面是一个静态属性的示例：
+
+```js
+class Circle {
+  static PI = 3.14159;
+  
+  constructor(radius) {
+    this.radius = radius;
+  }
+  
+  area() {
+    return Circle.PI * this.radius * this.radius;
+  }
+}
+
+console.log(Circle.PI); // 3.14159
+
+const circle = new Circle(2);
+console.log(circle.area()); // 12.56636
+```
+
+在这个例子中，我们定义了一个名为`Circle`的类，它有一个静态属性`PI`，用于存储圆的π值。在`area`方法中，我们使用了`Circle.PI`来计算圆的面积。
+
+### 静态方法
+
+静态方法是定义在类上的方法，通常用于提供类级别的操作或工具函数。它们可以通过类名来访问，而不需要创建类的实例。静态方法可以通过`static`关键字来定义。
+
+下面是一个静态方法的示例：
+
+```js
+class MathUtils {
+  static add(a, b) {
+    return a + b;
+  }
+}
+
+console.log(MathUtils.add(1, 2)); // 3
+```
+
+在这个例子中，我们定义了一个名为`MathUtils`的类，它有一个静态方法`add`，用于将两个数字相加。
+
+总之，静态属性和静态方法可以通过类名来访问，而不需要创建类的实例。它们通常用于存储类级别的数据或提供类级别的操作或工具函数。
+
+
+
+### 类的继承
+
+类继承机制使得我们可以通过创建一个新的类来扩展已有类的功能，从而实现代码的重用和组合。子类继承了父类的属性和方法，并且还可以添加自己的属性和方法。
+
+下面是一个简单的类继承的示例：
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name); // 调用父类的构造函数
+  }
+  
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const dog = new Dog('Rufus');
+dog.speak(); // Rufus barks.
+```
+
+在这个例子中，我们定义了一个名为`Animal`的基类，它有一个名为`speak`的方法。然后我们定义了一个名为`Dog`的子类，它继承了`Animal`的属性和方法，并且添加了自己的`speak`方法。
+
+在子类中，我们使用`extends`关键字来指定继承的父类。在子类的构造函数中，我们使用`super`关键字来调用父类的构造函数。然后我们可以通过子类的实例来调用继承的方法和自己添加的方法。
+
+在继承中，子类可以覆盖父类的方法，也可以在子类中调用父类的方法。在子类中调用父类的方法需要使用`super`关键字。
+
+下面是一个子类调用父类方法的示例：
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name); // 调用父类的构造函数
+  }
+  
+  speak() {
+    super.speak(); // 调用父类的speak方法
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const dog = new Dog('Rufus');
+dog.speak(); // Rufus makes a noise. Rufus barks.
+```
+
+在这个例子中，我们定义了一个名为`Animal`的基类和一个名为`Dog`的子类。在子类的`speak`方法中，我们首先调用了父类的`speak`方法，然后再添加自己的内容。
+
+总之，类的继承机制使得我们可以通过创建一个新的类来扩展已有类的功能，从而实现代码的重用和组合。子类继承了父类的属性和方法，并且还可以添加自己的属性和方法。
+
+
+
+## 模块
+
+模块（Module）是一种封装了特定功能的代码单元，可以独立地编写、测试、维护和重复使用。
+
+在 ES6（ECMAScript 2015）中，JavaScript 引入了模块的概念，使得开发者可以轻松地将代码分割成可维护、可复用的模块。ES6 模块定义了一个简单的语法来定义和导出模块，并提供了一种机制来将模块导入到其他模块中。
+
+下面是一些常用的 ES6 模块语法：
+
+### 导出变量或函数
+
+使用 `export` 关键字导出变量或函数，例如：
+
+```js
+// 导出一个变量
+export const name = 'John';
+
+// 导出一个函数
+export function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+### 导出类
+
+使用 `export` 关键字导出类，例如：
+
+```js
+// 导出一个类
+export class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+  }
+}
+```
+
+### 导入模块
+
+使用 `import` 关键字导入一个或多个模块，例如：
+
+```js
+// 导入一个模块
+import { name } from './myModule';
+
+// 导入多个模块
+import { name, greet } from './myModule';
+
+// 导入默认导出的模块
+import myModule from './myModule';
+```
+
+使用 `import` 关键字导入一个或多个模块，将模块的功能引入到当前模块中。ES6 模块支持以下导入语法：
+
+1.   导入具名导出（Named Exports）
+
+可以使用 `{ }` 将要导入的具名导出包围起来，并从指定的模块中导入它们。例如：
+
+```js
+// 导入具名导出
+import { name, greet } from './myModule';
+```
+
+2.   导入默认导出（Default Exports）
+
+可以使用任何名称来导入默认导出，例如：
+
+```js
+// 导入默认导出
+import myModule from './myModule';
+```
+
+需要注意的是，在一个模块中只能有一个默认导出。如果模块中同时存在具名导出和默认导出，可以同时使用以下语法来导入它们：
+
+```js
+// 导入默认导出和具名导出
+import myModule, { name, greet } from './myModule';
+```
+
+3.   导入全部导出（Export All）
+
+可以使用 `*` 将一个模块的所有导出导入到当前模块中。例如：
+
+```js
+// 导入全部导出
+import * as myModule from './myModule';
+```
+
+使用这种方式导入模块时，需要使用 `myModule.` 来访问模块的导出成员。
+
+需要注意的是，在浏览器环境下，模块的导入需要使用模块加载器（例如 Webpack、RequireJS 等），或者在 `<script type="module">` 中使用模块语法。
+
+### 默认导出
+
+可以使用 `export default` 关键字导出一个默认值，例如：
+
+```js
+// 导出默认值
+export default class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+  }
+}
+```
+
+模块使得 JavaScript 开发变得更加模块化和组织化，并提高了代码的可重用性和可维护性。
+
+
+
+## XMLHttpRequest
+
+XMLHttpRequest (XHR) 是 JavaScript 中的一个 API，用于在浏览器和服务器之间发送 HTTP 请求并接收响应。XHR 可以使用异步或同步方式发送请求，并可以接收文本、JSON、XML 或二进制数据。
+
+以下是 XHR 的基本使用方法：
+
+1.  **创建 XMLHttpRequest 对象**
+
+```js
+var xhr = new XMLHttpRequest();
+```
+
+2.   **打开连接**
+
+```js
+xhr.open('GET', 'https://example.com/data.json', true);
+```
+
+该方法接受三个参数：
+
+-   请求类型（GET、POST 等）
+-   请求 URL
+-   是否异步（true 或 false）
+
+3.   **发送请求**
+
+```js
+xhr.send();
+```
+
+4.   **监听状态变化**
+
+```js
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(xhr.responseText);
+  }
+};
+```
+
+XMLHttpRequest 对象的 readyState 属性表示请求状态：
+
+-   0: 请求未初始化
+-   1: 服务器连接已建立
+-   2: 请求已接收
+-   3: 请求处理中
+-   4: 请求已完成，且响应已就绪
+
+status 属性表示响应状态码：
+
+-   200: 请求成功
+-   404: 请求的资源不存在
+-   500: 服务器错误
+
+5.   **取消请求**
+
+```js
+xhr.abort();
+```
+
+这个方法可以用于取消正在进行的请求。
+
+总的来说，XMLHttpRequest 是一个非常强大的工具，它允许我们在 JavaScript 中与服务器进行交互，可以用于实现动态更新页面内容、提交表单、获取数据等操作。
+
+
+
+### 属性
+
+| 属性               | 描述                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| readyState         | 一个无符号短整型数字，表示请求的当前状态。可以取值 0 - 4。   |
+| status             | 一个无符号短整型数字，表示服务器响应的状态码。               |
+| statusText         | 一个字符串，表示服务器响应的状态消息。                       |
+| response           | 返回的响应数据，可以是 ArrayBuffer、Blob、Document、JavaScript 对象、DOMString 等类型。 |
+| responseText       | 作为字符串返回的响应数据。                                   |
+| responseType       | 响应数据的类型。可以是空字符串（默认）、"arraybuffer"、"blob"、"document"、"json" 或 "text"。 |
+| responseXML        | 作为 XMLDocument 对象返回的响应数据。                        |
+| timeout            | 整数，表示在放弃请求之前等待响应的毫秒数。                   |
+| withCredentials    | 布尔型，表示是否应该使用跨域 Access-Control 请求凭证。       |
+| upload             | 返回一个 XMLHttpRequestUpload 对象，用于表示上传进度。       |
+| onreadystatechange | 一个事件处理程序，每当 readyState 改变时被调用。             |
+| onabort            | 一个事件处理程序，当请求被取消时调用。                       |
+| onerror            | 一个事件处理程序，当请求出错时调用。                         |
+| onload             | 一个事件处理程序，当请求成功完成时调用。                     |
+| onloadend          | 一个事件处理程序，当请求完成（无论成功或失败）时调用。       |
+| onloadstart        | 一个事件处理程序，当请求开始时调用。                         |
+| onprogress         | 一个事件处理程序，当请求正在进行中，会多次被调用。           |
+| ontimeout          | 一个事件处理程序，当请求超时时调用。                         |
+
+
+
+### 方法
+
+| abort()                                        | 取消当前请求。                 |
+| ---------------------------------------------- | ------------------------------ |
+| getAllResponseHeaders()                        | 返回所有响应头，格式为字符串。 |
+| getResponseHeader()                            | 返回指定名称的响应头的值。     |
+| open(method, url[, async[, user[, password]]]) | 初始化请求。                   |
+| send([body])                                   | 发送 HTTP 请求。               |
+| setRequestHeader(name, value)                  | 设置请求头。                   |
+
+
+
+
+
+## Promise
+
+Promise 是一种用于处理异步操作的对象。它表示一个异步操作的最终完成或失败，并且可以返回其结果。
+
+Promise 有三种状态：等待态（pending）、完成态（fulfilled）和拒绝态（rejected）。当 Promise 对象处于等待态时，表示该异步操作尚未完成；当 Promise 对象处于完成态时，表示该异步操作已经成功完成，并返回相应的结果；当 Promise 对象处于拒绝态时，表示该异步操作已经失败，并返回相应的错误。
+
+Promise 对象提供了一些方法，其中最重要的是 then() 方法。then() 方法用于注册 Promise 对象状态变化时的回调函数，该回调函数接收 Promise 对象的结果作为参数。then() 方法返回一个新的 Promise 对象，以便实现链式调用。
+
+除了 then() 方法，Promise 还提供了一些其他方法，如 catch() 方法用于捕捉 Promise 对象的错误，finally() 方法用于在 Promise 对象完成或拒绝后执行的操作等等。
+
+以下是 Promise 对象的基本语法：
+
+```js
+new Promise(function(resolve, reject) {
+  // 异步操作
+  if (/* 异步操作成功 */) {
+    resolve(result); // 将异步操作的结果传递给 then() 方法
+  } else {
+    reject(error); // 将异步操作的错误传递给 catch() 方法
+  }
+})
+.then(function(result) {
+  // 异步操作成功时执行的回调函数
+})
+.catch(function(error) {
+  // 异步操作失败时执行的回调函数
+});
+```
+
+
+
+### 方法
+
+| 方法                        | 描述                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| Promise.prototype.then()    | 返回一个 Promise 对象，代表着当前 Promise 对象的状态         |
+| Promise.prototype.catch()   | 返回一个 Promise 对象，用于捕获 Promise 对象的错误           |
+| Promise.prototype.finally() | 返回一个 Promise 对象，在 Promise 对象结束时无论结果如何都会执行 |
+| Promise.all()               | 接收一个 Promise 对象数组作为参数，返回一个新的 Promise 对象，当数组中的所有 Promise 对象都变为 resolved 时，返回的 Promise 对象的状态变为 resolved |
+| Promise.race()              | 接收一个 Promise 对象数组作为参数，返回一个新的 Promise 对象，它会在数组中的任何一个 Promise 对象变为 resolved 或 rejected 时立即返回 |
+| Promise.resolve()           | 返回一个 Promise 对象，状态为 resolved                       |
+| Promise.reject()            | 返回一个 Promise 对象，状态为 rejected                       |
+
+
+
+### 队列
+
+使用Promise实现队列可以让异步任务按照一定的顺序执行，确保它们在完成之前不会同时执行。下面是一个简单的例子，展示如何使用Promise来实现一个基本的队列：
+
+```js
+class Queue {
+  constructor() {
+    this.queue = [];
+    this.isProcessing = false;
+  }
+
+  addTask(task) {
+    this.queue.push(task);
+    if (!this.isProcessing) {
+      this.processQueue();
+    }
+  }
+
+  processQueue() {
+    if (this.queue.length > 0) {
+      this.isProcessing = true;
+      const task = this.queue.shift();
+      task().then(() => {
+        this.processQueue();
+      });
+    } else {
+      this.isProcessing = false;
+    }
+  }
+}
+```
+
+在这个例子中，我们创建了一个名为`Queue`的类，它包含了一个数组`queue`，用来存储任务。我们还有一个`isProcessing`变量，用来表示队列中是否有正在执行的任务。`addTask`方法用来添加新任务，并且会检查队列是否正在处理任务。如果队列没有正在处理的任务，它会立即开始处理队列。
+
+`processQueue`方法是用来实际执行队列的。如果队列中还有任务，则从队列中取出第一个任务并执行它。在任务完成之后，递归调用`processQueue`方法，以便处理下一个任务。如果队列中没有任务，我们将`isProcessing`设置为false，表示队列已经处理完毕。
+
+下面是一个例子，展示了如何使用`Queue`类来执行一系列异步任务：
+
+```js
+const queue = new Queue();
+
+queue.addTask(() => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('Task 1');
+      resolve();
+    }, 1000);
+  });
+});
+
+queue.addTask(() => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('Task 2');
+      resolve();
+    }, 500);
+  });
+});
+
+queue.addTask(() => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      console.log('Task 3');
+      resolve();
+    }, 2000);
+  });
+});
+```
+
+在这个例子中，我们首先创建了一个新的`Queue`对象。接着，我们添加了三个异步任务，分别等待1秒、0.5秒和2秒后输出它们的编号。由于我们使用了`Queue`类，这些任务会按照我们添加它们的顺序依次执行，因此它们的输出应该是按照编号递增的。
+
+
+
+### async和await
+
+语法糖可以使 Promise 的使用更加简便和易于理解。
+
+async/await 是 ES2017 引入的新特性，它提供了一种更加简单、直观的方式来使用 Promise。使用 async/await，可以在函数前面加上 `async` 关键字，然后使用 `await` 来等待 Promise 对象的结果。例如：
+
+```js
+async function fetchData() {
+  const result = await fetch('https://example.com/data.json');
+  const data = await result.json();
+  return data;
+}
+```
+
+1.  **`async` 关键字**
+
+在需要执行异步操作的函数前面加上 `async` 关键字，就可以将这个函数转换成一个返回 Promise 的函数。
+
+```js
+async function myAsyncFunction() {
+  // 异步操作
+  return result;
+}
+```
+
+2.   **`await` 关键字**
+
+在需要等待异步操作完成的代码前面加上 `await` 关键字，就可以暂停异步函数的执行，直到异步操作返回结果。
+
+```js
+async function myAsyncFunction() {
+  const result = await myPromise;
+  // 在这里处理结果
+}
+```
+
+需要注意的是，使用 `await` 的代码必须放在 `async` 函数内部，否则会报错。
+
+3.   **错误处理**
+
+使用 `try/catch` 来处理 `await` 抛出的错误，就像处理同步代码中的异常一样。
+
+```js
+async function myAsyncFunction() {
+  try {
+    const result = await myPromise;
+    // 在这里处理结果
+  } catch (error) {
+    // 在这里处理错误
+  }
+}
+```
+
+4.   **`async/await` 和 Promise 链式调用的结合**
+
+`async/await` 与 Promise 链式调用可以结合使用，使代码更加简洁清晰。
+
+```js
+async function myAsyncFunction() {
+  try {
+    const result1 = await fetch('https://example.com/data1.json');
+    const data1 = await result1.json();
+
+    const result2 = await fetch('https://example.com/data2.json');
+    const data2 = await result2.json();
+
+    // 在这里处理结果
+  } catch (error) {
+    // 在这里处理错误
+  }
+}
+```
+
+以上是 `async/await` 的基本用法，它可以让异步操作更加直观和易于理解。
+
+
+
+### fetch
+
+`fetch` 是一种用于发起网络请求的 JavaScript API，它基于 Promise，支持异步操作，用法如下：
+
+1.  **发送 GET 请求**
+
+```js
+fetch('https://example.com/data.json')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+2.   **发送 POST 请求**
+
+```js
+fetch('https://example.com/data.json', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'John', age: 30 })
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+3.   **发送带有身份验证的请求**
+
+```js
+const token = 'my-auth-token';
+
+fetch('https://example.com/data.json', {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+4.   **处理错误**
+
+```js
+fetch('https://example.com/data.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+5.   **设置超时**
+
+```js
+const controller = new AbortController();
+const timeout = setTimeout(() => {
+  controller.abort();
+}, 5000);
+
+fetch('https://example.com/data.json', {
+  signal: controller.signal
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+  .finally(() => clearTimeout(timeout));
+```
+
+以上是 `fetch` 的基本用法，它是一种简单、强大、易用的 API，可以用于处理网络请求和响应。需要注意的是，`fetch` 返回的是一个 Promise 对象，因此可以使用 Promise 链式调用的方式来处理网络请求的结果。
