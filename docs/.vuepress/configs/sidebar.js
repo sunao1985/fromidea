@@ -85,6 +85,7 @@ export const sidebar = {
                     '/system/macos/macos外接移动硬盘无法装载',
                     '/system/macos/macos如何开启或关闭系统SIP',
                     '/system/macos/macos清除本地DNS缓存',
+                    '/system/macos/hdmi_audio',
                 ]
             }]
         }
