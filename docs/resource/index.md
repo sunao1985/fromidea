@@ -172,4 +172,4 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 
 ![FssKycYaYAIuRGX](./assets/FssKycYaYAIuRGX.jpeg)
 
-[https://github.com/apple/ml-stable-diffusion](https://github.com/apple/ml-stable-diffusion)
+[https://github.com/godly-devotion/MochiDiffusion](https://github.com/godly-devotion/MochiDiffusion)
