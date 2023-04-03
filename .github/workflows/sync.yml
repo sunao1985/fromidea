@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run docs:build
       - name: Install ossutil
         run: |
           curl -L https://gosspublic.alicdn.com/ossutil/1.7.0/ossutil64 -o /usr/local/bin/ossutil
@@ -20,4 +24,4 @@ jobs:
           ACCESS_KEY_ID: LTAI5t7s6ZQh68iBxKZNDs7m
           ACCESS_KEY_SECRET: WRYGsdsmeJlQ7SV8BTh4Qc1VOdfo7H
         run: |
-          ossutil cp -r ./ oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com
+          ossutil cp -r ./docs/.vuepress/dist oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com
