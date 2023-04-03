@@ -163,3 +163,13 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 ![image-20230324095313340](./assets/image-20230324095313340.png)
 
 [https://driveandlisten.herokuapp.com/](https://driveandlisten.herokuapp.com/)
+
+
+
+### Mochi Diffusion - 基于苹果的AI图像生成
+
+基于苹果开源的 Core ML Stable Diffusion 框架 ，以实现在搭载 Apple 芯片的 Mac 上用极低的内存占用发挥出最优性能，并同时兼容搭载 Intel 芯片的 Mac。
+
+![FssKycYaYAIuRGX](./assets/FssKycYaYAIuRGX.jpeg)
+
+[https://github.com/apple/ml-stable-diffusion](https://github.com/apple/ml-stable-diffusion)
