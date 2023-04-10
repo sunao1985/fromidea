@@ -60,6 +60,11 @@ export const sidebar = {
                     children: [
                         '/tool/soft/chrome/chrome内置强大网页截图工具',
                     ]
+                }, {
+                    'text': 'github', link: '/tool/soft/github/',
+                    children: [
+                        '/tool/soft/github/如何利用github_action将提交的代码自动部署到阿里云OSS',
+                    ]
                 }
                 ]
             },

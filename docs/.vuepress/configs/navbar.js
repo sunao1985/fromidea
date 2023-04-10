@@ -47,6 +47,7 @@ export const navbar = [
                     { text: 'vscode', link: '/tool/soft/vscode' },
                     { text: 'git', link: '/tool/soft/git/' },
                     { text: 'chrome', link: '/tool/soft/chrome/' },
+                    { text: 'github', link: '/tool/soft/github/' },
                 ],
             },
             {
