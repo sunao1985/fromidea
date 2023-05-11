@@ -183,3 +183,23 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 ![image-20230511094107805](./assets/image-20230511094107805.png)
 
 [https://manateelazycat.github.io/index.html](https://manateelazycat.github.io/index.html)
+
+
+
+### GitBook
+
+快速创建知识库、产品文档。支持域名绑定。
+
+![image-20230511102207766](./assets/image-20230511102207766.png)
+
+[https://www.gitbook.com/](https://www.gitbook.com/)
+
+
+
+### Framer
+
+零代码，在线设计并生成web网站，流行风格、快速高效。
+
+![image-20230511102357188](./assets/image-20230511102357188.png)
+
+[https://www.framer.com/](https://www.framer.com/)
