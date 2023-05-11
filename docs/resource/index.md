@@ -173,3 +173,13 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 ![FssKycYaYAIuRGX](./assets/FssKycYaYAIuRGX.jpeg)
 
 [https://github.com/godly-devotion/MochiDiffusion](https://github.com/godly-devotion/MochiDiffusion)
+
+
+
+### manateelazycat博客
+
+一个技术大佬的个人博客，开源社区贡献者，涉猎广泛、内容丰富，可以看出作者非常善于思考。
+
+![image-20230511094107805](./assets/image-20230511094107805.png)
+
+[https://manateelazycat.github.io/index.html](https://manateelazycat.github.io/index.html)
