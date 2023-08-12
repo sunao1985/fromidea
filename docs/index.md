@@ -21,6 +21,6 @@ features:
   - title: 传播
     details: 让信息在云端流动
 
-footer: Write by <a href="mailto:sunao@pintecher.com">neosun@pintecher</a> <br> <small>· 转载请注明来源于 Fromidea.com · <br> <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备18008522号-3</a> </small>
+footer: Write by <a href="mailto:sunao@pintecher.com">sunao@pintecher</a> <br> <small>· 转载请注明来源于 Fromidea.com · <br> <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备18008522号-3</a> </small>
 footerHtml: true
 ---
