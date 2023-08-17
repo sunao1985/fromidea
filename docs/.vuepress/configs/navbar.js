@@ -81,4 +81,8 @@ export const navbar = [
         text: '优质资源',
         link: '/resource/'
     },
+    {
+        text: '关于',
+        link: '/about'
+    }
 ]
