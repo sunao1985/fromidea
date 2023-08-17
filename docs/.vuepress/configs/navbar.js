@@ -68,9 +68,10 @@ export const navbar = [
         ],
     },
     {
-        text: '地理',
+        text: '业余',
         children: [
-            { 'text': '城市', 'link': '/geo/city/', }
+            { 'text': '读书', 'link': '/read/', },
+            { 'text': '城市', 'link': '/geo/city/', },
         ]
     },
     {
@@ -78,7 +79,7 @@ export const navbar = [
         link: '/blog/'
     },
     {
-        text: '优质资源',
+        text: '优选',
         link: '/resource/'
     },
     {

@@ -38,7 +38,7 @@ export default defineUserConfig({
     backToHome: '回到 Fromidea 首页',
     notFound: ['迷路了？不要紧。'],
     navbar: navbar,
-    sidebar: sidebar,
+    sidebar: 'auto',
     sidebarDepth: 5,
     repo: 'https://github.com/sunao1985/fromidea',
     docsDir: 'docs',
