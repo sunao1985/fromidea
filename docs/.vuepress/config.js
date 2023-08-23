@@ -3,9 +3,7 @@ import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme } from '@vuepress/theme-default'
 import { containerPlugin } from '@vuepress/plugin-container'
 
-import {
-  ua, navbar, sidebar
-} from './configs/index'
+import { ua, navbar } from './configs/index'
 
 export default defineUserConfig({
   lang: 'zh-CN',

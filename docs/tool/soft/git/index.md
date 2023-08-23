@@ -1,8 +1,10 @@
+# git学习手册
+
 ![f7246b600c338744a9591cd7530fd9f9d62aa0f8](./assets/f7246b600c338744a9591cd7530fd9f9d62aa0f8.png)
 
 
 
-## 什么是Git？
+### 什么是Git？
 
 Git 是一个开源的**分布式版本控制系统**。
 
@@ -10,7 +12,7 @@ Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分�
 
 
 
-## Git 与 SVN 区别
+### Git 与 SVN 区别
 
 1、**Git 是分布式的，SVN 不是**：这是 Git 和其它非分布式的版本控制系统，例如 SVN，CVS 等，最核心的区别。
 
@@ -23,20 +25,14 @@ Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分�
 5、**Git 的内容完整性要优于 SVN**：Git 的内容存储使用的是 SHA-1 哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
 
 
-
-
-
-## Git 安装
+### Git 安装
 
 访问[https://git-scm.com/downloads](https://git-scm.com/downloads)选择对应平台下载安装
 
 ![image-20221205123612139](./assets/image-20221205123612139.png)
 
 
-
-
-
-## Git 配置
+### Git 配置
 
 Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。
 
@@ -45,7 +41,6 @@ Git 提供了一个叫做 git config 的工具，专门用来配置或读取相�
 -   `/etc/gitconfig` 文件：系统中对所有用户都普遍适用的配置。若使用 `git config` 时用 `--system` 选项，读写的就是这个文件。
 -   `~/.gitconfig` 文件：用户目录下的配置文件只适用于该用户。若使用 `git config` 时用 `--global` 选项，读写的就是这个文件。
 -   当前项目的 Git 目录中的配置文件（也就是工作目录中的 `.git/config` 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以 `.git/config` 里的配置会覆盖 `/etc/gitconfig` 中的同名变量。
-
 
 
 **配置个人的用户名称和电子邮件地址：**
@@ -58,7 +53,6 @@ git config --global user.email ...@...
 >如果用了 **--global** 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。
 >
 >如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
-
 
 
 **查看配置信息**
@@ -88,10 +82,7 @@ vim ~/.gitconfig
 ```
 
 
-
-
-
-## Git 工作流程
+### Git 工作流程
 
 -   克隆 Git 资源作为项目目录。
 -   在克隆的资源上添加或修改文件。
@@ -101,20 +92,14 @@ vim ~/.gitconfig
 -   在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。
 
 
-
-
-
-## Git 工作区、暂存区和版本库
+### Git 工作区、暂存区和版本库
 
 -   **工作区**：就是你在电脑里能看到的目录。
 -   **暂存区**：英文叫 stage 或 index。一般存放在 **.git** 目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
 -   **版本库**：工作区有一个隐藏目录 **.git**，这个不算工作区，而是 Git 的版本库。
 
 
-
-
-
-## Git 创建仓库
+### Git 创建仓库
 
 Git 使用 git init 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 git init 是使用 Git 的第一个命令。
 
@@ -191,10 +176,7 @@ git config --global user.email ...@...
 如果去掉 **--global** 参数只对当前仓库有效。
 
 
-
-
-
-## Git 基本操作
+### Git 基本操作
 
 Git 常用的是以下 6 个命令：
 
@@ -302,7 +284,7 @@ git diff --cached
 
 
 
-## Git 分支管理
+### Git 分支管理
 
 几乎每一种版本控制系统都以某种形式支持分支，一个分支代表一条独立的开发线。
 
@@ -616,7 +598,7 @@ $ git commit
 
 
 
-## Git 查看提交历史记录
+### Git 查看提交历史记录
 
 -   **git log** - 查看历史提交记录。
 -   **git blame** - 以列表形式查看指定文件的历史修改记录。
@@ -647,7 +629,7 @@ git blame <file>
 
 
 
-## Git 标签
+### Git 标签
 
 如果你达到一个重要的阶段，并希望永远记住那个特别的提交快照，你可以使用 git tag 给它打上标签。
 
@@ -702,13 +684,9 @@ git tag -s <tagname> -m "runoob.com标签"
 
 
 
-
-
-## 常见问题
-
-
-
-### 如何将本地Git项目上传同步到Github
+### 常见问题
+---
+#### 如何将本地Git项目上传同步到Github
 
 首先，确保本地Git项目已经创建。
 
@@ -741,10 +719,9 @@ git push -u origin main
 ```
 
 
+---
 
-
-
-### Failed to connect to github.com port 443 after 问题解决
+#### Failed to connect to github.com port 443 after 问题解决
 
 当你进行 ```git push```的时候，是不是会报以下错误：
 
@@ -761,8 +738,9 @@ fatal: unable to access 'https://github.com/...': Failed to connect to github.co
 你只需要将你的设备网络连接DNS修改为：```114.114.114.114```，即可解决。
 
 
+---
 
-### 如何清除Git中的.DS_Store文件
+#### 如何清除Git中的.DS_Store文件
 
 >   .DS_Store文件是苹果公司macos操作系统所生成的系统文件，类似于windows操作系统下的desktop.ini文件。主要用来存储目录的自定义属性，例如图标、背景色等。
 

@@ -51,12 +51,13 @@ export const navbar = [
                     { text: 'git', link: '/tool/soft/git/' },
                     { text: 'chrome', link: '/tool/soft/chrome/' },
                     { text: 'github', link: '/tool/soft/github/' },
+                    { text: 'npm', link: '/tool/soft/npm/' },
                 ],
             },
             {
                 'text': '硬件',
                 children: [
-                    { text: 'MacBook Air M1', link: '/tool/hardware/macbook' }
+                    { text: 'MacBook Air M1', link: '/tool/hardware/macbook.md' }
                 ]
             }
         ],
@@ -70,8 +71,9 @@ export const navbar = [
     {
         text: '业余',
         children: [
-            { 'text': '读书', 'link': '/read/', },
-            { 'text': '城市', 'link': '/geo/city/', },
+            { 'text': '读书', 'link': '/read/'},
+            { 'text': '城市', 'link': '/geo/city/'},
+            { 'text': '摄影', 'link': '/shoot/'},
         ]
     },
     {
