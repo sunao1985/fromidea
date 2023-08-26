@@ -32,10 +32,10 @@ export default defineUserConfig({
     },
   },
   theme: defaultTheme({
-    logo: null,
+    navbar,
+    logo: '/images/hero.png',
     backToHome: '回到 Fromidea 首页',
     notFound: ['迷路了？不要紧。'],
-    navbar: navbar,
     sidebar: 'auto',
     sidebarDepth: 5,
     repo: 'https://github.com/sunao1985/fromidea',
