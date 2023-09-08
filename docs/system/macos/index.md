@@ -15,3 +15,5 @@ sidebar: false
 #### [macos清除本地DNS缓存](macos清除本地DNS缓存.md)  
 
 #### [解决macos系统采用hdmi音频输出时音量无法调节的问题](hdmi_audio.md) 
+
+#### [解决macos蓝牙或妙控鼠标跟踪移动速度不灵敏问题](解决macos蓝牙或妙控鼠标跟踪移动速度不灵敏问题.md)
