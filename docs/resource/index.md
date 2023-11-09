@@ -213,3 +213,20 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 ![Xnip2023-08-16_09-40-09](./assets/Xnip2023-08-16_09-40-09.png)
 
 [https://zh.javascript.info/](https://zh.javascript.info/)
+
+
+### 精确获取IP地址的详细数据
+
+为世界各地的组织提供可靠的 IP 数据，仅需几分钟即可配置好API接口。
+并且提供**免费的数据库**下载。
+
+![](assets/Xnip2023-11-09_12-17-51.png)[https://ipinfo.io/](https://ipinfo.io/)
+
+
+### 深入架构原理与实践
+
+关于架构设计的开源电子书，预计 2024 年 3 月左右正式出版。目前作者还在逐渐完善内容中。
+
+![](assets/Xnip2023-11-09_12-17-18.png)
+
+[https://www.thebyte.com.cn/](https://www.thebyte.com.cn/)
