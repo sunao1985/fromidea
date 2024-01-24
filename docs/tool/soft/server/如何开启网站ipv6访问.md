@@ -68,11 +68,13 @@
 
 2.   在打开的IPv6网关页面，点击你的「实例ID/名称」。
 
-     <img src="./assets/image-20240123143442275.png" alt="image-20240123143442275" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
 
-3.   进入详细页面后，可以看到IPv6地址尚未开通公网带宽。点击后方的「开通公网带宽」。
+<img src="./assets/image-20240123143442275.png" alt="image-20240123143442275" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
 
-     <img src="./assets/image-20240123143713431.png" alt="image-20240123143713431" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
+2.   进入详细页面后，可以看到IPv6地址尚未开通公网带宽。点击后方的「开通公网带宽」。
+
+
+<img src="./assets/image-20240123143713431.png" alt="image-20240123143713431" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
 
 根据适合你的付费方式，进行选择并支付开通即可。
 
@@ -106,14 +108,15 @@
 
      默认网站绑定IP地址是`*`，即不分配，检查该配置未被改动。
 
-     <img src="./assets/image-20240123145003757.png" alt="image-20240123145003757" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
 
-2.   Nginx
+<img src="./assets/image-20240123145003757.png" alt="image-20240123145003757" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
+
+1.   Nginx
 
      默认 Nginx 的配置文件（/etc/nginx/nginx.conf）已经开启 IPv6 访问，检查是否开放。
 
      ```conf
-         server {
+       server {
              listen       80;
              listen       [::]:80;  ## 监听 IPv6 的 80 端口
              ...
@@ -128,7 +131,8 @@
 
 2.   如果一切正常，这里会显示「200 请求成功」
 
-     <img src="./assets/image-20240123144611365.png" alt="image-20240123144611365" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
+
+<img src="./assets/image-20240123144611365.png" alt="image-20240123144611365" style="display:block;width:500px;margin:0 auto;border:1px #ccc solid;padding:15px;"/>
 
 
 

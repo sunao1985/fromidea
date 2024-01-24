@@ -17,3 +17,5 @@ sidebar: false
 #### [解决macos系统采用hdmi音频输出时音量无法调节的问题](hdmi_audio.md) 
 
 #### [解决macos蓝牙或妙控鼠标跟踪移动速度不灵敏问题](解决macos蓝牙或妙控鼠标跟踪移动速度不灵敏问题.md)
+
+#### [MacOS文件批量重命名](MacOS文件批量重命名.md) 
