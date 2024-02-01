@@ -230,3 +230,13 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 ![](assets/Xnip2023-11-09_12-17-18.png)
 
 [https://www.thebyte.com.cn/](https://www.thebyte.com.cn/)
+
+
+
+### Swift中文指南
+
+由于苹果官方并没有提供Swift中文手册，因此中文翻译版的质量和更新速度显得尤为重要。这个网站作者称：可能是最用心的翻译了，并同步更新苹果[官方的 Swift 开发者预览版 ](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0)！
+
+![image-20240201095630360](./assets/image-20240201095630360.png)
+
+[https://www.cnswift.org/](https://www.cnswift.org/)
