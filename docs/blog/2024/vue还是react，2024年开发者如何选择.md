@@ -143,7 +143,7 @@ button {
 
 
 
-```react
+```javascript
 import { useState } from 'react';
 
 function Counter() {
@@ -241,7 +241,7 @@ Vue 曾经拥有名为 Vue Native 的移动开发产品。然而，它早已被�
 
 运行以下命令创建一个新的 Vue 项目。该命令将安装并触发 `create-vue` ，一个由 Vite 支持的脚手架工具。它提供了我们可以根据自己的喜好配置 Vue 应用程序的提示。
 
-```
+```shell
 npm create vue@latest
 ```
 
@@ -253,7 +253,7 @@ npm create vue@latest
 
 连续运行以下命令完成安装过程。第一个命令导航到项目目录，第二个命令安装 Vue 所需的第三方依赖项，最后一个命令启动开发服务器。
 
-```
+```shell
 cd <name-of-project>
 npm install
 npm run dev
@@ -297,7 +297,7 @@ todo 应用程序包括：
 
 首先是 `TodoList` 组件。现在，我们将对待办事项进行硬编码。然而，我们将改变这一点并以编程方式填充它们。
 
-```
+```vue
 <!-- ./src/components/TodoList.vue -->
 <template>
   <ul>
@@ -309,7 +309,7 @@ todo 应用程序包括：
 
 然后是 `AddTodo` 组件。
 
-```
+```vue
 <!-- ./src/components/AddTodo.vue -->
 <template>
   <div>
@@ -321,7 +321,7 @@ todo 应用程序包括：
 
 最后，我们注册组件并将它们放在主页中，即 `App.vue` 文件。
 
-```
+```vue
 <!-- ./src/App.vue -->
 <script>
 import AddTodo from "./components/AddTodo.vue";
@@ -354,7 +354,7 @@ export default {
 
 为此，我们需要更新 `App.vue` 文件。
 
-```
+```vue
 <script>
 import AddTodo from "./components/AddTodo.vue";
 import TodoList from "./components/TodoList.vue";
@@ -396,7 +396,7 @@ export default {
 
 为此，我们需要更新 `AddTodo.vue` 文件中的代码。
 
-```
+```vue
 <script>
 export default {
   name: "AddTodo",
@@ -435,7 +435,7 @@ export default {
 
 最后，我们需要显示处于待办事项状态的待办事项，而不是在 TodoList.vue 组件中将它们硬编码。
 
-```
+```vue
 <template>
   <ul>
     <li v-for="todo in todos" :key="todo.id">
@@ -470,7 +470,7 @@ React 团队建议使用 Gatsby、Next.js 和 Remix 等基于 React 的框架来
 
 就像 `create-vue` 一样， `create-next-app` CLI 工具可帮助创建和配置新的 Next.js 应用程序。运行以下命令来创建一个新项目。
 
-```
+```shell
 npx create-next-app@latest
 ```
 
@@ -482,7 +482,7 @@ npx create-next-app@latest
 
 与 Vue 一样，第一个命令导航到项目的目录。我们使用 `create-next-app` 创建项目，它为我们处理依赖项，因此我们需要做的就是使用下面的第二个命令启动开发服务器。
 
-```
+```shell
 cd <name-of-project>
 npm run dev
 ```
@@ -518,13 +518,13 @@ React 的生态系统充满了我们可以利用的几个优秀的开源解决�
 React 应用程序的用户界面与 Vue 版本相同，因此我们不会详细介绍。唯一的区别是我们将在这里使用 Chakra UI。
 首先，让我们通过在终端的单独选项卡中运行以下命令来安装 Chakra UI（如果您不使用 npm，您可以按照此处的其他安装说明进行操作）：
 
-```
+```shell
 npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
 
 我们还将使用 `uuid` 为每个待办事项提供唯一的 ID。因此，在终端的新选项卡中，运行以下命令，这样当我们添加该代码时就不会出现错误。
 
-```
+```shell
 npm install uuid
 ```
 
@@ -534,7 +534,7 @@ npm install uuid
 
 现在，让我们通过添加以下代码来更新 `layout.js` 文件以导入 Chakra 组件：
 
-```
+```js
 // ./src/app/layout.js
 import './globals.css'
 import { ChakraProvider } from "@chakra-ui/react";
@@ -556,7 +556,7 @@ export default function RootLayout({ children }) {
 
 该状态将存在于主页组件中，该组件位于 `/src/app/page.js` 文件中。使用下面的代码更新它。
 
-```
+```js
 // ./src/app/page.js
 
 "use client";
@@ -599,7 +599,7 @@ export default function Home() {
 
 在 `/src` 内，创建一个 `/components` 目录并在其中添加我们的 `AddTodo.js` 文件。将以下代码添加到 `AddTodo.js` 文件中。
 
-```
+```js
 // ./src/components/AddTodo.js
 import { useRef } from "react";
 import { Button, HStack, Input } from "@chakra-ui/react";
@@ -649,7 +649,7 @@ Here, we: 在这里，我们：
 
 现在，在 `/components` 目录中添加一个 `TodoList.js` 文件，并将以下代码添加到该文件中。
 
-```
+```js
 // ./src/components/TodoList.js
 import { HStack, Text, VStack } from "@chakra-ui/react";
 
