@@ -206,14 +206,6 @@ Notesnook是一款开源的私人笔记应用。官方称该应用可以让您�
 
 
 
-### 现代Javascript教程
-
-这个教程是我所见过讲解javascript最详细的， 且使用了大量浅显易懂、由浅入深的示例，可以有效的进行渐进式学习。快速提升js水平。也不失为js老手，随身的查阅工具。
-
-![Xnip2023-08-16_09-40-09](./assets/Xnip2023-08-16_09-40-09.png)
-
-[https://zh.javascript.info/](https://zh.javascript.info/)
-
 
 ### 精确获取IP地址的详细数据
 

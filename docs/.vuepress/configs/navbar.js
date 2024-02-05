@@ -12,11 +12,8 @@ export const navbar = [
             'children': [
                 { text: 'HTML', link: 'https://wangdoc.com/html/' },
                 { text: 'CSS', link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS' },
-                { text: 'JavaScript', link: 'https://wangdoc.com/javascript/' },
-                { text: 'ES6', link: 'https://wangdoc.com/es6/' },
+                { text: 'JavaScript', link: 'https://zh.javascript.info/' },
                 { text: 'TypeScript', link: 'https://wangdoc.com/typescript/' },
-                { text: 'PHP', link: 'https://doc.houdunren.com/%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B/php/1%20%E5%89%8D%E8%A8%80.html' },
-                { text: 'MySQL', link: 'https://doc.houdunren.com/%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B/mysql/1%20%E5%AD%A6%E5%89%8D%E5%87%86%E5%A4%87.html' },
             ]
         },
         {
