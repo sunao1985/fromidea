@@ -12,20 +12,6 @@
 
 
 
-
-
-### 数字图书馆-Zlibrary
-
-全球最大的数字图书馆，提供电子书免费下载。资源数量超出你的想象。
-
-![Xnip2022-10-19_10-21-42](./assets/Xnip2022-10-19_10-21-42.png)
-
-[https://zh.z-lib.org/](https://zh.z-lib.org/)
-
-
-
-
-
 ### 编程字体
 
 这个网站提供了近百种编程字体，可以切换查看效果，以供选择。
@@ -33,22 +19,6 @@
 ![image-20221006174033573](./assets/image-20221006174033573.png)
 
 [https://www.programmingfonts.org/](https://www.programmingfonts.org/)
-
-
-
-
-
-### 程序员音乐-编程背景音乐播放器
-
-一个极客编程风格的音乐网站，内置了一些歌曲和专辑，适合编程时当作背景音乐。
-
-它的界面完全采用字符终端样式。
-
-![image-20221006174514735](./assets/image-20221006174514735.png)
-
-[https://musicforprogramming.net/latest/](https://musicforprogramming.net/latest/)
-
-
 
 
 
@@ -62,8 +32,6 @@
 
 
 
-
-
 ### 前端面试之道
 
 由汪图南同学编写的这篇前端面试指南，是前端之必备手册。
@@ -71,8 +39,6 @@
 ![image-20221006182447805](./assets/image-20221006182447805.png)
 
 [https://wangtunan.github.io/blog/interview/](https://wangtunan.github.io/blog/interview/)
-
-
 
 
 
@@ -86,8 +52,6 @@
 
 
 
-
-
 ### Warp-Shell工具
 
 一款运行于MacOS的Shell工具，代码自动补全，历史记录以及极简的设计风格，一定会让你爱不释手。
@@ -95,18 +59,6 @@
 ![image-20221019102709002](./assets/image-20221019102709002.png)
 
 [https://www.warp.dev/](https://www.warp.dev/)
-
-
-
-### 开发人员备忘清单-速查表
-
-一个为开发人员提供快速参考备忘清单的网站。相当于 Reference 的中国版，由国内开发者搬运、整理、翻译、完善。同时你也可以帮助他一起构建该清单。
-
-![Xnip2022-11-15_09-49-21](./assets/Xnip2022-11-15_09-49-21.png)
-
-[https://wangchujiang.com/reference/](https://wangchujiang.com/reference/)
-
-
 
 
 

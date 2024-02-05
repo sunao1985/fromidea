@@ -19,9 +19,9 @@ export const navbar = [
         {
             'text': '其它',
             'children': [
+                { text: '程序员速查表', link: 'https://wangchujiang.com/reference/index.html' },
                 { text: '正则表达式', link: '/program/regexp/' },
                 { text: 'JavaScript学习笔记', link: '/program/javascript/' },
-                { text: 'vue3学习笔记', link: '/program/vue/' },
                 { text: 'web开发常见问题', link: '/program/questions/' }
             ]
         }
@@ -52,17 +52,11 @@ export const navbar = [
                 ],
             },
             {
-                'text': '硬件',
+                text: '系统',
                 children: [
-                    { text: 'MacBook Air M1', link: '/tool/hardware/macbook.md' }
-                ]
-            }
-        ],
-    },
-    {
-        text: '系统',
-        children: [
-            { text: 'MacOS', link: '/system/macos/' }
+                    { text: 'MacOS', link: '/system/macos/' }
+                ],
+            },
         ],
     },
     {
@@ -85,5 +79,9 @@ export const navbar = [
     {
         text: '关于',
         link: '/about'
-    }
+    },
+    {
+        text: '编程音乐',
+        link: 'https://musicforprogramming.net/'
+    },
 ]
