@@ -43,8 +43,8 @@ export const navbar = [
             {
                 'text': '软件',
                 children: [
-                    { text: 'server', link: '/tool/soft/server' },
-                    { text: 'vscode', link: '/tool/soft/vscode' },
+                    { text: 'server', link: '/tool/soft/server/' },
+                    { text: 'vscode', link: '/tool/soft/vscode/' },
                     { text: 'git', link: '/tool/soft/git/' },
                     { text: 'chrome', link: '/tool/soft/chrome/' },
                     { text: 'github', link: '/tool/soft/github/' },
