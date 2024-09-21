@@ -2,6 +2,7 @@ import { defineUserConfig } from 'vuepress'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme } from '@vuepress/theme-default'
 import { containerPlugin } from '@vuepress/plugin-container'
+import { viteBundler } from '@vuepress/bundler-vite'
 
 import { ua, navbar } from './configs/index'
 
@@ -9,6 +10,10 @@ export default defineUserConfig({
   lang: 'zh-CN',
   title: 'Fromidea',
   description: '技术日志，html5/css3/javascript/vue3/php/mac/os/mysql...',
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
   head: [
     ['link', { rel: 'icon', href: '/images/fromidea.png' }],
     ['meta', { name: 'baidu-site-verification', content: 'code-xzTgMvorot' }],
