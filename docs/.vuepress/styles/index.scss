@@ -7,15 +7,18 @@
 }
 
 /** 容器定义 */
-.custom-container{
-    &.center{
+.custom-container {
+    &.center {
         text-align: center;
     }
 }
 
-.page-home{
-    .home{
-        .features{text-align: center;margin-top:5rem;}
+.page-home {
+    .vp-home {
+        .vp-features {
+            text-align: center;
+            margin-top: 5rem;
+        }
     }
 }
 
@@ -27,12 +30,15 @@
     box-shadow: var(--vt-shadow-2);
     margin-bottom: 1.2em;
     transition: background-color .5s ease;
-    p{margin:0}
+
+    p {
+        margin: 0
+    }
 }
 
-@media (max-width: 719px){
+@media (max-width: 719px) {
 
-    .home .feature {
+    .vp-home .vp-feature {
         width: 100%;
         text-align: center;
         padding: 0;
