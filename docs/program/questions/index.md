@@ -1,3 +1,6 @@
+---
+sidebar: false
+---
 # web开发常见问题
 
 

@@ -32,6 +32,9 @@ export default defineUserConfig({
     })
   ],
   markdown: {
+    toc: {
+      level: [2, 3],
+    },
     headers: {
       level: [2, 3, 4, 5],
     },
@@ -41,7 +44,7 @@ export default defineUserConfig({
     logo: '/images/hero.png',
     backToHome: '回到 Fromidea 首页',
     notFound: ['迷路了？不要紧。'],
-    sidebar: 'auto',
+    sidebar: 'heading',
     sidebarDepth: 5,
     repo: 'https://github.com/sunao1985/fromidea',
     docsDir: 'docs',
