@@ -66,6 +66,7 @@ export const navbar = [
             { 'text': '城市', 'link': '/geo/city/'},
             { 'text': '摄影', 'link': '/shoot/'},
             { 'text': '健康', 'link': '/health/'},
+            { 'text': 'HIFI', 'link': '/hifi/'},
         ]
     },
     {

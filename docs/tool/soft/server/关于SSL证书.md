@@ -16,7 +16,7 @@ SSL 证书中最重要的信息之一是网站的公共密钥。公钥使得加�
 
 
 
-<img src="./assets/http-vs-https.svg" alt="HTTP 与 HTTPS" style="width:65%;display:block;margin:0 auto;padding: 15px 0;"/>
+<img src="./assets/http-vs-https.svg" alt="HTTP 与 HTTPS" style="width:50%;display:block;margin:0 auto;padding: 15px 0;"/>
 
 
 

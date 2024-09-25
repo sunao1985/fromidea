@@ -31,14 +31,6 @@ export default defineUserConfig({
       type: 'center',
     })
   ],
-  markdown: {
-    toc: {
-      level: [2, 3],
-    },
-    headers: {
-      level: [2, 3, 4, 5],
-    },
-  },
   theme: defaultTheme({
     navbar,
     logo: '/images/hero.png',
