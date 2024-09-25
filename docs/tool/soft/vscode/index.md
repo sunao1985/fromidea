@@ -12,3 +12,6 @@ sidebar: false
 #### [vscode如何自定义配置“代码格式化”](vscode如何自定义配置“代码格式化”.md)  
 
 #### [解决vscode live server无法热更新(不刷新/不工作)的问题](解决vscode-live-server无法热更新的问题.md)
+
+#### [vscode远程开发如何配置](vscode远程开发如何配置.md)
+
