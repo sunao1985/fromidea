@@ -54,7 +54,8 @@ export const navbar = [
             {
                 text: '系统',
                 children: [
-                    { text: 'MacOS', link: '/system/macos/' }
+                    { text: 'MacOS', link: '/system/macos/' },
+                    { text: 'iPadOS', link: '/system/ipados/' }
                 ],
             },
         ],

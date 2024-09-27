@@ -9,7 +9,7 @@ import { ua, navbar } from './configs/index'
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'Fromidea',
-  description: '技术日志，html5/css3/javascript/vue3/php/mac/os/mysql...',
+  description: '技术日志，web开发，html5/css3/javascript/vue3/php/mac/os/mysql...',
   bundler: viteBundler({
     viteOptions: {},
     vuePluginOptions: {},
