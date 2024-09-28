@@ -21,6 +21,6 @@ features:
   - title: 传播
     details: 让信息在云端流动
 
-footer: Write by <a href="mailto:sunao@pintecher.com">sunao@pintecher</a> <br> <small>· 转载请注明来源于 Fromidea.com · <br> <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备18008522号-3</a> </small>
+footer: Write by <a href="mailto:sunao@pintecher.com" style="display:inline-block;margin-bottom:8px;">sunao@pintecher</a> <div style="display:none;"><br>  友情链接 | <a href="http://exam.pinge360.com" title="人事考试网上报名系统">人事考试报名管理系统</a> <a href="http://eat.pinge360.com/" title="准考证在线打印系统">准考证在线打印系统</a> <a href="http://rms.ikaowu.com/" title="网上报名系统">网上报名系统</a></div> <br><small> · 转载请注明来源于 Fromidea.com · <br> <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备18008522号-3</a></small>
 footerHtml: true
 ---
