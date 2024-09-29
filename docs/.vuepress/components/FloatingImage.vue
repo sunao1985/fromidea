@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      imageSrc: 'images/floating.png', // 默认图片
+      imageSrc: '/images/floating.png', // 默认图片
     }
   },
   mounted() {
@@ -24,8 +24,8 @@ export default {
     updateImageSrc() {
       const isMobile = window.innerWidth <= 768; // 768px 以下为移动端
       this.imageSrc = isMobile
-        ? 'images/floating-small.png'  // 移动端使用的较小图片
-        : 'images/floating.png';       // 桌面端使用的较大图片
+        ? '/images/floating-small.png'  // 移动端使用的较小图片
+        : '/images/floating.png';       // 桌面端使用的较大图片
     },
   },
 }
