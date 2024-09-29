@@ -10,7 +10,7 @@ sidebar: false
 
 性别：男
 
-年龄：X6
+年龄：36+
 
 熟悉：JS / HTML / CSS / PHP / MYSQL / web design in Sketch / Server configuration
 
@@ -18,4 +18,16 @@ sidebar: false
 
 从业年限：15year+
 
-联系方式：[douban](https://www.douban.com/people/aosun/) / [email](mailto:sunao@pintecher.com)
+联系方式：[email](mailto:sunao@pintecher.com)
+
+---
+
+### 付费解答
+
+扫码添加我的微信，将问题尽量详细的用文字表达出来。
+
+我会根据您的问题给出具体收费金额。
+
+通常解答收费：**¥9.9元/次**。
+
+<img src="./assets/wechat.jpg" alt="wechat" style="zoom:20%;" />
