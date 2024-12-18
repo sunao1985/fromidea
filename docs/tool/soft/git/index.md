@@ -178,14 +178,20 @@ git config --global user.email ...@...
 
 ### Git 基本操作
 
-Git 常用的是以下 6 个命令：
+Git 常用的命令：
 
--   git clone
--   git push
--   git add 
--   git commit
--   git checkout
--   git pull
+-   **git init:** 在当前目录初始化一个新的Git仓库。
+-   **git clone [url]:** 克隆一个远程仓库到本地。
+-   **git add [file]:** 将文件添加到暂存区。
+-   **git commit -m "提交信息":** 提交暂存区中的内容。
+-   **git status:** 查看当前仓库的状态。
+-   **git log:** 显示提交历史。
+-   **git diff:** 显示工作区与暂存区或提交之间的差异。
+-   **git branch:** 列出本地分支。
+-   **git checkout [branch]:** 切换分支。
+-   **git merge [branch]:** 合并指定分支到当前分支。
+-   **git push:** 将本地分支推送到远程仓库。
+-   **git pull:** 从远程仓库拉取最新代码。
 
 
 
