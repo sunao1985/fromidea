@@ -14,6 +14,7 @@ export const navbar = [
                 { text: 'CSS', link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS' },
                 { text: 'JavaScript', link: 'https://zh.javascript.info/' },
                 { text: 'TypeScript', link: 'https://wangdoc.com/typescript/' },
+                { text: 'Node.js', link: 'https://dev.nodejs.cn/learn' },
             ]
         },
         {
