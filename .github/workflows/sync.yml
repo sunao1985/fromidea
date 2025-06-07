@@ -49,9 +49,10 @@ jobs:
           ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          # 1. 上传一个新的 index.html 文件，自动重定向到最新版本
+          # 1. 上传一个新的 index.html 文件，覆盖原文件，自动重定向到最新版本
           echo "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"0; url=/$DEPLOY_DIR/index.html\" /></head></html>" > index.html
           ossutil cp index.html oss://fromidea/index.html \
-          --access-key-id=$ACCESS_KEY_ID \
-          --access-key-secret=$ACCESS_KEY_SECRET \
-          --endpoint=oss-cn-hangzhou.aliyuncs.com
+            --access-key-id=$ACCESS_KEY_ID \
+            --access-key-secret=$ACCESS_KEY_SECRET \
+            --endpoint=oss-cn-hangzhou.aliyuncs.com \
+            --update
