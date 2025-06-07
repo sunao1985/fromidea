@@ -49,15 +49,15 @@ jobs:
           ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          # 1. Upload a new index.html that redirects to the new version
+          # 1. 上传一个新的 index.html 文件，自动重定向到最新版本
           echo "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"0; url=/$DEPLOY_DIR/index.html\" /></head></html>" > index.html
           ossutil cp index.html oss://fromidea/index.html \
-            --access-key-id=$ACCESS_KEY_ID \
-            --access-key-secret=$ACCESS_KEY_SECRET \
-            --endpoint=oss-cn-hangzhou.aliyuncs.com
+          --access-key-id=$ACCESS_KEY_ID \
+          --access-key-secret=$ACCESS_KEY_SECRET \
+          --endpoint=oss-cn-hangzhou.aliyuncs.com
 
-          # 2. Alternatively, if using OSS static website hosting with routing rules:
-          # You can configure OSS to serve the new version directly
+          # 2. 或者，如果使用 OSS 静态网站托管与路由规则：
+          # 可以配置 OSS 直接提供新版本的内容
 
       - name: Clean up old deployments (safely exclude current)
         env:
@@ -66,22 +66,22 @@ jobs:
         run: |
           # 获取所有部署目录（按时间倒序）
           ossutil ls oss://fromidea/ \
-            --access-key-id=$ACCESS_KEY_ID \
-            --access-key-secret=$ACCESS_KEY_SECRET \
-            --endpoint=oss-cn-hangzhou.aliyuncs.com | \
-            grep -o "oss://fromidea/deploy-[0-9]*" | \
-            sort -r > all_deploys.txt
+          --access-key-id=$ACCESS_KEY_ID \
+          --access-key-secret=$ACCESS_KEY_SECRET \
+          --endpoint=oss-cn-hangzhou.aliyuncs.com | \
+          grep -o "oss://fromidea/deploy-[0-9]*" | \
+          sort -r > all_deploys.txt
 
-          # 读取当前部署目录（从环境变量）
-          echo "Current deploy: $DEPLOY_DIR"
+          # 输出当前部署目录（从环境变量）
+          echo "当前部署: $DEPLOY_DIR"
 
-          # 排除当前版本后，取第6个及以后的旧版本
-          grep -v "deploy-$DEPLOY_DIR$" all_deploys.txt | \
-            tail -n +6 | \
-            xargs -I {} sh -c '
-              echo "Deleting old deploy: {}";
-              ossutil rm -rf {} \
-                --access-key-id=$ACCESS_KEY_ID \
-                --access-key-secret=$ACCESS_KEY_SECRET \
-                --endpoint=oss-cn-hangzhou.aliyuncs.com
-            ' || echo "No old deployments to clean"
+          # 排除当前版本后，保留最近5个版本，删除更早的旧版本
+          grep -v "oss://fromidea/deploy-$DEPLOY_DIR$" all_deploys.txt | \
+          tail -n +6 | \
+          xargs -I {} sh -c '
+            echo "正在删除旧部署: {}";
+            ossutil rm -rf {} \
+              --access-key-id=$ACCESS_KEY_ID \
+              --access-key-secret=$ACCESS_KEY_SECRET \
+              --endpoint=oss-cn-hangzhou.aliyuncs.com
+          ' || echo "没有需要清理的旧部署"
