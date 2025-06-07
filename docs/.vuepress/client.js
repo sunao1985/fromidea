@@ -6,6 +6,6 @@ export default defineClientConfig({
     // 页面加载完成时自动挂载浮动图片组件
   },
   rootComponents: [
-    FloatingImage, // 全局挂载 FloatingImage 组件
+    // FloatingImage, // 全局挂载 FloatingImage 组件
   ],
 })
