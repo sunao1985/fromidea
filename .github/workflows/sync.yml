@@ -73,7 +73,7 @@ jobs:
           EOF
 
           # 上传网站配置到OSS存储桶
-          ossutil64 set-website oss://fromidea website_config.xml \
+          ossutil set-website oss://fromidea website_config.xml \
             --access-key-id=$ACCESS_KEY_ID \
             --access-key-secret=$ACCESS_KEY_SECRET \
             --endpoint=oss-cn-hangzhou.aliyuncs.com
