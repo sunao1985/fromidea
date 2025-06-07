@@ -49,8 +49,8 @@ jobs:
           ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          # 创建并上传路由规则文件，将根请求重定向到新的部署目录
-          cat > routing.xml << EOF
+          # 创建并上传网站配置文件，将根请求重定向到新的部署目录
+          cat > website_config.xml << EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <WebsiteConfiguration>
             <IndexDocument>
@@ -61,20 +61,19 @@ jobs:
             </ErrorDocument>
             <RoutingRules>
               <RoutingRule>
-                <RuleNumber>1</RuleNumber>
                 <Condition>
                   <KeyPrefixEquals>/</KeyPrefixEquals>
                 </Condition>
                 <Redirect>
-                  <ReplaceKeyWith>$DEPLOY_DIR/index.html</ReplaceKeyWith>
+                  <ReplaceKeyPrefixWith>$DEPLOY_DIR/</ReplaceKeyPrefixWith>
                 </Redirect>
               </RoutingRule>
             </RoutingRules>
           </WebsiteConfiguration>
           EOF
 
-          # 上传路由规则到OSS存储桶
-          ossutil set-website oss://fromidea routing.xml \
+          # 上传网站配置到OSS存储桶
+          ossutil64 set-website oss://fromidea website_config.xml \
             --access-key-id=$ACCESS_KEY_ID \
             --access-key-secret=$ACCESS_KEY_SECRET \
             --endpoint=oss-cn-hangzhou.aliyuncs.com
