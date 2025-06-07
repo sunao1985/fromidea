@@ -49,10 +49,59 @@ jobs:
           ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          # 1. 上传一个新的 index.html 文件，覆盖原文件，自动重定向到最新版本
-          echo "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"0; url=/$DEPLOY_DIR/index.html\" /></head></html>" > index.html
-          ossutil cp index.html oss://fromidea/index.html \
+          # 创建并上传路由规则文件，将根请求重定向到新的部署目录
+          cat > routing.xml << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <WebsiteConfiguration>
+            <IndexDocument>
+              <Suffix>index.html</Suffix>
+            </IndexDocument>
+            <ErrorDocument>
+              <Key>error.html</Key>
+            </ErrorDocument>
+            <RoutingRules>
+              <RoutingRule>
+                <RuleNumber>1</RuleNumber>
+                <Condition>
+                  <KeyPrefixEquals>/</KeyPrefixEquals>
+                </Condition>
+                <Redirect>
+                  <ReplaceKeyWith>$DEPLOY_DIR/index.html</ReplaceKeyWith>
+                </Redirect>
+              </RoutingRule>
+            </RoutingRules>
+          </WebsiteConfiguration>
+          EOF
+
+          # 上传路由规则到OSS存储桶
+          ossutil set-website oss://fromidea routing.xml \
             --access-key-id=$ACCESS_KEY_ID \
             --access-key-secret=$ACCESS_KEY_SECRET \
-            --endpoint=oss-cn-hangzhou.aliyuncs.com \
-            --update
+            --endpoint=oss-cn-hangzhou.aliyuncs.com
+
+      - name: Clean up old deployments (keep latest 3)
+        env:
+          ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
+          ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
+        run: |
+          # 列出所有部署目录
+          DEPLOY_DIRS=$(ossutil ls oss://fromidea/ \
+            --access-key-id=$ACCESS_KEY_ID \
+            --access-key-secret=$ACCESS_KEY_SECRET \
+            --endpoint=oss-cn-hangzhou.aliyuncs.com | grep "deploy-" | sort -r)
+
+          # 跳过最新的3个部署，删除其余的
+          COUNT=0
+          echo "$DEPLOY_DIRS" | while read -r LINE; do
+            if [[ $LINE == *"deploy-"* ]]; then
+              COUNT=$((COUNT+1))
+              DIR=$(echo $LINE | awk '{print $NF}' | sed 's/oss:\/\/fromidea\///')
+              if [ $COUNT -gt 3 ]; then
+                echo "Removing old deployment: $DIR"
+                ossutil rm -r oss://fromidea/$DIR/ \
+                  --access-key-id=$ACCESS_KEY_ID \
+                  --access-key-secret=$ACCESS_KEY_SECRET \
+                  --endpoint=oss-cn-hangzhou.aliyuncs.com
+              fi
+            fi
+          done
