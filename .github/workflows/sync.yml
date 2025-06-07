@@ -1,33 +1,75 @@
-name: Sync to OSS
+name: Sync to OSS with Zero Downtime
 
 on:
   push:
     branches:
-      - main # 这里可以根据您的需要更改分支名称
+      - main
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
       - name: Install dependencies and build
         run: |
-          npm install
+          npm ci
           npm run docs:build
+
       - name: Install ossutil
         run: |
           curl -L https://gosspublic.alicdn.com/ossutil/1.7.0/ossutil64 -o /usr/local/bin/ossutil
           chmod +x /usr/local/bin/ossutil
-      - name: Delete existing files in OSS
-        env:
-          ACCESS_KEY_ID: LTAI5tPRqBcFRxcnVFN7aBye
-          ACCESS_KEY_SECRET: ${{secrets.OSS_SECRET}}
+
+      - name: Generate unique deployment directory
+        id: deployment
         run: |
-          ossutil rm -rf oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com
-      - name: Sync files to OSS
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          echo "DEPLOY_DIR=deploy-$TIMESTAMP" >> $GITHUB_ENV
+
+      - name: Upload new version to temp directory
         env:
-          ACCESS_KEY_ID: LTAI5tPRqBcFRxcnVFN7aBye
-          ACCESS_KEY_SECRET: ${{secrets.OSS_SECRET}}
+          ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
+          ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          ossutil cp -r ./docs/.vuepress/dist oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com
+          ossutil cp -r ./docs/.vuepress/dist/ oss://fromidea/$DEPLOY_DIR/ \
+            --access-key-id=$ACCESS_KEY_ID \
+            --access-key-secret=$ACCESS_KEY_SECRET \
+            --endpoint=oss-cn-hangzhou.aliyuncs.com \
+            --update
+
+      - name: Update OSS routing configuration (atomic switch)
+        env:
+          ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
+          ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
+        run: |
+          # 1. Upload a new index.html that redirects to the new version
+          echo "<!DOCTYPE html><html><head><meta http-equiv=\"refresh\" content=\"0; url=/$DEPLOY_DIR/index.html\" /></head></html>" > index.html
+          ossutil cp index.html oss://fromidea/index.html \
+            --access-key-id=$ACCESS_KEY_ID \
+            --access-key-secret=$ACCESS_KEY_SECRET \
+            --endpoint=oss-cn-hangzhou.aliyuncs.com
+
+          # 2. Alternatively, if using OSS static website hosting with routing rules:
+          # You can configure OSS to serve the new version directly
+
+      - name: Clean up old deployments (optional)
+        env:
+          ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
+          ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
+        run: |
+          # Keep last 5 deployments for rollback purposes
+          ossutil ls oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com | \
+            grep -o "oss://fromidea/deploy-[0-9]*" | \
+            sort -r | \
+            tail -n +6 | \
+            xargs -I {} ossutil rm -rf {} \
+            --access-key-id=$ACCESS_KEY_ID \
+            --access-key-secret=$ACCESS_KEY_SECRET \
+            --endpoint=oss-cn-hangzhou.aliyuncs.com

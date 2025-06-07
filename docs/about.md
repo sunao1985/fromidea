@@ -4,9 +4,7 @@ sidebar: false
 
 # 我是谁
 
-
-
-待我好好想一想😄，如何介绍自己...
+待我好好想一想 😄，如何介绍自己...
 
 性别：男
 
@@ -22,7 +20,7 @@ sidebar: false
 
 ---
 
-### 付费解答
+<!-- ### 付费解答
 
 扫码添加我的微信，将问题尽量详细的用文字表达出来。
 
@@ -30,4 +28,4 @@ sidebar: false
 
 通常解答收费：**¥9.9元/次**。
 
-<img src="./assets/wechat.jpg" alt="wechat" style="zoom:20%;" />
+<img src="./assets/wechat.jpg" alt="wechat" style="zoom:20%;" /> -->
