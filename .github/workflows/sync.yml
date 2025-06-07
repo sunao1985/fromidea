@@ -59,17 +59,29 @@ jobs:
           # 2. Alternatively, if using OSS static website hosting with routing rules:
           # You can configure OSS to serve the new version directly
 
-      - name: Clean up old deployments (optional)
+      - name: Clean up old deployments (safely exclude current)
         env:
           ACCESS_KEY_ID: ${{ secrets.OSS_KEY }}
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
-          # Keep last 5 deployments for rollback purposes
-          ossutil ls oss://fromidea/ --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=oss-cn-hangzhou.aliyuncs.com | \
-            grep -o "oss://fromidea/deploy-[0-9]*" | \
-            sort -r | \
-            tail -n +6 | \
-            xargs -I {} ossutil rm -rf {} \
+          # 获取所有部署目录（按时间倒序）
+          ossutil ls oss://fromidea/ \
             --access-key-id=$ACCESS_KEY_ID \
             --access-key-secret=$ACCESS_KEY_SECRET \
-            --endpoint=oss-cn-hangzhou.aliyuncs.com
+            --endpoint=oss-cn-hangzhou.aliyuncs.com | \
+            grep -o "oss://fromidea/deploy-[0-9]*" | \
+            sort -r > all_deploys.txt
+
+          # 读取当前部署目录（从环境变量）
+          echo "Current deploy: $DEPLOY_DIR"
+
+          # 排除当前版本后，取第6个及以后的旧版本
+          grep -v "deploy-$DEPLOY_DIR$" all_deploys.txt | \
+            tail -n +6 | \
+            xargs -I {} sh -c '
+              echo "Deleting old deploy: {}";
+              ossutil rm -rf {} \
+                --access-key-id=$ACCESS_KEY_ID \
+                --access-key-secret=$ACCESS_KEY_SECRET \
+                --endpoint=oss-cn-hangzhou.aliyuncs.com
+            ' || echo "No old deployments to clean"
