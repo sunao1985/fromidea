@@ -8,6 +8,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15 # 设置最大运行时间为15分钟
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -16,10 +17,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies and build
         run: |
-          npm install
+          npm ci
           npm run docs:build
 
       - name: Install ossutil
@@ -50,7 +52,7 @@ jobs:
           ACCESS_KEY_SECRET: ${{ secrets.OSS_SECRET }}
         run: |
           # 创建并上传网站配置文件，将根请求重定向到新的部署目录
-          cat > website_config.xml << 'EOF'
+          cat > website_config.xml << EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <WebsiteConfiguration>
             <IndexDocument>
@@ -65,21 +67,18 @@ jobs:
                   <KeyPrefixEquals>/</KeyPrefixEquals>
                 </Condition>
                 <Redirect>
-                  <ReplaceKeyPrefixWith>'$DEPLOY_DIR'/</ReplaceKeyPrefixWith>
+                  <ReplaceKeyPrefixWith>$DEPLOY_DIR/</ReplaceKeyPrefixWith>
                 </Redirect>
               </RoutingRule>
             </RoutingRules>
           </WebsiteConfiguration>
           EOF
 
-          # Replace the placeholder with the actual value
-          sed -i "s/'\\$DEPLOY_DIR'/$DEPLOY_DIR/g" website_config.xml
-
           # 上传网站配置到OSS存储桶
-          ossutil api put-bucket-website --bucket fromidea --website-configuration website_config.xml \
+          ossutil website -e oss-cn-hangzhou.aliyuncs.com \
             --access-key-id=$ACCESS_KEY_ID \
             --access-key-secret=$ACCESS_KEY_SECRET \
-            --endpoint=oss-cn-hangzhou.aliyuncs.com
+            --method put oss://fromidea website_config.xml
 
       - name: Clean up old deployments (keep latest 3)
         env:
