@@ -64,17 +64,17 @@
 
 ![IMG_8104-tuya](./assets/IMG_8104-tuya.jpeg)
 
-![IMG_8112-tuya](./assets/IMG_8112-tuya-9353915.jpeg)
-
 ![IMG_8121-tuya](./assets/IMG_8121-tuya.jpeg)
+
+![IMG_8045-tuya](./assets/IMG_8045-tuya.jpeg)
+
+![IMG_8049-tuya](./assets/IMG_8049-tuya.jpeg)
 
 ![IMG_8128-tuya](./assets/IMG_8128-tuya.jpeg)
 
 ![IMG_8041-tuya](./assets/IMG_8041-tuya.jpeg)
 
 ![IMG_8163-tuya](./assets/IMG_8163-tuya.jpeg)
-
-
 
 
 
