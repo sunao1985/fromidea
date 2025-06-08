@@ -156,8 +156,6 @@
 
 ![IMG_7778](./assets/IMG_7778.jpeg)
 
-![IMG_7777](./assets/IMG_7777.jpeg)
-
 
 
 ### **后记**
