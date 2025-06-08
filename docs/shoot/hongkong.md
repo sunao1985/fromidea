@@ -60,13 +60,13 @@
 
 ![IMG_80941-tuya](./assets/IMG_80941-tuya.jpeg)
 
-![IMG_78321-tuya](./assets/IMG_78321-tuya.jpeg)这里玻璃幕墙的摩天大厦与百年石板路奇妙共存——**皇后大道中**西装革履的银行家匆匆走过，转角**嘉咸街**的涂鸦墙前却聚集着拍照的年轻人。乘半山自动扶梯上行，沿途会经过隐藏在写字楼群中的**大馆**，这座前警察总部改造的艺术区，将殖民时期的建筑与现代展览完美融合。傍晚时分的**兰桂坊**，happy hour的酒杯碰撞声与下班人群的谈笑声交织成独特的都市交响曲。
+![IMG_78322-tuya](./assets/IMG_78322-tuya.jpeg)
+
+这里玻璃幕墙的摩天大厦与百年石板路奇妙共存——**皇后大道中**西装革履的银行家匆匆走过，转角**嘉咸街**的涂鸦墙前却聚集着拍照的年轻人。乘半山自动扶梯上行，沿途会经过隐藏在写字楼群中的**大馆**，这座前警察总部改造的艺术区，将殖民时期的建筑与现代展览完美融合。傍晚时分的**兰桂坊**，happy hour的酒杯碰撞声与下班人群的谈笑声交织成独特的都市交响曲。
 
 ![IMG_8125-tuya](./assets/IMG_8125-tuya.jpeg)
 
 ![IMG_8024-tuya](./assets/IMG_8024-tuya.jpeg)
-
-![IMG_8044-tuya](./assets/IMG_8044-tuya.jpeg)
 
 ![IMG_8061-tuya](./assets/IMG_8061-tuya.jpeg)
 
@@ -74,11 +74,7 @@
 
 ![IMG_8081-tuya](./assets/IMG_8081-tuya.jpeg)
 
-![IMG_8104-tuya](./assets/IMG_8104-tuya.jpeg)
-
-![IMG_8121-tuya](./assets/IMG_8121-tuya.jpeg)
-
-![IMG_8045-tuya](./assets/IMG_8045-tuya.jpeg)
+![IMG_81211-tuya](./assets/IMG_81211-tuya.jpeg)
 
 ![IMG_7807-tuya](./assets/IMG_7807-tuya.jpeg)
 
