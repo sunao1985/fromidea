@@ -6,11 +6,19 @@
 
 1月的香港，气温徘徊在15℃左右，微凉但不刺骨，很适合漫步。
 
-放下行李，第一站直奔**维多利亚港**。白天的维港是明信片般的蓝调——天星小轮缓缓驶过，对岸中环的摩天楼群倒映在水面，偶尔有海鸟掠过。而到了夜晚，这里便成了光的盛宴。**「幻彩咏香江」** 灯光秀如期上演，大厦外墙的LED屏变幻着图案，整个维港仿佛被注入了赛博朋克的生命力。
+放下行李，第一站直奔**维多利亚港**。
+
+![IMG_8036 (1)-tuya](./assets/IMG_8036-tuya.jpeg)
+
+![IMG_7869-tuya](./assets/IMG_7869-tuya.jpeg)
+
+白天的维港是明信片般的蓝调——天星小轮缓缓驶过，对岸中环的摩天楼群倒映在水面，偶尔有海鸟掠过。而到了夜晚，这里便成了光的盛宴。**「幻彩咏香江」** 灯光秀如期上演，大厦外墙的LED屏变幻着图案，整个维港仿佛被注入了赛博朋克的生命力。
 
 ![IMG_8052-tuya](./assets/IMG_8052-tuya.jpeg)
 
 ![IMG_7774-tuya](./assets/IMG_7774-tuya.jpeg)
+
+![IMG_7957-tuya](./assets/IMG_7957-tuya.jpeg)
 
 ![IMG_7950-tuya](./assets/IMG_7950-tuya.jpeg)
 
@@ -28,8 +36,6 @@
 
 ![IMG_8189-tuya](./assets/IMG_8189-tuya.jpeg)
 
-![IMG_8047-tuya](./assets/IMG_8047-tuya.jpeg)
-
 ![IMG_8169-tuya](./assets/IMG_8169-tuya.jpeg)
 
 ![IMG_8027-tuya](./assets/IMG_8027-tuya.jpeg)
@@ -42,7 +48,11 @@
 
 ![IMG_8092-tuya](./assets/IMG_8092-tuya.jpeg)
 
+![IMG_8158 (1)-tuya](./assets/IMG_8158-tuya.jpeg)
 
+![Xnip2025-06-08_13-38-11-tuya](./assets/Xnip2025-06-08_13-38-11-tuya.png)
+
+![IMG_7848-tuya](./assets/IMG_7848-tuya.jpeg)
 
 ### **3. 中环：摩登都市的折叠面**
 
@@ -68,7 +78,7 @@
 
 ![IMG_8045-tuya](./assets/IMG_8045-tuya.jpeg)
 
-![IMG_8049-tuya](./assets/IMG_8049-tuya.jpeg)
+![IMG_7807-tuya](./assets/IMG_7807-tuya.jpeg)
 
 ![IMG_8128-tuya](./assets/IMG_8128-tuya.jpeg)
 
