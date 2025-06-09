@@ -20,7 +20,7 @@ export const navbar = [
         {
             'text': '其它',
             'children': [
-                { text: '程序员速查表', link: 'https://wangchujiang.com/reference/index.html' },
+                { text: '程序员速查表', link: 'https://quickref.cn/' },
                 { text: '正则表达式', link: '/program/regexp/' },
                 { text: 'JavaScript学习笔记', link: '/program/javascript/' },
                 { text: 'web开发常见问题', link: '/program/questions/' }

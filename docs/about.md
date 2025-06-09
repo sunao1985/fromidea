@@ -2,19 +2,25 @@
 sidebar: false
 ---
 
-# 我是谁
+# 关于
 
-待我好好想一想 😄，如何介绍自己...
+如果上帝把你的门关了，
+
+你就再打开，
+
+门就是这样用的。
+
+---
 
 性别：男
 
-年龄：36+
+年龄：38+
 
-熟悉：JS / HTML / CSS / PHP / MYSQL / web design in Sketch / Server configuration
+从业年限：18+
 
-游戏：only play 单机 : GTA... 孤岛惊魂... 荒野大镖客... citesSkyline...
+熟悉：JS / React / HTML / CSS / PHP / MYSQL / web design in Sketch / Server configuration
 
-从业年限：15year+
+状态：酝酿退休中
 
 联系方式：[email](mailto:sunao@pintecher.com)
 
