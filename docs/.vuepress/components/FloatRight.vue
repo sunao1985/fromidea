@@ -34,10 +34,10 @@ export default {
   <style scoped>
   .floating-right {
     position: fixed;
-    top: 100px;
+    top: 80px;
     right: 20px;
     z-index: 1000;
-    width: 200px;
+    width: 180px;
     height: auto;
   }
   
