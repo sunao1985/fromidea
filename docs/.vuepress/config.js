@@ -17,7 +17,8 @@ export default defineUserConfig({
   head: [
     ['link', { rel: 'icon', href: '/images/fromidea.png' }],
     ['meta', { name: 'baidu-site-verification', content: 'code-xzTgMvorot' }],
-    [...ua]
+    ['script',{async: true, src:"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6164093907849090",crossorigin: "anonymous"}],
+    [...ua],
   ], //增加一个自定义的 favicon
   plugins: [
     searchPlugin({
