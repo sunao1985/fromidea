@@ -1,16 +1,25 @@
 <template>
     <div class="home-content-ad">
-      <a href=" https://s.click.taobao.com/rngOhXr" target="_blank">
-        <img src="/images/home-content-left.jpg" alt="left">
-      </a>
-      <a href="https://s.click.taobao.com/D4cKhXr" target="_blank">
-        <img src="/images/home-content-content.jpg" alt="content">
-      </a>
-      <a href="https://s.click.taobao.com/xHGCBMr" target="_blank">
-        <img src="/images/home-content-right.jpg" alt="right">
+      <a v-for="(item, index) in lists" :key="index" :href="item.link" target="_blank">
+        <img :src="item.image" alt="">
       </a>
     </div>
   </template>
+
+  <script>
+  export default {
+    data() {
+      return {
+        ads:'',
+        lists: [
+          {image: '/images/sidebar-1.png', link: 'https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=tmijr0hj'},
+          {image: '/images/sidebar-2.png', link: 'https://www.aliyun.com/benefit/developer/company?userCode=tmijr0hj'},
+          {image: '/images/sidebar-3.png', link: 'https://www.aliyun.com/benefit?userCode=tmijr0hj'}
+        ]
+      }
+    },
+  }
+  </script>
   
   <style scoped>
     .home-content-ad {

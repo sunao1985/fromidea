@@ -1,5 +1,5 @@
 <template>
-    <div class="floating-image">
+    <div class="floating-right">
       <a href="https://s.click.taobao.com/1ExDhXr" target="_blank">
         <img :src="imageSrc" alt="Floating Image">
       </a>
@@ -32,7 +32,7 @@ export default {
 </script>
   
   <style scoped>
-  .floating-image {
+  .floating-right {
     position: fixed;
     top: 100px;
     right: 20px;
@@ -41,15 +41,20 @@ export default {
     height: auto;
   }
   
-  .floating-image img {
+  .floating-right img {
     width: 100%;
     height: auto;
     border-radius: 10px;
   }
 
+  .floating-right img:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大 */
+    transition: transform 0.3s ease; /* 平滑过渡效果 */
+  }
+
   /* 可以根据需要调整不同屏幕上的图片样式 */
     @media (max-width: 768px) {
-    .floating-image {
+    .floating-right {
         width: 100px; /* 移动端的图片大小 */
         top: 60px;
         right: 0px;
