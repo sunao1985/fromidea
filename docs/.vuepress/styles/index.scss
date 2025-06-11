@@ -6,6 +6,15 @@
   --vt-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.16);
 }
 
+#main-title,
+.vp-hero-description {
+  margin: 0 auto;
+}
+
+.vp-hero-action-button.secondary:hover {
+  background-color: var(--vp-c-accent-bg);
+  color: var(--vp-c-accent-text);
+}
 .vp-sidebar {
   padding-bottom: 150px;
 }

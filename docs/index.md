@@ -6,12 +6,12 @@ tagline: "站在科技与人文的交叉口"
 pageClass: page-home
 
 actions:
-#   - text: 进博客
-#     link: /
-#     type: primary
-#   - text: 我是谁
-#     link: /about.html
-#     type: secondary
+  - text: 读博客
+    link: /blog/
+    type: primary
+  - text: 我是谁
+    link: /about.html
+    type: secondary
 
 features:
   - title: 记录
