@@ -69,6 +69,7 @@ export const navbar = [
             { 'text': '摄影', 'link': '/shoot/'},
             { 'text': '健康', 'link': '/health/'},
             { 'text': 'HIFI', 'link': '/hifi/'},
+            { 'text': '闲聊', 'link': '/chat/'},
         ]
     },
     {
