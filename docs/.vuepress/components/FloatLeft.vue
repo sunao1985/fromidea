@@ -13,9 +13,9 @@ export default {
       imageSrc: '',
       link: '',
       lists: [
-        {image: '/images/sidebar-1.png', link: 'https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=tmijr0hj'},
-        {image: '/images/sidebar-2.png', link: 'https://www.aliyun.com/benefit/developer/company?userCode=tmijr0hj'},
-        {image: '/images/sidebar-3.png', link: 'https://www.aliyun.com/benefit?userCode=tmijr0hj'}
+        {image: '/images/sidebar-1.png', link: 'https://www.aliyun.com/minisite/goods?userCode=tmijr0hj'},
+        // {image: '/images/sidebar-2.png', link: 'https://www.aliyun.com/benefit/developer/company?userCode=tmijr0hj'},
+        // {image: '/images/sidebar-3.png', link: 'https://www.aliyun.com/benefit?userCode=tmijr0hj'}
       ]
     }
   },
