@@ -27,7 +27,7 @@ export default {
       adsenseClient: 'ca-pub-6164093907849090',
       adsenseSlot: '2579512947',
       adLoadDelay: 1000,
-      adRefreshDelay: 500,
+      adRefreshDelay: 10,
       adRetryDelay: 2000
     }
   },
@@ -58,6 +58,7 @@ export default {
       setTimeout(this.loadAdsenseAd, this.adRefreshDelay)
     },
     loadAdsenseAd() {
+      console.log('加载广告');
       if (this.adLoaded || !this.$refs.adsenseContainer) return
       this.$refs.adsenseContainer.innerHTML = ''
       const adIns = this.createAdElement()
