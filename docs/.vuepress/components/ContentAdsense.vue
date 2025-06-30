@@ -35,6 +35,7 @@ export default {
     '$route.path'(newPath) {
       //不包含url后面的#
       newPath = newPath.split('#')[0]
+      console.log('newPath',newPath);
       if (newPath !== this.currentPath) {
         this.currentPath = newPath
         this.refreshAd()
