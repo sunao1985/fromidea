@@ -8,12 +8,11 @@
 export default {
   name: 'ContentAdsense',
   props: {
-    // 控制广告位置（可以是 'top', 'middle', 'bottom'）
     position: {
       type: String,
-      default: 'middle'
+      default: 'middle',
+      validator: value => ['top', 'middle', 'bottom'].includes(value)
     },
-    // 是否启用广告
     enabled: {
       type: Boolean,
       default: true
@@ -22,91 +21,67 @@ export default {
   data() {
     return {
       adLoaded: false,
-      shouldShowAd: false,
-      adRefreshKey: 0, // 用于强制重新渲染
-      currentPath: ''  // 跟踪当前路径
+      shouldShowAd: this.enabled,
+      adRefreshKey: 0,
+      currentPath: '',
+      adsenseClient: 'ca-pub-6164093907849090',
+      adsenseSlot: '2579512947',
+      adLoadDelay: 1000,
+      adRefreshDelay: 500,
+      adRetryDelay: 2000
     }
   },
   watch: {
-    '$route.path': {
-      handler(newPath) {
-        if (newPath !== this.currentPath) {
-          console.log('Route changed in ContentAdsense', newPath);
-          this.currentPath = newPath;
-          this.refreshAd();
-        }
-      },
-      immediate: true
+    '$route.path'(newPath) {
+      if (newPath !== this.currentPath) {
+        this.currentPath = newPath
+        this.refreshAd()
+      }
+    },
+    enabled(val) {
+      this.shouldShowAd = val
     }
   },
   mounted() {
-    // 只在客户端加载广告
-    if (typeof window !== 'undefined') {
-      this.shouldShowAd = this.enabled;
-      this.currentPath = this.$route.path;
-      
-      // 延迟加载广告以确保内容先渲染
-      setTimeout(() => {
-        this.loadAdsenseAd();
-      }, 1000);
-    }
+    if (typeof window === 'undefined') return
+    this.currentPath = this.$route.path
+    setTimeout(this.loadAdsenseAd, this.adLoadDelay)
   },
   methods: {
     refreshAd() {
-      // 重置状态
-      this.adLoaded = false;
-      this.adRefreshKey++; // 改变key强制Vue重新渲染组件
-      
-      // 延迟加载新广告
-      setTimeout(() => {
-        this.loadAdsenseAd();
-      }, 500);
+      this.adLoaded = false
+      this.adRefreshKey++
+      setTimeout(this.loadAdsenseAd, this.adRefreshDelay)
     },
-    
     loadAdsenseAd() {
-      if (this.adLoaded) return;
-      
-      // 确保容器存在
-      if (!this.$refs.adsenseContainer) {
-        console.warn('AdSense container not found');
-        return;
-      }
-      
-      // 清空容器
-      this.$refs.adsenseContainer.innerHTML = '';
-      
-      // 创建AdSense广告代码
-      const adScript = document.createElement('ins');
-      adScript.className = 'adsbygoogle';
-      adScript.style.display = 'block';
-      adScript.style.textAlign = 'center';
-      adScript.style.minHeight = '100px';
-      adScript.setAttribute('data-ad-client', 'ca-pub-6164093907849090'); // 替换为你的客户ID
-      adScript.setAttribute('data-ad-slot', '2579512947'); // 替换为你的广告位ID
-      adScript.setAttribute('data-ad-layout', 'in-article');
-      adScript.setAttribute('data-ad-format', 'fluid');
-      
-      // 将广告代码添加到容器
-      this.$refs.adsenseContainer.appendChild(adScript);
-      
-      // 请求广告
-      if (window.adsbygoogle) {
+      if (this.adLoaded || !this.$refs.adsenseContainer) return
+      this.$refs.adsenseContainer.innerHTML = ''
+      const adIns = this.createAdElement()
+      this.$refs.adsenseContainer.appendChild(adIns)
+      this.requestAd()
+    },
+    createAdElement() {
+      const adIns = document.createElement('ins')
+      adIns.className = 'adsbygoogle'
+      adIns.style.display = 'block'
+      adIns.style.textAlign = 'center'
+      adIns.style.minHeight = '100px'
+      adIns.setAttribute('data-ad-client', this.adsenseClient)
+      adIns.setAttribute('data-ad-slot', this.adsenseSlot)
+      adIns.setAttribute('data-ad-layout', 'in-article')
+      adIns.setAttribute('data-ad-format', 'fluid')
+      return adIns
+    },
+    requestAd() {
+      if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
         try {
-          console.log('Requesting ad for position:', this.position);
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-          this.adLoaded = true;
-        } catch (error) {
-          console.error('AdSense error:', error);
+          (window.adsbygoogle).push({})
+          this.adLoaded = true
+        } catch (e) {
+          // ignore
         }
       } else {
-        console.warn('AdSense not loaded yet');
-        
-        // 如果AdSense未加载，稍后重试
-        setTimeout(() => {
-          if (window.adsbygoogle) {
-            this.loadAdsenseAd();
-          }
-        }, 2000);
+        setTimeout(this.loadAdsenseAd, this.adRetryDelay)
       }
     }
   }
@@ -121,7 +96,6 @@ export default {
   width: 100%;
   text-align: center;
 }
-
 .content-adsense::before {
   content: "- 广告 -";
   display: block;
