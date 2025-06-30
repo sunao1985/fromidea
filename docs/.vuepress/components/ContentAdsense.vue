@@ -80,9 +80,6 @@ export default {
 <style scoped>
 .content-adsense {
   margin: 2rem 0;
-  padding: 1rem;
-  background-color: #f8f8f8;
-  border-radius: 4px;
   overflow: hidden;
   min-height: 100px;
   width: 100%;
@@ -90,7 +87,7 @@ export default {
 }
 
 .content-adsense::before {
-  content: "广告";
+  content: "- 广告 -";
   display: block;
   font-size: 0.75rem;
   color: #999;
