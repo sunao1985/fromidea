@@ -27,15 +27,12 @@ export default {
       adsenseClient: 'ca-pub-6164093907849090',
       adsenseSlot: '2579512947',
       adLoadDelay: 1000,
-      adRefreshDelay: 10,
+      adRefreshDelay: 500,
       adRetryDelay: 2000
     }
   },
   watch: {
     '$route.path'(newPath) {
-      //不包含url后面的#
-      newPath = newPath.split('#')[0]
-      console.log('newPath',newPath);
       if (newPath !== this.currentPath) {
         this.currentPath = newPath
         this.refreshAd()
@@ -52,13 +49,11 @@ export default {
   },
   methods: {
     refreshAd() {
-      console.log('reached refreshAd');
       this.adLoaded = false
       this.adRefreshKey++
       setTimeout(this.loadAdsenseAd, this.adRefreshDelay)
     },
     loadAdsenseAd() {
-      console.log('加载广告');
       if (this.adLoaded || !this.$refs.adsenseContainer) return
       this.$refs.adsenseContainer.innerHTML = ''
       const adIns = this.createAdElement()

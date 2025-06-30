@@ -39,10 +39,18 @@ export default defineClientConfig({
     app.component('HomeContentAd', HomeContentAd)
     app.component('ContentAdsense', ContentAdsense)
 
-    router.isReady().then(initAdsense)
-    router.afterEach(() => {
+    let lastPath = ''
+    router.isReady().then(() => {
       initAdsense()
-      refreshAds()
+      lastPath = router.currentRoute.value.fullPath.split('#')[0]
+    })
+    router.afterEach((to) => {
+      const newPath = to.fullPath.split('#')[0]
+      if (newPath !== lastPath) {
+        initAdsense()
+        refreshAds()
+        lastPath = newPath
+      }
     })
   },
 
