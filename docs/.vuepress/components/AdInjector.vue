@@ -39,19 +39,24 @@ export default {
       
       return adContainer;
     };
-    
-    // 在文章中间位置插入广告
+    // 在文章中间位置插入广告，只插入一次
     const middleIndex = Math.floor(paragraphs.length / 2);
-    if (middleIndex >= 2) {
+    if (middleIndex >= 2 && paragraphs.length >= 4) {
       const middleEl = paragraphs[middleIndex];
-      middleEl.parentNode.insertBefore(createAdElement(), middleEl.nextSibling);
+      // 避免和后面的广告太接近
+      if (paragraphs.length - middleIndex >= 3) {
+        const adElement = createAdElement();
+        // 检查该位置是否已经存在广告
+        if (!middleEl.nextSibling || !middleEl.nextSibling.classList?.contains('auto-injected-ad')) {
+          middleEl.parentNode.insertBefore(adElement, middleEl.nextSibling);
+        }
+      }
     }
-    
     // 在文章底部插入广告（如果文章足够长）
-    if (paragraphs.length >= 6) {
-      const bottomEl = paragraphs[paragraphs.length - 2];
-      bottomEl.parentNode.insertBefore(createAdElement(), bottomEl.nextSibling);
-    }
+    // if (paragraphs.length >= 6) {
+    //   const bottomEl = paragraphs[paragraphs.length - 2];
+    //   bottomEl.parentNode.insertBefore(createAdElement(), bottomEl.nextSibling);
+    // }
   }
 }
 </script>
