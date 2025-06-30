@@ -92,9 +92,9 @@ export default {
 .content-adsense {
   margin: 2rem 0;
   overflow: hidden;
-  min-height: 100px;
   width: 100%;
   text-align: center;
+  position: relative;
 }
 .content-adsense::before {
   content: "- 广告 -";
@@ -102,5 +102,6 @@ export default {
   font-size: 0.75rem;
   color: #999;
   margin-bottom: 0.5rem;
+  z-index: 99999;
 }
 </style>

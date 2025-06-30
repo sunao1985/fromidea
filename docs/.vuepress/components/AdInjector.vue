@@ -15,7 +15,7 @@ export default {
       observerConfig: { childList: true, subtree: true },
       observationTimeout: 3000,
       mutationDelay: 300,
-      adInjectionDelay: 10
+      adInjectionDelay: 200
     }
   },
   mounted() {
@@ -65,7 +65,16 @@ export default {
       if (contentEl) this.injectAdsToContent(contentEl)
     },
     cleanupInjectedAds() {
-      this.injectedAds.forEach(ad => ad?.parentNode?.removeChild(ad))
+      this.injectedAds.forEach(ad => {
+        // Remove ad and its adjacent hr elements if present
+        if (ad.previousSibling && ad.previousSibling.tagName === 'HR') {
+          ad.previousSibling.parentNode.removeChild(ad.previousSibling)
+        }
+        if (ad.nextSibling && ad.nextSibling.tagName === 'HR') {
+          ad.nextSibling.parentNode.removeChild(ad.nextSibling)
+        }
+        ad?.parentNode?.removeChild(ad)
+      })
       this.injectedAds = []
     },
     injectAdsToContent(contentEl) {
@@ -74,8 +83,13 @@ export default {
       const middleIndex = Math.floor(nodes.length / 2)
       if (middleIndex >= 2) {
         const middleEl = nodes[middleIndex]
+        // Create hr, ad, hr
+        const hrBefore = document.createElement('hr')
         const adElement = this.createAdElement('middle')
-        middleEl.parentNode.insertBefore(adElement, middleEl.nextSibling)
+        const hrAfter = document.createElement('hr')
+        middleEl.parentNode.insertBefore(hrBefore, middleEl.nextSibling)
+        middleEl.parentNode.insertBefore(adElement, hrBefore.nextSibling)
+        middleEl.parentNode.insertBefore(hrAfter, adElement.nextSibling)
         this.injectedAds.push(adElement)
       }
     },
@@ -112,11 +126,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .auto-injected-ad {
   margin: 2rem 0;
-  min-height: 120px;
   position: relative;
+  display: block;
+  width: 100%;
+  min-height: 10px; /* Ensure element has height for ::before */
 }
 .auto-injected-ad::before {
   content: "- 广告 -";
@@ -125,5 +141,9 @@ export default {
   color: #999;
   text-align: center;
   margin-bottom: 0.5rem;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
 }
 </style>
