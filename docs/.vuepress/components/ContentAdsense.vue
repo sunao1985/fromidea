@@ -33,6 +33,8 @@ export default {
   },
   watch: {
     '$route.path'(newPath) {
+      //不包含url后面的#
+      newPath = newPath.split('#')[0]
       if (newPath !== this.currentPath) {
         this.currentPath = newPath
         this.refreshAd()
