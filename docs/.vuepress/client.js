@@ -32,19 +32,12 @@ export default defineClientConfig({
   rootComponents: [
     () => {
       const pageData = usePageData()
-      // 判断是否为文章页面
-      const isArticlePage = pageData.value.path !== '/' && 
-                            !pageData.value.path.endsWith('/') && 
-                            pageData.value.path.includes('/blog/');
       
-      if (pageData.value.path !== '/') {
+      if (pageData.value.path !== '/' && !pageData.value.path.endsWith('/')) {
+        // 文章详情页添加广告注入器 
+        return [h(FloatLeft), h(FloatRight), h(AdInjector)];
         // 侧边广告
-        return [h(FloatLeft), h(FloatRight)];
-      }
-      
-      if (isArticlePage) {
-        // 文章详情页添加广告注入器
-        return [h(AdInjector)];
+        // return [h(FloatLeft), h(FloatRight)];
       }
       
       return null;

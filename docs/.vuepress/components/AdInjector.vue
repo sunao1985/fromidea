@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import { createApp } from 'vue';
+import ContentAdsense from './ContentAdsense.vue';
+
 export default {
   name: 'AdInjector',
   mounted() {
@@ -17,7 +20,7 @@ export default {
     
     // 获取所有段落元素
     const paragraphs = contentEl.querySelectorAll('p, h2, h3, h4, pre, ul, ol');
-    if (paragraphs.length < 5) return; // 内容太少不插入广告
+    if (paragraphs.length < 3) return; // 内容太少不插入广告
     
     // 创建广告元素
     const createAdElement = () => {
@@ -26,8 +29,11 @@ export default {
       adContainer.style.margin = '2rem 0';
       
       // 创建Vue组件实例并挂载
-      const { createApp } = require('vue');
-      const ContentAdsense = require('./ContentAdsense.vue').default;
+      // 防止重复挂载
+      if (adContainer.querySelector('.content-adsense')) {
+        return adContainer; // 如果已经有广告组件，则不再创建
+      }
+      
       const adApp = createApp(ContentAdsense);
       adApp.mount(adContainer);
       
