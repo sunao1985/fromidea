@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     refreshAd() {
+      console.log('reached refreshAd');
       this.adLoaded = false
       this.adRefreshKey++
       setTimeout(this.loadAdsenseAd, this.adRefreshDelay)
