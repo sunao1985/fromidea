@@ -73,7 +73,7 @@ export default defineClientConfig({
       if (isArticle) {
         components.push(h(FloatLeft), h(FloatRight), h(AdInjector))
       } else if (!isHome) {
-        components.push(h(FloatLeft), h(FloatRight))
+        components.push(h(FloatRight))
       }
 
       return components.length ? components : null
