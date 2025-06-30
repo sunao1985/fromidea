@@ -15,7 +15,7 @@ export default {
       observerConfig: { childList: true, subtree: true },
       observationTimeout: 3000,
       mutationDelay: 300,
-      adInjectionDelay: 200
+      adInjectionDelay: 10
     }
   },
   mounted() {
