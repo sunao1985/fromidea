@@ -90,7 +90,7 @@ export default {
 
 <style scoped>
 .content-adsense {
-  margin: 2rem 0;
+  margin: 1rem 0;
   overflow: hidden;
   width: 100%;
   text-align: center;

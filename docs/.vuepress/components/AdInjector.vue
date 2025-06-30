@@ -96,7 +96,7 @@ export default {
     createAdElement(position) {
       const adContainer = document.createElement('div')
       adContainer.className = `auto-injected-ad ad-${position}`
-      adContainer.style.margin = '2rem 0'
+      adContainer.style.margin = '1rem 0'
       adContainer.dataset.adPosition = position
 
       const componentContainer = document.createElement('div')
@@ -128,13 +128,13 @@ export default {
 
 <style>
 .auto-injected-ad {
-  margin: 2rem 0;
+  margin: 1rem 0;
   position: relative;
   display: block;
   width: 100%;
-  min-height: 10px; /* Ensure element has height for ::before */
+  min-height: 5px; /* Ensure element has height for ::before */
 }
-.auto-injected-ad::before {
+.auto-injected-ad::after {
   content: "- 广告 -";
   display: block;
   font-size: 0.75rem;
