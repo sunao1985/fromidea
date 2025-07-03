@@ -113,10 +113,20 @@ export default {
         adIns.setAttribute('data-ad-layout', 'in-article')
         adIns.setAttribute('data-ad-format', 'fluid')
         componentContainer.appendChild(adIns)
+        let adBlocked = false
         try {
           (window.adsbygoogle = window.adsbygoogle || []).push({})
+          // 检查一段时间后广告是否被渲染
+          setTimeout(() => {
+            // 如果ins元素高度很小，可能被拦截
+            if (adIns.offsetHeight < 15) {
+              adBlocked = true
+              alert('检测到广告被浏览器插件拦截，为了支持本站内容创作，请关闭广告拦截器。感谢您的支持！')
+            }
+          }, 1500)
         } catch (e) {
-          // ignore
+          adBlocked = true
+          alert('检测到广告被浏览器插件拦截，为了支持本站内容创作，请关闭广告拦截器。感谢您的支持！')
         }
       }, this.adInjectionDelay)
 
