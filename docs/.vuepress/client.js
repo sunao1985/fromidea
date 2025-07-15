@@ -71,7 +71,7 @@ export default defineClientConfig({
       const isArticle = !isHome && !pageData.value.path.endsWith('/')
 
       if (isArticle) {
-        components.push(h(FloatLeft), h(FloatRight), h(AdInjector))
+        components.push(h(FloatLeft), h(FloatRight))
       } else if (!isHome) {
         components.push(h(FloatRight))
       }
