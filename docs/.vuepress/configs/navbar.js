@@ -50,6 +50,7 @@ export const navbar = [
                     { text: 'chrome', link: '/tool/soft/chrome/' },
                     { text: 'github', link: '/tool/soft/github/' },
                     { text: 'npm', link: '/tool/soft/npm/' },
+                    { text: 'mysql', link: '/tool/soft/mysql/' },
                 ],
             },
             {

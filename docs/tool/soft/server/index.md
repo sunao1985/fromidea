@@ -15,4 +15,6 @@ sidebar: false
 
 #### [如何开启网站ipv6访问](如何开启网站ipv6访问.md)  
 
-#### [关于SSL证书，一文看懂](关于SSL证书.md) 
+#### [关于SSL证书，一文看懂](关于SSL证书.md)  
+
+#### [centos基本操作命令大全](centos基本操作命令大全.md) 
