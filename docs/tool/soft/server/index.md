@@ -17,4 +17,8 @@ sidebar: false
 
 #### [关于SSL证书，一文看懂](关于SSL证书.md)  
 
-#### [centos基本操作命令大全](centos基本操作命令大全.md) 
+#### [centos基本操作命令大全](centos基本操作命令大全.md)  
+
+#### [阿里云ECS服务器如何分区并挂载数据盘](阿里云ECS服务器如何分区并挂载数据盘.md)  
+
+#### [linux常用命令大全](linux常用命令大全.md) 
