@@ -46,7 +46,7 @@
 
 小红书多人推荐：歪嘴面馆。
 
-![IMG_3229-tuya](../../../../Downloads/IMG_3232-tuya.jpeg)
+![IMG_3232-tuya](./assets/IMG_3232-tuya.jpeg)
 
 面很劲道，特色白切鸡味道不错。
 
