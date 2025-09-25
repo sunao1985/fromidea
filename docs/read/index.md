@@ -16,4 +16,6 @@ sidebar: false
 
 #### [能让你戒掉刷手机瘾的6本书](能让你戒掉刷手机瘾的6本书.md)  
 
-#### [《你不知道的Javascript》全集](你不知道的javascript.md) 
+#### [《你不知道的Javascript》全集](你不知道的javascript.md)  
+
+#### [《金钱心理学：财富、人性和幸福的永恒真相》](金钱心理学.md) 
