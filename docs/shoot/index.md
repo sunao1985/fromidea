@@ -16,4 +16,8 @@ sidebar: false
 
 #### [家里又添新车了，这次是...](zixingche.md) 
 
+#### [书房掠影](shufanggengxin.md) 
+
+#### [中秋家宴哪能少了大闸蟹！](zhongqiujiayan2023.md) 
+
 #### [沱湖风光](tuohu.md)
