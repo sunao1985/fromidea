@@ -4,7 +4,9 @@ sidebar: false
 
 # 摄影
 
-#### [周末探寻怀远野岛+榴白民宿](huaiyuanyedao.md) 
+#### [十一雨后浅游淮南小洱海](huainanxiaoerhai.md) 
+
+#### [周末探寻怀远野岛+榴白民宿](huaiyuanyedao.md)  
 
 #### [夏末雨后探寻凤阳明中都古城](fengyangmingzhongdu.md) 
 
